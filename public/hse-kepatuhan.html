@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HSE &amp; Kepatuhan — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">HSE &amp; KEPATUHAN</h1>
+          <p class="page-header__tagline">Keselamatan, kepatuhan, dan pengendalian risiko operasional proyek.</p>
+          <p class="page-header__desc">Menciptakan lingkungan kerja yang aman, patuh, dan berkelanjutan untuk setiap insan dan mitra kerja.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>KESELAMATAN</span><span>KEPATUHAN</span><span>PENGENDALIAN RISIKO</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">MANUSIA AMAN</span>
+          <span class="page-header__badge-accent">PROYEK LANCAR</span>
+          <span class="page-header__badge-accent">MASA DEPAN LEBIH KUAT</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">🛡</div>
+          <div><p class="pk-kpi__label">Total Temuan Aktif</p><p class="pk-kpi__value">34 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +17%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📅</div>
+          <div><p class="pk-kpi__label">Incident-Free Days</p><p class="pk-kpi__value">276 <span class="pk-kpi__delta pk-kpi__delta--up">▲ +28 hari</span></p><p class="pk-kpi__sub">rekor saat ini</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📄</div>
+          <div><p class="pk-kpi__label">Permit Compliance</p><p class="pk-kpi__value">96.2% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +2.4%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">⛑</div>
+          <div><p class="pk-kpi__label">APD Compliance</p><p class="pk-kpi__value">98.7% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +1.1%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">🎖</div>
+          <div><p class="pk-kpi__label">Sertifikasi Valid</p><p class="pk-kpi__value">92.4% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +3.2%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+      </section>
+
+      <!-- ROW 1: 4 columns -->
+      <section class="pk-grid-4">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🚨 Peringatan Kritis HSE</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--red"><div class="action-pk__flag action-pk__flag--red">!</div><div class="action-pk__body"><p class="action-pk__title">12 Permit to Work hampir habis masa berlaku (&le; 2 hari)</p></div><span class="action-pk__chip chip--red">1h 20m</span></li>
+            <li class="action-pk action-pk--red"><div class="action-pk__flag action-pk__flag--red">!</div><div class="action-pk__body"><p class="action-pk__title">28 pekerja belum mengikuti induksi HSE</p></div><span class="action-pk__chip chip--red">3h 45m</span></li>
+            <li class="action-pk action-pk--amber"><div class="action-pk__flag action-pk__flag--amber">!</div><div class="action-pk__body"><p class="action-pk__title">5 sertifikat operator sudah kedaluwarsa</p></div><span class="action-pk__chip chip--amber">6h 12m</span></li>
+            <li class="action-pk action-pk--amber"><div class="action-pk__flag action-pk__flag--amber">!</div><div class="action-pk__body"><p class="action-pk__title">Unsafe act terdeteksi di area Piling (zona 2)</p></div><span class="action-pk__chip chip--amber">8h 30m</span></li>
+            <li class="action-pk action-pk--blue"><div class="action-pk__flag action-pk__flag--blue">i</div><div class="action-pk__body"><p class="action-pk__title">Audit HSE eksternal sudah melewati jatuh tempo</p></div><span class="action-pk__chip chip--blue">1d 4h</span></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📊 Status Kepatuhan per Area</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Area / Kontraktor</th><th class="num">Kepatuhan</th><th class="num">Temuan</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Main Civil</td><td class="num">98%</td><td class="num">3</td><td><span class="status-badge status-badge--green">Baik</span></td></tr>
+              <tr><td>Piling</td><td class="num">92%</td><td class="num">7</td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr><td>Mechanical</td><td class="num">96%</td><td class="num">4</td><td><span class="status-badge status-badge--green">Baik</span></td></tr>
+              <tr><td>Piping</td><td class="num">89%</td><td class="num">9</td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr><td>Electrical</td><td class="num">97%</td><td class="num">2</td><td><span class="status-badge status-badge--green">Baik</span></td></tr>
+              <tr><td>Instrumentation</td><td class="num">95%</td><td class="num">3</td><td><span class="status-badge status-badge--green">Baik</span></td></tr>
+              <tr><td>Kontraktor A</td><td class="num">96%</td><td class="num">4</td><td><span class="status-badge status-badge--green">Baik</span></td></tr>
+              <tr><td>Kontraktor B</td><td class="num">88%</td><td class="num">8</td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr><td>Kontraktor C</td><td class="num">79%</td><td class="num">12</td><td><span class="status-badge status-badge--red">Risiko Tinggi</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📄 Permit to Work (PTW)</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="214.6 61.9" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="31.6 244.9" stroke-dashoffset="-214.6"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="15.8 260.7" stroke-dashoffset="-246.2"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="14.5 262.0" stroke-dashoffset="-262.0"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">420</div><div class="donut-center__lbl">Total<br/>PTW</div></div>
+          </div>
+          <ul class="donut-legend" style="font-size:10.5px">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> Disetujui <strong>326 (77.6%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Pending <strong>48 (11.4%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Expired <strong>24 (5.7%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> Ditolak <strong>22 (5.2%)</strong></li>
+          </ul>
+          <p style="font-size:10px;color:var(--red-500);margin:8px 0 0">⚠ 24 PTW akan kedaluwarsa dalam 2 hari ke depan</p>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🎓 Induksi &amp; Pelatihan HSE</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="260.2 16.3" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="10.8 265.6" stroke-dashoffset="-260.2"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="5.4 271.0" stroke-dashoffset="-271.0"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">94%</div><div class="donut-center__lbl">Selesai</div></div>
+          </div>
+          <ul class="donut-legend" style="font-size:10.5px">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> Selesai <strong>1,248 (94.1%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Dalam Proses <strong>52 (3.9%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Belum Mulai <strong>26 (2.0%)</strong></li>
+          </ul>
+          <p style="font-size:10px;color:var(--grey-500);margin:8px 0 0">Total Pekerja <strong style="color:var(--white)">1,326</strong> · Target <strong style="color:var(--white)">1,410</strong></p>
+          <p style="font-size:10px;color:var(--green-500);margin:2px 0 0">✔ On Track — progres sesuai rencana</p>
+        </div>
+      </section>
+
+      <!-- ROW 2: 4 columns -->
+      <section class="pk-grid-4">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🔍 Inspeksi &amp; Audit</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="wuhuan-grid">
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">📋</div><div class="wuhuan-stat__val">26</div><div class="wuhuan-stat__lbl">Inspeksi Bulan Ini</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +24%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">🔎</div><div class="wuhuan-stat__val">18</div><div class="wuhuan-stat__lbl">Temuan</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +12%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">📁</div><div class="wuhuan-stat__val" style="color:var(--red-500)">4</div><div class="wuhuan-stat__lbl">Audit Overdue</div><div class="wuhuan-stat__delta">—</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">📁</div><div class="wuhuan-stat__val">2</div><div class="wuhuan-stat__lbl">Audit Berjalan</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +100%</div></div>
+          </div>
+          <p style="font-size:10.5px;color:var(--grey-500);font-weight:700;margin:10px 0 6px">Temuan Berdasarkan Kategori</p>
+          <ul class="gap-list">
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Kondisi Tidak Aman</span><div class="pbar-wrap" style="width:70px;background:rgba(229,72,77,0.15)"><div class="pbar" style="width:44%;background:var(--red-500)"></div></div><strong>8 (44%)</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Perilaku Tidak Aman</span><div class="pbar-wrap" style="width:70px"><div class="pbar pbar--amber" style="width:28%"></div></div><strong>5 (28%)</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Ketidaksesuaian Prosedur</span><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:22%;background:var(--blue-500)"></div></div><strong>4 (22%)</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Lainnya</span><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:6%;background:var(--grey-500)"></div></div><strong>1 (6%)</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📈 Tren Insiden &amp; Near Miss</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="mini-legend">
+            <li><span class="sq" style="background:var(--red-500)"></span> Insiden (Recordable)</li>
+            <li><span class="sq" style="background:var(--amber-500)"></span> Near Miss</li>
+          </div>
+          <div class="bar-chart" style="height:80px">
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:8px;background:var(--red-500)"></div><div class="bar" style="height:38px;background:var(--amber-500)"></div></div><div class="bar-group__label">Jan</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:5px;background:var(--red-500)"></div><div class="bar" style="height:30px;background:var(--amber-500)"></div></div><div class="bar-group__label">Feb</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:12px;background:var(--red-500)"></div><div class="bar" style="height:34px;background:var(--amber-500)"></div></div><div class="bar-group__label">Mar</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:4px;background:var(--red-500)"></div><div class="bar" style="height:20px;background:var(--amber-500)"></div></div><div class="bar-group__label">Apr</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:3px;background:var(--red-500)"></div><div class="bar" style="height:16px;background:var(--amber-500)"></div></div><div class="bar-group__label">Mei</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:3px;background:var(--red-500)"></div><div class="bar" style="height:18px;background:var(--amber-500)"></div></div><div class="bar-group__label">Jun</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:3px;background:var(--red-500)"></div><div class="bar" style="height:14px;background:var(--amber-500)"></div></div><div class="bar-group__label">Jul</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:2px;background:var(--red-500)"></div><div class="bar" style="height:10px;background:var(--amber-500)"></div></div><div class="bar-group__label">Agu</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:2px;background:var(--red-500)"></div><div class="bar" style="height:9px;background:var(--amber-500)"></div></div><div class="bar-group__label">Sep</div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:10.5px">
+            <span style="color:var(--green-500)">▼ -60% Penurunan insiden vs 3 bulan sebelumnya</span>
+          </div>
+          <p style="font-size:10.5px;color:var(--grey-300);margin:4px 0 0">⏱ 0 LTI sejak 12 Mar 2026 (276 hari)</p>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📁 Dokumen &amp; Sertifikasi</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <p style="font-size:11px;color:var(--grey-500);margin:0 0 8px">Total Dokumen <strong style="color:var(--white)">1,248</strong> · Sertifikasi Valid <strong style="color:var(--green-500)">92.4%</strong></p>
+          <p style="font-size:10.5px;color:var(--grey-500);font-weight:700;margin:0 0 6px">Akan Kedaluwarsa (&le; 30 hari)</p>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Sertifikasi Operator Alat Berat <strong style="color:var(--red-500)">5</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Sertifikat Welder <strong style="color:var(--red-500)">8</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Sertifikat Rigger <strong>4</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Sertifikat K3 Umum <strong>12</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Izin Kerja Khusus (Hot Work) <strong>6</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>✅ Tindak Lanjut</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <ul class="exc-list" style="margin-bottom:10px">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Selesai <strong style="color:var(--green-500)">18 (46.2%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Dalam Proses <strong>14 (35.9%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Menunggu Verifikasi <strong>5 (12.8%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Terlambat <strong style="color:var(--red-500)">2 (5.1%)</strong></li>
+          </ul>
+          <p style="font-size:10.5px;color:var(--blue-500);font-weight:700;margin:0 0 6px">Tindak Lanjut Prioritas</p>
+          <ul style="list-style:none;padding:0;margin:0;font-size:11px;color:var(--grey-300);display:flex;flex-direction:column;gap:5px">
+            <li style="display:flex;justify-content:space-between">Penutupan temuan audit eksternal <span class="action-pk__chip chip--red">1d 12h</span></li>
+            <li style="display:flex;justify-content:space-between">Perbaikan guardrail area Piling <span class="action-pk__chip chip--amber">2d 4h</span></li>
+            <li style="display:flex;justify-content:space-between">Update prosedur kerja at height <span class="action-pk__chip chip--blue">3d 0h</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Menciptakan lingkungan kerja yang aman, patuh, dan berkelanjutan.</span>
+        <span>KESELAMATAN PERTAMA · SELALU</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'hse_compliance';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

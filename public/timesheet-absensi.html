@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Timesheet &amp; Absensi — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">TIMESHEET &amp; ABSENSI</h1>
+          <p class="page-header__tagline">Mencatat. Menghitung. Menyetujui.</p>
+          <p class="page-header__desc">Catatan kehadiran dan lembur harian per karyawan — sumber data jam kerja untuk payroll.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>ABSENSI</span><span>LEMBUR</span><span>PAYROLL READY</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar" id="kpiBar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">👥</div>
+          <div><p class="pk-kpi__label">Hadir Hari Ini</p><p class="pk-kpi__value" id="kpiPresent">—</p><p class="pk-kpi__sub" id="kpiPresentSub">dari total aktif</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">⚠</div>
+          <div><p class="pk-kpi__label">Belum Diabsen</p><p class="pk-kpi__value" id="kpiNotRecorded">—</p><p class="pk-kpi__sub">perlu dicatat</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--amber">
+          <div class="pk-kpi__icon pk-kpi__icon--amber">🕐</div>
+          <div><p class="pk-kpi__label">Lembur Hari Ini</p><p class="pk-kpi__value" id="kpiOvertimeCount">—</p><p class="pk-kpi__sub" id="kpiOvertimeSub">jam disetujui</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--amber">
+          <div class="pk-kpi__icon pk-kpi__icon--amber">📥</div>
+          <div><p class="pk-kpi__label">Lembur Menunggu Approval</p><p class="pk-kpi__value" id="kpiPendingOT">—</p><p class="pk-kpi__sub">perlu direview</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">✓</div>
+          <div><p class="pk-kpi__label">Tingkat Kehadiran</p><p class="pk-kpi__value" id="kpiPayrollReady">—</p><p class="pk-kpi__sub">dari yang sudah diabsen</p></div>
+        </div>
+      </section>
+
+      <section class="pk-panel" id="overtimePanel" style="display:none">
+        <div class="pk-panel__hdr"><h3>🕐 Lembur Menunggu Persetujuan</h3></div>
+        <ul class="action-list-pk" id="overtimeRows"></ul>
+      </section>
+
+      <section class="pk-panel">
+        <div class="pk-panel__hdr"><h3>📋 Absensi Harian</h3></div>
+
+        <div class="hrd-filter-bar">
+          <input type="date" id="fDate" class="hrd-input" style="flex:0 0 160px">
+          <select id="fWorkfront" class="hrd-select"><option value="">Semua Workfront</option></select>
+          <select id="fShift" class="hrd-select">
+            <option value="">Semua Shift</option><option value="day">Day</option><option value="night">Night</option>
+          </select>
+          <input type="text" id="fSearch" class="hrd-input" placeholder="Cari nama karyawan...">
+          <button class="btn btn--gold" id="btnAdd" style="margin-left:auto">+ Catat Absensi</button>
+        </div>
+
+        <div class="table-scroll">
+          <table class="hrd-table">
+            <thead><tr><th>Karyawan</th><th>Workfront</th><th>Jadwal</th><th>Jadwal Masuk–Pulang</th><th>Jenis Hari</th><th>Aktual Masuk</th><th>Aktual Pulang</th><th>Jam Kerja</th><th>Menit Terjadwal</th><th>Lembur</th><th>Status</th><th></th></tr></thead>
+            <tbody id="entryRows"><tr><td colspan="12" style="text-align:center;color:var(--grey-500);padding:20px">Memuat data…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Satu Catatan Kehadiran. Satu Sumber Kebenaran Payroll.</span>
+        <span>RIGHT HOURS · RIGHT PAY · RIGHT ON TIME</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal">
+    <div class="modal__hdr">
+      <h2 id="modalTitle">Catat Absensi</h2>
+      <button type="button" class="modal__close" id="modalClose">&times;</button>
+    </div>
+
+    <form id="entryForm">
+      <input type="hidden" name="id" id="fId">
+      <div style="padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+        <label class="form-field">Karyawan *
+          <select name="employee_id" id="fEmployee" required></select>
+        </label>
+        <label class="form-field">Tanggal *
+          <input type="date" name="work_date" id="fWorkDate" required>
+        </label>
+        <label class="form-field">Workfront
+          <select name="workfront" id="fWorkfrontModal"><option value="">-</option></select>
+        </label>
+        <label class="form-field">Shift
+          <select name="shift"><option value="">-</option><option value="day">Day</option><option value="night">Night</option></select>
+        </label>
+        <label class="form-field">Status Kehadiran
+          <select name="attendance_status" id="fStatus">
+            <option value="present">Hadir</option>
+            <option value="late">Terlambat</option>
+            <option value="absent">Absen Tanpa Keterangan</option>
+            <option value="leave">Izin</option>
+            <option value="sick">Sakit</option>
+            <option value="no_show">Tidak di Lokasi</option>
+          </select>
+        </label>
+        <div id="clockFields" style="display:flex;gap:12px">
+          <label class="form-field" style="flex:1">Jam Masuk<input type="time" name="clock_in"></label>
+          <label class="form-field" style="flex:1">Jam Pulang<input type="time" name="clock_out"></label>
+        </div>
+        <label class="form-field">Jam Kerja (jam, opsional — kalau kosong dihitung manual)
+          <input type="number" step="0.5" name="work_hours">
+        </label>
+        <label class="form-field">Catatan
+          <textarea name="note" rows="2"></textarea>
+        </label>
+
+        <div class="contract-action-box" id="overtimeBox" style="display:none">
+          <p class="hint" style="margin:0 0 8px">Ajukan lembur — perlu persetujuan Workforce Manager / Operations Director.</p>
+          <div class="doc-upload">
+            <input type="number" id="otHours" step="0.5" min="0.5" placeholder="Jumlah jam lembur">
+            <button type="button" class="btn btn--cyan" id="btnSubmitOvertime">Ajukan</button>
+          </div>
+          <div id="overtimeStatusLine" style="margin-top:8px"></div>
+        </div>
+      </div>
+
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="btnCancel">Batal</button>
+        <button type="submit" class="btn btn--gold">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'timesheet_absensi';</script>
+<script src="/page-shell.js"></script>
+<script src="/timesheet-absensi.js"></script>
+</body>
+</html>

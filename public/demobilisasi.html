@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demobilisasi — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">DEMOBILISASI</h1>
+          <p class="page-header__tagline">Merencanakan. Membersihkan. Menyelesaikan dengan Rapi.</p>
+          <p class="page-header__desc">Jadwal demobilisasi tenaga kerja, status clearance, dan penyelesaian administrasi akhir kontrak.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>DEMOBILIZATION</span>
+          <span>CLEAN CLOSE</span>
+          <span>FINAL CLEARANCE</span>
+          <span class="page-header__badge-accent">ORDERLY</span>
+          <span class="page-header__badge-accent">COMPLETE</span>
+          <span class="page-header__badge-accent">ACCOUNTABLE</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📦</div>
+          <div>
+            <p class="pk-kpi__label">Demob Aktif</p>
+            <p class="pk-kpi__value">42</p>
+            <p class="pk-kpi__sub">Dalam proses saat ini</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📅</div>
+          <div>
+            <p class="pk-kpi__label">Dijadwalkan Bulan Ini</p>
+            <p class="pk-kpi__value">68</p>
+            <p class="pk-kpi__sub">Sesuai rencana proyek</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--amber">
+          <div class="pk-kpi__icon pk-kpi__icon--amber">📝</div>
+          <div>
+            <p class="pk-kpi__label">Clearance Pending</p>
+            <p class="pk-kpi__value">16</p>
+            <p class="pk-kpi__sub">Dokumen &amp; aset belum selesai</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">✅</div>
+          <div>
+            <p class="pk-kpi__label">Selesai Bulan Ini</p>
+            <p class="pk-kpi__value">54</p>
+            <p class="pk-kpi__sub">Clearance tuntas</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pk-grid-2">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📅 Jadwal Demobilisasi Mendatang</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Kategori</th><th class="num">Jumlah</th><th>Tanggal Demob</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Selesai Kontrak — Piling</td><td class="num">18</td><td>15 Sep 2026</td><td><span class="status-badge status-badge--amber">Persiapan</span></td></tr><tr><td>Rotasi Reguler — Civil</td><td class="num">24</td><td>20 Sep 2026</td><td><span class="status-badge status-badge--green">Terjadwal</span></td></tr><tr><td>Demob Darurat — Medical</td><td class="num">2</td><td>Segera</td><td><span class="status-badge status-badge--red">Prioritas</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📝 Clearance Checklist Status</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Dokumen Lengkap <strong style="color:var(--green-500)">38</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Aset Belum Dikembalikan <strong>10</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Finansial Belum Clear <strong style="color:var(--red-500)">6</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="pk-grid-1">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🚨 Tindakan Demobilisasi Terbuka</h3>
+            <button class="pk-panel__link">Lihat Semua ›</button>
+          </div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--amber">
+              <div class="action-pk__flag action-pk__flag--amber">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">10 pekerja belum mengembalikan aset perusahaan</p>
+                <p class="action-pk__meta">PIC: Demobilisasi | Checklist aset</p>
+              </div>
+              <span class="action-pk__chip chip--amber">3 hari</span>
+            </li>
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">6 kasus finansial belum clear</p>
+                <p class="action-pk__meta">PIC: Demobilisasi &amp; Penggajian</p>
+              </div>
+              <span class="action-pk__chip chip--red">Segera</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Demobilisasi yang rapi menjaga hubungan baik dan kepatuhan administratif di akhir penugasan.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'demobilization';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

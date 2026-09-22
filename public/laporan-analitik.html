@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laporan &amp; Analitik — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">LAPORAN &AMP; ANALITIK</h1>
+          <p class="page-header__tagline">Mengumpulkan. Menganalisis. Menyajikan Insight.</p>
+          <p class="page-header__desc">Pusat laporan operasional dan analitik lintas modul KAHE 360°.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>REPORTS</span>
+          <span>ANALYTICS</span>
+          <span>DATA-DRIVEN</span>
+          <span class="page-header__badge-accent">INSIGHT</span>
+          <span class="page-header__badge-accent">CLARITY</span>
+          <span class="page-header__badge-accent">ACTION</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📊</div>
+          <div>
+            <p class="pk-kpi__label">Laporan Terjadwal</p>
+            <p class="pk-kpi__value">24</p>
+            <p class="pk-kpi__sub">Harian, mingguan, bulanan</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📅</div>
+          <div>
+            <p class="pk-kpi__label">Laporan Bulan Ini</p>
+            <p class="pk-kpi__value">186</p>
+            <p class="pk-kpi__sub">Dihasilkan otomatis &amp; manual</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">📈</div>
+          <div>
+            <p class="pk-kpi__label">Dashboard Aktif</p>
+            <p class="pk-kpi__value">12</p>
+            <p class="pk-kpi__sub">Seluruh modul KAHE 360°</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--cyan">
+          <div class="pk-kpi__icon pk-kpi__icon--cyan">🕐</div>
+          <div>
+            <p class="pk-kpi__label">Update Terakhir</p>
+            <p class="pk-kpi__value">21:12 WIB</p>
+            <p class="pk-kpi__sub">11 September 2026</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pk-grid-2">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📊 Laporan Tersedia</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Nama Laporan</th><th>Kategori</th><th>Terakhir Update</th><th>Aksi</th></tr></thead>
+            <tbody>
+              <tr><td>Laporan Kehadiran Harian</td><td>Operasional</td><td>11 Sep 2026</td><td><span class="status-badge status-badge--blue">Lihat</span></td></tr><tr><td>Ringkasan Payroll Bulanan</td><td>Penggajian</td><td>01 Sep 2026</td><td><span class="status-badge status-badge--blue">Lihat</span></td></tr><tr><td>Laporan Insiden HSE</td><td>HSE &amp; Kepatuhan</td><td>10 Sep 2026</td><td><span class="status-badge status-badge--blue">Lihat</span></td></tr><tr><td>Analitik Demand vs Supply</td><td>Intelijen &amp; Perencanaan</td><td>11 Sep 2026</td><td><span class="status-badge status-badge--blue">Lihat</span></td></tr><tr><td>Kinerja Kontraktor Triwulanan</td><td>Kendali Kontraktor</td><td>01 Sep 2026</td><td><span class="status-badge status-badge--blue">Lihat</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📈 Kategori Analitik</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Operasional &amp; Workforce <strong>5 dashboard</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--cyan-400)"></span> Keuangan &amp; Komersial <strong>3 dashboard</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> HSE &amp; Kepatuhan <strong>2 dashboard</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Talenta &amp; Kesiapan <strong>2 dashboard</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Laporan &amp; Analitik menyajikan insight lintas modul untuk mendukung keputusan operasional.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'reports_analytics';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

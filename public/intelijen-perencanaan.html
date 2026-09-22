@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intelijen &amp; Perencanaan — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">INTELIJEN &amp; PERENCANAAN</h1>
+          <p class="page-header__tagline">Membaca sinyal proyek. Merencanakan kebutuhan. Mengarahkan kesiapan.</p>
+          <p class="page-header__desc">Halaman ini menerjemahkan sinyal proyek, progres WBS, dan proyeksi jadwal menjadi rencana tenaga kerja dan layanan pendukung.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>DATA</span><span>INSIGHT</span><span>PLANNING</span><span>READINESS</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">RIGHT PEOPLE</span>
+          <span class="page-header__badge-accent">RIGHT TIME</span>
+          <span class="page-header__badge-accent">RIGHT SUPPORT</span>
+          <span class="page-header__badge-accent">BIGGER TOMORROW</span>
+        </div>
+      </section>
+
+      <!-- KPI BAR: 4 -->
+      <section class="ip-kpi-bar">
+        <div class="ip-kpi" style="border-left:3px solid var(--blue-500)">
+          <div class="ip-kpi__icon ip-kpi__icon--blue" style="background:rgba(42,99,199,0.22)">👥</div>
+          <div>
+            <p class="pk-kpi__label">Total Kebutuhan 90 Hari</p>
+            <p class="ip-kpi__val">4,320 <span class="ip-kpi__delta" style="color:var(--green-500)">▲ +12%</span></p>
+            <p class="ip-kpi__sub">vs 90 hari sebelumnya</p>
+          </div>
+        </div>
+        <div class="ip-kpi" style="border-left:3px solid var(--amber-500)">
+          <div class="ip-kpi__icon" style="background:rgba(242,169,60,0.18)">📅</div>
+          <div>
+            <p class="pk-kpi__label">Kebutuhan 30 Hari</p>
+            <p class="ip-kpi__val">1,486 <span class="ip-kpi__delta" style="color:var(--green-500)">▲ +8%</span></p>
+            <p class="ip-kpi__sub">vs 30 hari sebelumnya</p>
+          </div>
+        </div>
+        <div class="ip-kpi" style="border-left:3px solid var(--green-500)">
+          <div class="ip-kpi__icon" style="background:rgba(51,196,129,0.18)">🔗</div>
+          <div>
+            <p class="pk-kpi__label">Supply Match</p>
+            <p class="ip-kpi__val">92.4% <span class="ip-kpi__delta" style="color:var(--green-500)">▲ +3.6%</span></p>
+            <p class="ip-kpi__sub">Tersedia vs Kebutuhan</p>
+          </div>
+        </div>
+        <div class="ip-kpi" style="border-left:3px solid var(--red-500)">
+          <div class="ip-kpi__icon" style="background:rgba(229,72,77,0.18)">⚠️</div>
+          <div>
+            <p class="pk-kpi__label">Sinyal Risiko</p>
+            <p class="ip-kpi__val">5 <span class="ip-kpi__delta" style="color:var(--red-500)">▲ +2</span></p>
+            <div class="ip-kpi__risk-badges">
+              <span class="risk-badge"><span class="risk-dot" style="background:var(--red-500)"></span> 1 Kritis</span>
+              <span class="risk-badge"><span class="risk-dot" style="background:var(--amber-500)"></span> 4 Sedang</span>
+              <span class="risk-badge"><span class="risk-dot" style="background:var(--gold-500)"></span> 7 Minor</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 1: Project Intelligence | WBS | Demand vs Supply | 30/60/90 Outlook -->
+      <section class="pk-grid-4">
+        <!-- Project Intelligence -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📋 Project Intelligence</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <p style="font-size:11.5px;font-weight:800;color:var(--white);margin:0 0 6px">Sinyal Proyek</p>
+          <ul style="list-style:none;padding:0;margin:0 0 12px;display:flex;flex-direction:column;gap:7px">
+            <li style="display:flex;gap:8px;align-items:flex-start">
+              <span class="dot-sm" style="background:var(--green-500);margin-top:4px;flex-shrink:0"></span>
+              <div><p style="margin:0;font-size:12px;color:var(--white);font-weight:600">Pekerjaan struktur dipercepat</p><p style="margin:0;font-size:10.5px;color:var(--grey-500)">Tingkat aktivitas meningkat di Zona 2</p></div>
+            </li>
+            <li style="display:flex;gap:8px;align-items:flex-start">
+              <span class="dot-sm" style="background:var(--green-500);margin-top:4px;flex-shrink:0"></span>
+              <div><p style="margin:0;font-size:12px;color:var(--white);font-weight:600">Pengiriman material on track</p><p style="margin:0;font-size:10.5px;color:var(--grey-500)">Material utama sesuai jadwal</p></div>
+            </li>
+            <li style="display:flex;gap:8px;align-items:flex-start">
+              <span class="dot-sm" style="background:var(--green-500);margin-top:4px;flex-shrink:0"></span>
+              <div><p style="margin:0;font-size:12px;color:var(--white);font-weight:600">Izin kerja berjalan normal</p><p style="margin:0;font-size:10.5px;color:var(--grey-500)">Tidak ada hambatan signifikan</p></div>
+            </li>
+          </ul>
+          <p style="font-size:11.5px;font-weight:800;color:var(--white);margin:0 0 6px">Peringatan Dini</p>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;background:rgba(229,72,77,0.1);border-radius:7px;border-left:3px solid var(--red-500)">
+              <div><p style="margin:0;font-size:11.5px;font-weight:700;color:var(--white)">Lonjakan kebutuhan welder</p><p style="margin:0;font-size:10.5px;color:var(--grey-500)">Workfront struktur meningkat 2 minggu lebih cepat</p></div>
+              <span class="status-badge status-badge--red">Tinggi</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;background:rgba(242,169,60,0.1);border-radius:7px;border-left:3px solid var(--amber-500)">
+              <div><p style="margin:0;font-size:11.5px;font-weight:700;color:var(--white)">Risiko keterlambatan material ME</p><p style="margin:0;font-size:10.5px;color:var(--grey-500)">Potensi impact ke pekerjaan mechanical</p></div>
+              <span class="status-badge status-badge--amber">Sedang</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;background:rgba(242,169,60,0.1);border-radius:7px;border-left:3px solid var(--amber-500)">
+              <div><p style="margin:0;font-size:11.5px;font-weight:700;color:var(--white)">Cuaca ekstrem (prakiraan)</p><p style="margin:0;font-size:10.5px;color:var(--grey-500)">Potensi gangguan pekerjaan outdoor minggu depan</p></div>
+              <span class="status-badge status-badge--amber">Sedang</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WBS & Workfront Mapping -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>⚙ WBS &amp; Workfront Mapping</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="wbs-table">
+            <thead><tr><th>Disiplin</th><th>Progres</th><th>Status</th><th style="text-align:right">Kebutuhan Puncak</th></tr></thead>
+            <tbody>
+              <tr><td>🏗 Civil</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:72%"></div></div></td><td><span class="status-badge status-badge--green">On Track</span></td><td style="text-align:right;font-weight:800;color:var(--white)">620</td></tr>
+              <tr><td>⛏ Piling</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar pbar--blue" style="width:58%"></div></div></td><td><span class="status-badge status-badge--red">Terlambat</span></td><td style="text-align:right;font-weight:800;color:var(--white)">420</td></tr>
+              <tr><td>🔩 Structural</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar pbar--amber" style="width:46%"></div></div></td><td><span class="status-badge status-badge--amber">Dipercepat</span></td><td style="text-align:right;font-weight:800;color:var(--white)">1,240</td></tr>
+              <tr><td>⚙ Mechanical</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:32%"></div></div></td><td><span class="status-badge status-badge--green">On Track</span></td><td style="text-align:right;font-weight:800;color:var(--white)">680</td></tr>
+              <tr><td>🔧 Piping</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:28%"></div></div></td><td><span class="status-badge status-badge--green">On Track</span></td><td style="text-align:right;font-weight:800;color:var(--white)">720</td></tr>
+              <tr><td>⚡ Electrical</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar pbar--cyan" style="width:40%"></div></div></td><td><span class="status-badge status-badge--blue">Menunggu</span></td><td style="text-align:right;font-weight:800;color:var(--white)">480</td></tr>
+              <tr><td>🎛 Instrument</td><td><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:26%"></div></div></td><td><span class="status-badge status-badge--green">On Track</span></td><td style="text-align:right;font-weight:800;color:var(--white)">280</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <!-- Demand vs Supply -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📈 Demand vs Supply</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div style="display:flex;gap:12px;font-size:10.5px;color:var(--grey-400);margin-bottom:6px">
+            <span><span class="dot-sm" style="background:var(--blue-500);display:inline-block;margin-right:4px"></span>Kebutuhan</span>
+            <span><span class="dot-sm" style="background:var(--green-500);display:inline-block;margin-right:4px"></span>Tersedia</span>
+            <span><span class="dot-sm" style="background:var(--red-500);display:inline-block;margin-right:4px"></span>Gap</span>
+          </div>
+          <div class="table-scroll">
+          <table class="dvs-table">
+            <thead><tr><th>Peran / Keahlian</th><th>Kebutuhan</th><th>Tersedia</th><th>Gap</th></tr></thead>
+            <tbody>
+              <tr><td>Welder</td><td>820</td><td>620</td><td class="gap--red">200</td></tr>
+              <tr><td>Fitter</td><td>640</td><td>580</td><td class="gap--amber">60</td></tr>
+              <tr><td>Rigger</td><td>480</td><td>420</td><td class="gap--amber">60</td></tr>
+              <tr><td>Scaffolder</td><td>520</td><td>460</td><td class="gap--amber">60</td></tr>
+              <tr><td>Electrician</td><td>380</td><td>360</td><td class="gap--amber">20</td></tr>
+              <tr><td>Instrument Tech</td><td>260</td><td>240</td><td class="gap--amber">20</td></tr>
+              <tr><td>Mechanical Tech</td><td>420</td><td>380</td><td class="gap--amber">40</td></tr>
+              <tr><td>Helper / General</td><td>800</td><td>720</td><td class="gap--red">80</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <!-- 30/60/90 Day Outlook -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📅 30 / 60 / 90 Day Outlook</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div style="display:flex;gap:12px;font-size:10.5px;color:var(--grey-400);margin-bottom:4px">
+            <span><span class="dot-sm" style="background:var(--blue-500);display:inline-block;margin-right:4px;border-radius:2px"></span>Kebutuhan</span>
+            <span><span class="dot-sm" style="background:var(--cyan-400);display:inline-block;margin-right:4px;border-radius:2px"></span>Tersedia (Rencana)</span>
+          </div>
+          <!-- Simple bar chart -->
+          <div class="bar-chart">
+            <div class="bar-group">
+              <div class="bar-group__bars">
+                <div class="bar bar--blue" style="height:52px"><span class="bar__val">1,486</span></div>
+                <div class="bar bar--cyan" style="height:50px"><span class="bar__val">1,420</span></div>
+              </div>
+              <div class="bar-group__label">30 Hari</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-group__bars">
+                <div class="bar bar--blue" style="height:78px"><span class="bar__val">2,860</span></div>
+                <div class="bar bar--cyan" style="height:70px"><span class="bar__val">2,540</span></div>
+              </div>
+              <div class="bar-group__label">60 Hari</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-group__bars">
+                <div class="bar bar--blue" style="height:105px"><span class="bar__val">4,320</span></div>
+                <div class="bar bar--cyan" style="height:96px"><span class="bar__val">3,980</span></div>
+              </div>
+              <div class="bar-group__label">90 Hari</div>
+            </div>
+          </div>
+          <div style="background:rgba(79,195,247,0.08);border:1px solid rgba(79,195,247,0.2);border-radius:8px;padding:8px 10px;margin-top:8px">
+            <p style="margin:0;font-size:11px;color:var(--cyan-400);font-weight:700">💡 Insight</p>
+            <p style="margin:3px 0 0;font-size:10.5px;color:var(--grey-300)">Kebutuhan meningkat 2.9x dalam 90 hari ke depan. Percepat rekrutmen untuk welder, rigger, dan scaffolder.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 2: 7 Forecast Cards -->
+      <section class="forecast-grid">
+        <div class="forecast-card">
+          <div class="forecast-card__icon">👥</div>
+          <div class="forecast-card__val">4,320</div>
+          <div class="forecast-card__delta">▲ +12%</div>
+          <div class="forecast-card__lbl">Workforce Demand Plan</div>
+          <div class="forecast-card__sub">orang (90 hari)</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span><span class="dot-sm" style="background:var(--blue-500);display:inline-block;margin-right:4px"></span>Direct Labor</span><span>2,680 · 62%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span><span class="dot-sm" style="background:var(--amber-500);display:inline-block;margin-right:4px"></span>Indirect Labor</span><span>980 · 23%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span><span class="dot-sm" style="background:var(--green-500);display:inline-block;margin-right:4px"></span>Supporting Staff</span><span>600 · 15%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="forecast-card">
+          <div class="forecast-card__icon">⚙</div>
+          <div class="forecast-card__val">12</div>
+          <div class="forecast-card__delta">▲ +8%</div>
+          <div class="forecast-card__lbl">Resource Forecast</div>
+          <div class="forecast-card__sub">kategori utama</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:3px 0"><span>Tools &amp; Equipment</span><div class="pbar-wrap" style="width:40px;display:inline-block;vertical-align:middle"><div class="pbar" style="width:92%"></div></div></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:3px 0"><span>Consumables</span><div class="pbar-wrap" style="width:40px;display:inline-block;vertical-align:middle"><div class="pbar pbar--amber" style="width:86%"></div></div></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:3px 0"><span>Heavy Equipment</span><div class="pbar-wrap" style="width:40px;display:inline-block;vertical-align:middle"><div class="pbar pbar--amber" style="width:78%"></div></div></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:3px 0"><span>Spare Parts</span><div class="pbar-wrap" style="width:40px;display:inline-block;vertical-align:middle"><div class="pbar" style="width:84%"></div></div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="forecast-card">
+          <div class="forecast-card__icon">🚛</div>
+          <div class="forecast-card__val">1,950</div>
+          <div class="forecast-card__delta">▲ +15%</div>
+          <div class="forecast-card__lbl">Mobilization Forecast</div>
+          <div class="forecast-card__sub">orang (30 hari)</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>🚗 Darat</span><strong style="color:var(--white)">1,120</strong></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>✈ Udara</span><strong style="color:var(--white)">420</strong></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>🚢 Laut</span><strong style="color:var(--white)">410</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="forecast-card">
+          <div class="forecast-card__icon">🏠</div>
+          <div class="forecast-card__val">4,850</div>
+          <div class="forecast-card__delta">▲ +18%</div>
+          <div class="forecast-card__lbl">Accommodation Forecast</div>
+          <div class="forecast-card__sub">kapasitas (peak)</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Camp Existing</span><span>3,200 · 66%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Camp Tambahan</span><span>1,200 · 25%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Hotel</span><span>450 · 9%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="forecast-card">
+          <div class="forecast-card__icon">🚌</div>
+          <div class="forecast-card__val">112</div>
+          <div class="forecast-card__delta">▲ +7%</div>
+          <div class="forecast-card__lbl">Transport Forecast</div>
+          <div class="forecast-card__sub">unit (peak)</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Bus Karyawan</span><span>68 · 61%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Light Vehicle</span><span>32 · 29%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Special Transport</span><span>12 · 11%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="forecast-card">
+          <div class="forecast-card__icon">🍽</div>
+          <div class="forecast-card__val">4,500</div>
+          <div class="forecast-card__delta">▲ +16%</div>
+          <div class="forecast-card__lbl">Meal Forecast</div>
+          <div class="forecast-card__sub">porsi/hari (peak)</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Camp Kitchen</span><span>3,200 · 71%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Satellite Kitchen</span><span>900 · 29%</span></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>External Catering</span><span>400 · 9%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="forecast-card">
+          <div class="forecast-card__icon">⚕</div>
+          <div class="forecast-card__val">5</div>
+          <div class="forecast-card__delta">▲ +25%</div>
+          <div class="forecast-card__lbl">Health Forecast</div>
+          <div class="forecast-card__sub">paramedis (peak)</div>
+          <div class="forecast-card__detail">
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Klinik Utama</span><strong style="color:var(--white)">1</strong></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Klinik Satelit</span><strong style="color:var(--white)">3</strong></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Ambulans</span><strong style="color:var(--white)">2</strong></li>
+              <li style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--grey-300);padding:2px 0"><span>Paramedis</span><strong style="color:var(--white)">5</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 3: Scenario Planning | Ready-by-Date | Critical Dependencies -->
+      <section class="pk-grid-3">
+        <!-- Scenario Planning -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🎯 Scenario Planning</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="scenario-table">
+            <thead><tr><th>Skenario</th><th>Total Kebutuhan</th><th>Perubahan</th><th>Supply Match</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:700;color:var(--white)">Base Case</td><td>4,320</td><td style="color:var(--grey-500)">-</td><td>92%</td><td><span class="status-badge status-badge--green">Aktif</span></td></tr>
+              <tr><td>Accelerated (+20%)</td><td>5,184</td><td style="color:var(--red-500)">+20%</td><td>78%</td><td><span class="status-badge status-badge--amber">Perlu Aksi</span></td></tr>
+              <tr><td>Delayed (-20%)</td><td>3,456</td><td style="color:var(--green-500)">-20%</td><td>&gt;100%</td><td><span class="status-badge status-badge--green">Aman</span></td></tr>
+              <tr><td>High Risk</td><td>5,760</td><td style="color:var(--red-500)">+33%</td><td>70%</td><td><span class="status-badge status-badge--red">Risiko Tinggi</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <!-- Ready-by-Date Planning -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📆 Ready-by-Date Planning</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="rbd-table">
+            <thead><tr><th>Milestone</th><th>Target Date</th><th>Kebutuhan</th><th>Kesiapan</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Site Mobilization</td><td>01 Okt 2026</td><td>1,200</td><td>95%</td><td><span class="status-badge status-badge--green">Siap</span></td></tr>
+              <tr><td>Struktur Puncak</td><td>15 Des 2026</td><td>2,800</td><td>78%</td><td><span class="status-badge status-badge--amber">Perlu Aksi</span></td></tr>
+              <tr><td>Mechanical Erection</td><td>28 Feb 2027</td><td>2,100</td><td>62%</td><td><span class="status-badge status-badge--amber">Perlu Aksi</span></td></tr>
+              <tr><td>Pre-Commissioning</td><td>15 Mei 2027</td><td>1,600</td><td>68%</td><td><span class="status-badge status-badge--amber">Perlu Aksi</span></td></tr>
+              <tr><td>Commissioning</td><td>30 Jun 2027</td><td>980</td><td>85%</td><td><span class="status-badge status-badge--green">On Track</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <!-- Critical Dependencies -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>⛓ Critical Dependencies</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="dep-table">
+            <thead><tr><th>Dependensi</th><th>Dampak</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><span class="dot-sm" style="background:var(--red-500);display:inline-block;margin-right:4px"></span>Pengiriman material struktur</td><td>Kebutuhan welder &amp; rigger</td><td><span class="status-badge status-badge--red">Risiko Tinggi</span></td></tr>
+              <tr><td><span class="dot-sm" style="background:var(--amber-500);display:inline-block;margin-right:4px"></span>Penyelesaian akses area</td><td>Mobilisasi tenaga kerja</td><td><span class="status-badge status-badge--amber">Dalam Perhatian</span></td></tr>
+              <tr><td><span class="dot-sm" style="background:var(--amber-500);display:inline-block;margin-right:4px"></span>Ketersediaan akomodasi</td><td>Batas mobilisasi</td><td><span class="status-badge status-badge--amber">Dalam Perhatian</span></td></tr>
+              <tr><td><span class="dot-sm" style="background:var(--green-500);display:inline-block;margin-right:4px"></span>Izin kerja khusus (hot work)</td><td>Pekerjaan mechanical &amp; piping</td><td><span class="status-badge status-badge--green">On Track</span></td></tr>
+              <tr><td><span class="dot-sm" style="background:var(--green-500);display:inline-block;margin-right:4px"></span>Keandalan transportasi</td><td>Kehadiran tenaga kerja</td><td><span class="status-badge status-badge--green">On Track</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Halaman ini menjadi dasar untuk mengalirkan proyeksi kebutuhan dan output perencanaan ke portal Wuhuan dalam bentuk ringkasan.</span>
+        <span>FROM INSIGHT TO ACTION · BUILD TODAY · A STRONGER TOMORROW</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'intelligence_planning';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

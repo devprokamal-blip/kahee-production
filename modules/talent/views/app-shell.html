@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KAHE Talent Management System</title>
+  <link rel="stylesheet" href="/tw-assets/tw-shell.css">
+</head>
+<body class="tw-app">
+  <a class="tw-skip" href="#tw-main" data-i18n="shell.skip">Lewati ke konten</a>
+
+  <header class="tw-header">
+    <button class="tw-menu-btn" type="button" id="twMenuBtn" aria-controls="twSidebar" aria-expanded="false">
+      <span class="tw-menu-icon" aria-hidden="true"></span><span class="tw-sr" data-i18n="shell.menu">Menu</span>
+    </button>
+    <a class="tw-brand" href="/tw/app/">
+      <img src="/tw-assets/kahe-group-indonesia-logo.png" alt="KAHE Group Indonesia — People | Assets | Solutions" width="2172" height="724">
+    </a>
+    <div class="tw-product">
+      <p class="tw-product-name">KAHE Talent Management System</p>
+      <p class="tw-product-sub" data-i18n="shell.product_sub">From People Registration to Workforce Readiness</p>
+    </div>
+    <div class="tw-header-tools">
+      <p class="tw-motto">Manusia | Aset | Solusi</p>
+      <div class="tw-lang" role="group" aria-label="Bahasa / Language">
+        <button type="button" data-lang="id">ID</button><span aria-hidden="true">|</span><button type="button" data-lang="en">EN</button>
+      </div>
+      <div class="tw-user">
+        <span class="tw-avatar" id="twAvatar" aria-hidden="true"></span>
+        <span class="tw-user-text"><span class="tw-user-name" id="twUserName"></span><span class="tw-user-role" id="twUserRole"></span></span>
+      </div>
+      <button type="button" class="tw-logout" id="twLogout" data-i18n="shell.logout">Keluar</button>
+    </div>
+  </header>
+
+  <div class="tw-body">
+    <nav class="tw-sidebar" id="twSidebar" aria-label="Talent & Worker">
+      <ul class="tw-nav" id="twNav"></ul>
+      <div class="tw-sidebar-foot">
+        <a href="/index.html" class="tw-portal-link" data-i18n="shell.portal_link">Portal KAHE 360°</a>
+        <p class="tw-tagline">People Build<br>A Better Tomorrow</p>
+      </div>
+    </nav>
+    <div class="tw-scrim" id="twScrim" hidden></div>
+
+    <main class="tw-main" id="tw-main" tabindex="-1">
+      <ol class="tw-breadcrumb" id="twBreadcrumb" aria-label="Breadcrumb"></ol>
+      <h1 class="tw-title" id="twTitle"></h1>
+      <p class="tw-lede" id="twLede"></p>
+      <div id="twContent" class="tw-content" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <script src="/tw-assets/tw-i18n.js"></script>
+  <script src="/tw-assets/tw-shell.js"></script>
+</body>
+</html>

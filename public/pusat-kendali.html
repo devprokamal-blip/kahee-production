@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pusat Kendali — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <!-- SIDEBAR: identical shell, populated by page-app.js -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <!-- TOP HEADER: identical shell -->
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector">
+          <option>PPB Balongan</option>
+        </select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">
+          🔔<span class="badge" id="notifCount">7</span>
+        </button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text">
+            <strong id="profileName">Loading…</strong>
+            <small id="profileRole">&nbsp;</small>
+          </span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT — Pusat Kendali only -->
+    <main class="content">
+
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">PUSAT KENDALI</h1>
+          <p class="page-header__tagline">Memantau. Mengendalikan. Menyelesaikan.</p>
+          <p class="page-header__desc">Seluruh operasional tenaga kerja, layanan pendukung, dan risiko proyek dalam satu tampilan real-time.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>PEOPLE</span><span>OPERATIONS</span><span>CONTINUITY</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">A SAFER</span>
+          <span class="page-header__badge-accent">STRONGER</span>
+          <span class="page-header__badge-accent">TOMORROW</span>
+        </div>
+      </section>
+
+      <!-- KPI BAR: 5 cards -->
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">👥</div>
+          <div>
+            <p class="pk-kpi__label">Total Tenaga Kerja</p>
+            <p class="pk-kpi__value">2,348 <span class="pk-kpi__delta pk-kpi__delta--up">▲ +2.5%</span></p>
+            <p class="pk-kpi__sub">dari minggu lalu</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--cyan">
+          <div class="pk-kpi__icon pk-kpi__icon--cyan">📅</div>
+          <div>
+            <p class="pk-kpi__label">Hadir Hari Ini</p>
+            <p class="pk-kpi__value">2,112 <span style="font-size:13px;color:var(--grey-300);font-weight:600">89.9%</span></p>
+            <p class="pk-kpi__sub">dari total tenaga kerja</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">⚠️</div>
+          <div>
+            <p class="pk-kpi__label">Tindakan Kritis</p>
+            <p class="pk-kpi__value">7 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +2</span></p>
+            <p class="pk-kpi__sub">perlu perhatian</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">🛡</div>
+          <div>
+            <p class="pk-kpi__label">Sistem Online</p>
+            <p class="pk-kpi__value">99.4%</p>
+            <p class="pk-kpi__sub">Seluruh layanan berjalan normal</p>
+          </div>
+        </div>
+        <div class="pk-kpi" style="border-left:3px solid var(--gold-500)">
+          <div class="pk-kpi__icon" style="background:rgba(242,178,60,0.16)">🌙</div>
+          <div class="pk-kpi__time-badge">
+            <p class="pk-kpi__label">Jumat, 12 Sep 2026</p>
+            <p class="pk-kpi__time" id="pkClock">18:08</p>
+            <p class="pk-kpi__tz">WIB</p>
+            <p class="pk-kpi__shift">Shift Malam</p>
+            <p class="pk-kpi__shift-sub">Tetap Aman. Tetap Produktif.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 1: Status TK | Kesenjangan | Mobilization | Replacement -->
+      <section class="pk-grid-4">
+        <!-- Status Tenaga Kerja Hari Ini -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📊 Status Tenaga Kerja Hari Ini</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 110 110" width="110" height="110">
+                <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+                <!-- Hadir 89.9% -->
+                <circle cx="55" cy="55" r="44" fill="none" stroke="#33c481" stroke-width="14" stroke-dasharray="248 276" stroke-linecap="butt"/>
+                <!-- Cuti 2.6% -->
+                <circle cx="55" cy="55" r="44" fill="none" stroke="#f2b23c" stroke-width="14" stroke-dasharray="7 517" stroke-dashoffset="-248"/>
+                <!-- Sakit 1% -->
+                <circle cx="55" cy="55" r="44" fill="none" stroke="#e5484d" stroke-width="14" stroke-dasharray="3 521" stroke-dashoffset="-255"/>
+                <!-- Tidak Hadir 1.6% -->
+                <circle cx="55" cy="55" r="44" fill="none" stroke="#e5484d" stroke-width="9" stroke-dasharray="4 520" stroke-dashoffset="-258"/>
+                <!-- Lainnya 4.9% -->
+                <circle cx="55" cy="55" r="44" fill="none" stroke="#6fa0f7" stroke-width="14" stroke-dasharray="14 510" stroke-dashoffset="-262"/>
+              </svg>
+              <div class="donut-center">
+                <div class="donut-center__val">2,112</div>
+                <div class="donut-center__lbl">Hadir<br/>(89.9%)</div>
+              </div>
+            </div>
+            <ul class="donut-legend">
+              <li><span class="dot-sm" style="background:#33c481"></span> Hadir <strong>2,112 (89.9%)</strong></li>
+              <li><span class="dot-sm" style="background:#f2b23c"></span> Cuti <strong>61 (2.6%)</strong></li>
+              <li><span class="dot-sm" style="background:#e5484d"></span> Sakit <strong>24 (1.0%)</strong></li>
+              <li><span class="dot-sm" style="background:#c0392b"></span> Tidak Hadir <strong>37 (1.6%)</strong></li>
+              <li><span class="dot-sm" style="background:#6fa0f7"></span> Lainnya <strong>114 (4.9%)</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Kesenjangan Operasional -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🔴 Kesenjangan Operasional</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <p class="gap-big">142</p>
+          <p class="gap-lbl">pekerja</p>
+          <ul class="gap-list">
+            <li class="gap-row"><span class="dot-sm" style="background:var(--red-500)"></span> Ketidakhadiran <strong>27</strong></li>
+            <li class="gap-row"><span class="dot-sm" style="background:var(--red-500)"></span> Kepatuhan <strong>22</strong></li>
+            <li class="gap-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Menunggu Mobilisasi <strong>31</strong></li>
+            <li class="gap-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Penempatan <strong>19</strong></li>
+            <li class="gap-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Transportasi <strong>8</strong></li>
+            <li class="gap-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Penggantian <strong>18</strong></li>
+            <li class="gap-row"><span class="dot-sm" style="background:#6fa0f7"></span> Lainnya <strong>17</strong></li>
+          </ul>
+        </div>
+
+        <!-- Mobilization Watch -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🚛 Mobilization Watch</h3>
+          </div>
+          <ul class="watch-list">
+            <li class="watch-row">
+              <div class="watch-icon">🧑‍🔧</div>
+              <span class="watch-lbl">Tenaga Kerja Tiba Minggu Ini</span>
+              <span class="watch-val watch-val--accent">186</span>
+            </li>
+            <li class="watch-row">
+              <div class="watch-icon">⏰</div>
+              <span class="watch-lbl">Tiba Hari Ini</span>
+              <span class="watch-val">48</span>
+            </li>
+            <li class="watch-row">
+              <div class="watch-icon">🚚</div>
+              <span class="watch-lbl">Menunggu Dispatch</span>
+              <span class="watch-val">62</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Replacement Watch -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🔄 Replacement Watch</h3>
+          </div>
+          <ul class="watch-list">
+            <li class="watch-row">
+              <div class="watch-icon" style="background:rgba(229,72,77,0.15)">🆘</div>
+              <span class="watch-lbl">Kebutuhan Mendesak</span>
+              <span class="watch-val" style="color:var(--red-500)">34</span>
+            </li>
+            <li class="watch-row">
+              <div class="watch-icon" style="background:rgba(51,196,129,0.12)">✅</div>
+              <span class="watch-lbl">Pengganti Siap</span>
+              <span class="watch-val" style="color:var(--green-500)">28</span>
+            </li>
+            <li class="watch-row">
+              <div class="watch-icon">⏱</div>
+              <span class="watch-lbl">Rata-rata Waktu Penggantian</span>
+              <span class="watch-val watch-val--accent">2.4 hari</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ROW 2: Tindakan | SLA | Attendance Exception | Payroll Exception -->
+      <section class="pk-grid-4">
+        <!-- Tindakan yang Perlu Diselesaikan -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>⚡ Tindakan yang Perlu Diselesaikan</h3>
+            <button class="pk-panel__link">Lihat Semua ›</button>
+          </div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">14 Pipe Welder belum fit to work</p>
+                <p class="action-pk__meta">PIC: Kesehatan Kerja | Batas: Besok 07:00</p>
+              </div>
+              <span class="action-pk__chip chip--red">8h 14m</span>
+            </li>
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">6 Civil Supervisor belum tersedia</p>
+                <p class="action-pk__meta">PIC: Rekrutmen | Batas: 13 Sep 2026</p>
+              </div>
+              <span class="action-pk__chip chip--red">1d 6h</span>
+            </li>
+            <li class="action-pk action-pk--amber">
+              <div class="action-pk__flag action-pk__flag--amber">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">23 pekerja tiba dalam 48 jam</p>
+                <p class="action-pk__meta">PIC: Akomodasi | Batas: 14 Sep 2026</p>
+              </div>
+              <span class="action-pk__chip chip--amber">1d 12h</span>
+            </li>
+            <li class="action-pk action-pk--amber">
+              <div class="action-pk__flag action-pk__flag--amber">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">31 Payroll Exceptions</p>
+                <p class="action-pk__meta">PIC: Payroll | Batas: 15 Sep 2026</p>
+              </div>
+              <span class="action-pk__chip chip--teal">2d</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SLA Layanan Utama -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📊 SLA Layanan Utama</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="sla-list">
+            <li class="sla-row"><span class="sla-row__icon">🧑‍💼</span><span class="sla-row__label">Rekrutmen &amp; Replacement</span><div class="sla-row__bar-wrap"><div class="sla-row__bar" style="width:95%"></div></div><span class="sla-row__pct">95%</span></li>
+            <li class="sla-row"><span class="sla-row__icon">🏠</span><span class="sla-row__label">Akomodasi</span><div class="sla-row__bar-wrap"><div class="sla-row__bar" style="width:96%"></div></div><span class="sla-row__pct">96%</span></li>
+            <li class="sla-row"><span class="sla-row__icon">🚌</span><span class="sla-row__label">Transportasi</span><div class="sla-row__bar-wrap"><div class="sla-row__bar" style="width:96%"></div></div><span class="sla-row__pct">96%</span></li>
+            <li class="sla-row"><span class="sla-row__icon">🍽</span><span class="sla-row__label">Makanan</span><div class="sla-row__bar-wrap"><div class="sla-row__bar" style="width:97%"></div></div><span class="sla-row__pct">97%</span></li>
+            <li class="sla-row"><span class="sla-row__icon">👕</span><span class="sla-row__label">Laundry</span><div class="sla-row__bar-wrap"><div class="sla-row__bar" style="width:94%"></div></div><span class="sla-row__pct">94%</span></li>
+            <li class="sla-row"><span class="sla-row__icon">⚕</span><span class="sla-row__label">Layanan Kesehatan</span><div class="sla-row__bar-wrap"><div class="sla-row__bar sla-row__bar--amber" style="width:92%"></div></div><span class="sla-row__pct" style="color:var(--amber-500)">92%</span></li>
+          </ul>
+        </div>
+
+        <!-- Attendance Exception -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>⏰ Attendance Exception</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Terlambat (Late) <strong>27</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Cuti (Leave) <strong>22</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Tidak Hadir (Missing) <strong>31</strong></li>
+          </ul>
+          <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+            <p style="font-size:11px;color:var(--grey-500);margin:0 0 6px;font-weight:700">Payroll Exception</p>
+            <ul class="exc-list">
+              <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Disetujui <strong style="color:var(--green-500)">418</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Menunggu <strong>186</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Ditolak <strong style="color:var(--red-500)">22</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Alert mini-panels: 3 stacked -->
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <!-- Compliance Alert -->
+          <div class="pk-panel" style="flex:1">
+            <div class="pk-panel__hdr" style="padding-bottom:6px;margin-bottom:4px">
+              <h3 style="font-size:12px">🛡 Compliance Alert</h3>
+              <button class="pk-panel__link">Lihat Detail ›</button>
+            </div>
+            <ul class="exc-list">
+              <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Sertifikat Kedaluwarsa <strong>16</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> BPJS Pending <strong>28</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Dokumen Tidak Lengkap <strong>34</strong></li>
+            </ul>
+          </div>
+          <!-- Health Alert -->
+          <div class="pk-panel" style="flex:1">
+            <div class="pk-panel__hdr" style="padding-bottom:6px;margin-bottom:4px">
+              <h3 style="font-size:12px">⚕ Health Alert</h3>
+              <button class="pk-panel__link">Lihat Detail ›</button>
+            </div>
+            <ul class="exc-list">
+              <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> MCU Jatuh Tempo <strong>24</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Fit to Work Pending <strong>11</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Rujukan Klinik <strong>6</strong></li>
+            </ul>
+          </div>
+          <!-- Equipment Alert -->
+          <div class="pk-panel" style="flex:1">
+            <div class="pk-panel__hdr" style="padding-bottom:6px;margin-bottom:4px">
+              <h3 style="font-size:12px">🔧 Equipment Alert</h3>
+              <button class="pk-panel__link">Lihat Detail ›</button>
+            </div>
+            <ul class="exc-list">
+              <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Unit Tidak Tersedia <strong>12</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Service Due <strong>28</strong></li>
+              <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Operator Tidak Ada <strong>9</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 3: Permintaan Wuhuan | Escalation Center | Shift Handover -->
+      <section class="pk-grid-3">
+        <!-- Permintaan dari Wuhuan -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📋 Permintaan dari Wuhuan</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="wuhuan-grid">
+            <div class="wuhuan-stat">
+              <div class="wuhuan-stat__icon">📄</div>
+              <div class="wuhuan-stat__val">12</div>
+              <div class="wuhuan-stat__lbl">Permintaan Baru</div>
+              <div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +33%</div>
+            </div>
+            <div class="wuhuan-stat">
+              <div class="wuhuan-stat__icon">⚙</div>
+              <div class="wuhuan-stat__val">28</div>
+              <div class="wuhuan-stat__lbl">Dalam Proses</div>
+              <div class="wuhuan-stat__delta" style="color:var(--grey-500)">→ 0%</div>
+            </div>
+            <div class="wuhuan-stat" style="border-top:2px solid var(--green-500)">
+              <div class="wuhuan-stat__icon">✅</div>
+              <div class="wuhuan-stat__val" style="color:var(--green-500)">156</div>
+              <div class="wuhuan-stat__lbl">Selesai</div>
+              <div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +12%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Escalation Center -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🚨 Escalation Center</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="esc-grid">
+            <div class="esc-stat esc-stat--red">
+              <div class="esc-stat__icon">🔴</div>
+              <div class="esc-stat__val">5</div>
+              <div class="esc-stat__label">Merah</div>
+              <div class="esc-stat__sub">Isu kritis, perlu eskalasi</div>
+            </div>
+            <div class="esc-stat esc-stat--amber">
+              <div class="esc-stat__icon">🟡</div>
+              <div class="esc-stat__val">12</div>
+              <div class="esc-stat__label">Kuning</div>
+              <div class="esc-stat__sub">Dalam pemantauan</div>
+            </div>
+            <div class="esc-stat esc-stat--green">
+              <div class="esc-stat__icon">🟢</div>
+              <div class="esc-stat__val">8</div>
+              <div class="esc-stat__label">Hijau</div>
+              <div class="esc-stat__sub">Terkendali</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shift Handover -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🔁 Shift Handover</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="handover-grid">
+            <div class="handover-col">
+              <p class="handover-col__title">📋 Kondisi Saat Ini</p>
+              <ul>
+                <li>Operasional stabil</li>
+                <li>Tingkat kehadiran tinggi</li>
+                <li>Layanan utama berjalan normal</li>
+              </ul>
+            </div>
+            <div class="handover-col handover-col--risk">
+              <p class="handover-col__title" style="color:var(--amber-500)">⚠ Risiko Berikutnya</p>
+              <ul>
+                <li>Gelombang mobilisasi akhir pekan</li>
+                <li>Potensi keterlambatan transportasi</li>
+                <li>Beberapa sertifikat akan kedaluwarsa</li>
+              </ul>
+            </div>
+            <div class="handover-col">
+              <p class="handover-col__title" style="color:var(--cyan-400)">▶ Tindakan Shift Berikutnya</p>
+              <ul>
+                <li>Pastikan mobilisasi sesuai rencana</li>
+                <li>Follow up pekerja pending</li>
+                <li>Monitor SLA layanan utama</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Pusat Kendali internal KAHE 360 mengoordinasikan tindakan harian.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'command_center';</script>
+<script src="/page-shell.js"></script>
+<script>
+// Clock specific to this page
+(function() {
+  function tick() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2,'0');
+    const mm = String(now.getMinutes()).padStart(2,'0');
+    const el = document.getElementById('pkClock');
+    if (el) el.textContent = hh + ':' + mm;
+  }
+  tick();
+  setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>

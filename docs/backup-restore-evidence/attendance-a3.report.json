@@ -1,0 +1,83 @@
+{
+ "restored_database": "kahe360_restore_att",
+ "started_at": "2026-09-21T10:31:56.966Z",
+ "backup": {
+  "tool": "pg_dump (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+  "format": "custom (-Fc)",
+  "seconds": 0.167,
+  "size_mb": 0.4,
+  "sha256": "93c6a7cda293885d667e0ead664cd87b74ee60b4adb34a43cbf4461a388a664a",
+  "toc_entries": 798
+ },
+ "restore": {
+  "seconds": 0.311,
+  "mode": "--single-transaction --exit-on-error, as the schema-owner role (no superuser)",
+  "errors": null
+ },
+ "structure": {
+  "columns": {
+   "source": 998,
+   "restored": 998,
+   "identical": true
+  },
+  "constraints": {
+   "source": 299,
+   "restored": 299,
+   "identical": true
+  },
+  "indexes": {
+   "source": 208,
+   "restored": 208,
+   "identical": true
+  },
+  "triggers": {
+   "source": 34,
+   "restored": 34,
+   "identical": true
+  },
+  "functions": {
+   "source": 33,
+   "restored": 33,
+   "identical": true
+  },
+  "sequences": {
+   "source": 58,
+   "restored": 58,
+   "identical": true
+  },
+  "runtime_privileges": {
+   "source": 66,
+   "restored": 66,
+   "identical": true
+  },
+  "database": {
+   "source": 1,
+   "restored": 1,
+   "identical": true
+  }
+ },
+ "data": {
+  "tables": 66,
+  "source_rows": 8094,
+  "restored_rows": 8094,
+  "tables_with_difference": [],
+  "seconds": 0.312
+ },
+ "integrity": {
+  "unvalidated_constraints": 0,
+  "disabled_triggers": 0,
+  "migrations": "0001,0002,0003,0004"
+ },
+ "runtime_role_on_restored": {
+  "audit_update_blocked": true,
+  "audit_delete_blocked": true,
+  "version_history_blocked": true,
+  "truncate_denied": true,
+  "ddl_denied": true,
+  "drop_denied": true,
+  "ledger_write_denied": true,
+  "new_id_above_restored_history": true,
+  "probe": "max 2038 → new 2042 (rolled back)"
+ },
+ "ok": true
+}

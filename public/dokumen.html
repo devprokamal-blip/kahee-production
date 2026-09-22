@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dokumen — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">DOKUMEN</h1>
+          <p class="page-header__tagline">Menyimpan. Mengatur. Memastikan Tersedia.</p>
+          <p class="page-header__desc">Repositori dokumen operasional, kontrak, dan kepatuhan seluruh tenaga kerja dan proyek.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>DOCUMENTS</span>
+          <span>REPOSITORY</span>
+          <span>ALWAYS ACCESSIBLE</span>
+          <span class="page-header__badge-accent">ORGANIZED</span>
+          <span class="page-header__badge-accent">SECURE</span>
+          <span class="page-header__badge-accent">UP TO DATE</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📁</div>
+          <div>
+            <p class="pk-kpi__label">Total Dokumen</p>
+            <p class="pk-kpi__value">8,412</p>
+            <p class="pk-kpi__sub">Seluruh kategori</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">⏳</div>
+          <div>
+            <p class="pk-kpi__label">Dokumen Kedaluwarsa</p>
+            <p class="pk-kpi__value">34</p>
+            <p class="pk-kpi__sub">&le; 30 hari</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--amber">
+          <div class="pk-kpi__icon pk-kpi__icon--amber">📝</div>
+          <div>
+            <p class="pk-kpi__label">Menunggu Persetujuan</p>
+            <p class="pk-kpi__value">18</p>
+            <p class="pk-kpi__sub">Dokumen kontrak &amp; kepatuhan</p>
+          </div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">⬆️</div>
+          <div>
+            <p class="pk-kpi__label">Diupload Bulan Ini</p>
+            <p class="pk-kpi__value">612</p>
+            <p class="pk-kpi__sub">Rata-rata 20/hari</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pk-grid-2">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📁 Dokumen Terbaru</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Nama Dokumen</th><th>Kategori</th><th>Status</th><th>Tanggal</th></tr></thead>
+            <tbody>
+              <tr><td>Kontrak Kerja — Batch September</td><td>Ketenagakerjaan</td><td><span class="status-badge status-badge--green">Aktif</span></td><td>11 Sep 2026</td></tr><tr><td>Sertifikat HSE — Zona 3</td><td>HSE &amp; Kepatuhan</td><td><span class="status-badge status-badge--amber">Menunggu</span></td><td>10 Sep 2026</td></tr><tr><td>BPJS Ketenagakerjaan — Batch 2</td><td>Penggajian &amp; BPJS</td><td><span class="status-badge status-badge--green">Aktif</span></td><td>09 Sep 2026</td></tr><tr><td>Kontrak Kontraktor — PT Piling Nusantara</td><td>Kendali Kontraktor</td><td><span class="status-badge status-badge--red">Kedaluwarsa</span></td><td>05 Sep 2026</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>⏳ Dokumen Kedaluwarsa Perlu Perbaruan</h3>
+            <button class="pk-panel__link">Lihat Semua ›</button>
+          </div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">16 sertifikat HSE kedaluwarsa &le; 7 hari</p>
+                <p class="action-pk__meta">PIC: HSE &amp; Kepatuhan</p>
+              </div>
+              <span class="action-pk__chip chip--red">Segera</span>
+            </li>
+            <li class="action-pk action-pk--amber">
+              <div class="action-pk__flag action-pk__flag--amber">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">18 dokumen kontrak menunggu persetujuan</p>
+                <p class="action-pk__meta">PIC: Komersial &amp; Kendali Kontraktor</p>
+              </div>
+              <span class="action-pk__chip chip--amber">3 hari</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="pk-grid-1">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📊 Dokumen per Kategori</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Ketenagakerjaan <strong>2,412</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--cyan-400)"></span> HSE &amp; Kepatuhan <strong>1,886</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Penggajian &amp; BPJS <strong>2,108</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Kontrak &amp; Komersial <strong>1,204</strong></li><li class="exc-row"><span class="dot-sm" style="background:var(--grey-500)"></span> Lainnya <strong>802</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Dokumen tersimpan terpusat dan dapat diakses seluruh modul yang memerlukan.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'documents';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

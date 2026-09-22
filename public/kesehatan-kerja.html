@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kesehatan Kerja — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">KESEHATAN PEKERJA</h1>
+          <p class="page-header__tagline">Mengendalikan fit to work, MCU, klinik, surveilans medis, dan kesiapan kesehatan kerja proyek.</p>
+          <p class="page-header__desc">Kesehatan pekerja dipantau dari status medis, kepatuhan MCU, kunjungan klinik, hingga kesiapan ambulans dan tindak lanjut kasus.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>SAFE PEOPLE</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">HEALTHY TODAY</span>
+          <span class="page-header__badge-accent">STRONGER TOMORROW</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">✅</div>
+          <div><p class="pk-kpi__label">Fit to Work</p><p class="pk-kpi__value">94.7% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +1.2%</span></p><p class="pk-kpi__sub">1,986 pekerja valid</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">📅</div>
+          <div><p class="pk-kpi__label">MCU Due Soon</p><p class="pk-kpi__value">47 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +12%</span></p><p class="pk-kpi__sub">&le; 14 hari</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">⚕</div>
+          <div><p class="pk-kpi__label">Kunjungan Klinik Hari Ini</p><p class="pk-kpi__value">28 <span class="pk-kpi__delta" style="color:var(--green-500)">▼ -18%</span></p><p class="pk-kpi__sub">3 observasi lanjutan</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">🛡</div>
+          <div><p class="pk-kpi__label">Medical Compliance</p><p class="pk-kpi__value">96.2% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +2.4%</span></p><p class="pk-kpi__sub">sesuai target</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">🚑</div>
+          <div><p class="pk-kpi__label">Ambulans Ready</p><p class="pk-kpi__value">2 / 2</p><p class="pk-kpi__sub">● standby</p></div>
+        </div>
+      </section>
+
+      <!-- ROW 1 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📋 Status Kesehatan Pekerja</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Status</th><th class="num">Jumlah</th><th class="num">Persentase</th><th>Tren</th></tr></thead>
+            <tbody>
+              <tr><td>✅ Fit to Work</td><td class="num">1,986</td><td class="num">94.7%</td><td style="color:var(--green-500)">▲ +1.2%</td></tr>
+              <tr><td>🧑‍⚕ Restricted Work</td><td class="num">62</td><td class="num">3.0%</td><td style="color:var(--green-500)">▼ -0.3%</td></tr>
+              <tr><td>🕐 Pending Medical Review</td><td class="num">38</td><td class="num">1.8%</td><td style="color:var(--green-500)">▼ -0.4%</td></tr>
+              <tr><td>📅 MCU Expiring</td><td class="num">47</td><td class="num">2.2%</td><td style="color:var(--red-500)">▲ +0.8%</td></tr>
+              <tr><td>❌ Not Cleared</td><td class="num">22</td><td class="num">1.1%</td><td style="color:var(--green-500)">▼ -0.2%</td></tr>
+              <tr style="font-weight:800"><td>Total</td><td class="num">2,155</td><td class="num">100%</td><td>—</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>⚡ Action Required</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Issue / Tindakan</th><th>PIC</th><th>SLA</th></tr></thead>
+            <tbody>
+              <tr><td>🔴 14 pekerja MCU jatuh tempo minggu ini</td><td>Tim Medical</td><td><span class="status-badge status-badge--red">2 hari lagi</span></td></tr>
+              <tr><td>🔴 7 sertifikat fit to work menunggu update</td><td>HR Project</td><td><span class="status-badge status-badge--red">3 hari lagi</span></td></tr>
+              <tr><td>🟡 3 kasus observasi butuh review dokter</td><td>Dokter Proyek</td><td><span class="status-badge status-badge--amber">4 hari lagi</span></td></tr>
+              <tr><td>🟡 5 pekerja baru belum induksi medical</td><td>HSE Team</td><td><span class="status-badge status-badge--amber">6 hari lagi</span></td></tr>
+              <tr><td>🟡 2 rujukan RS belum ditutup</td><td>Case Manager</td><td><span class="status-badge status-badge--amber">7 hari lagi</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🛡 Kontrol Occupational Health</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Layanan</th><th class="num">Capaian</th><th class="num">Target</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>📅 MCU (Medical Check Up)</td><td class="num">96.2%</td><td class="num">&ge; 95%</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>🏥 Klinik Proyek</td><td class="num">92.5%</td><td class="num">&ge; 90%</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>🩺 Medical Surveillance</td><td class="num">94.1%</td><td class="num">&ge; 90%</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>🚑 Ambulance Readiness</td><td class="num">100%</td><td class="num">100%</td><td><span class="status-badge status-badge--green">Siap</span></td></tr>
+              <tr><td>🧑‍⚕ Paramedic Availability</td><td class="num">95.8%</td><td class="num">&ge; 95%</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>📁 Case Follow Up</td><td class="num">88.6%</td><td class="num">&ge; 85%</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <!-- ROW 2: 5 columns -->
+      <section class="pk-grid-5">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🔽 MCU &amp; Fit to Work Funnel</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="tk-funnel">
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Scheduled</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:100%"></div></div><span class="tk-funnel__val">2,250</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Checked</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:94%"></div></div><span class="tk-funnel__val">2,112</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Reviewed</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:90%"></div></div><span class="tk-funnel__val">2,028</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Cleared</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:88%;background:var(--amber-500)"></div></div><span class="tk-funnel__val">1,986</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Restricted</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:3%;background:var(--red-500)"></div></div><span class="tk-funnel__val">62</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Follow Up</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:2%;background:var(--blue-500)"></div></div><span class="tk-funnel__val">38</span></div>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🏥 Kunjungan Klinik</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="118.5 158.0" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="79.0 197.5" stroke-dashoffset="-118.5"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="29.6 246.8" stroke-dashoffset="-197.5"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="39.5 237.0" stroke-dashoffset="-227.1"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--cyan-400)" stroke-width="14" stroke-dasharray="9.9 266.6" stroke-dashoffset="-266.6"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">28</div><div class="donut-center__lbl">Total<br/>Hari Ini</div></div>
+          </div>
+          <ul class="donut-legend" style="font-size:10.5px">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> Umum <strong>12 (42%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> Cedera Ringan <strong>8 (29%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Observasi <strong>3 (11%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Follow Up <strong>4 (14%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--cyan-400)"></span> Referral RS <strong>1 (4%)</strong></li>
+          </ul>
+          <p style="font-size:10px;color:var(--green-500);margin:6px 0 0">▼ -18% dari kemarin</p>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🩺 Surveilans Medis</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Jenis Pemeriksaan</th><th class="num">Aktif</th><th class="num">Temuan</th></tr></thead>
+            <tbody>
+              <tr><td>👂 Hearing Test</td><td class="num">1,250</td><td class="num">24</td></tr>
+              <tr><td>🫁 Lung Function</td><td class="num">980</td><td class="num">18</td></tr>
+              <tr><td>❤ Blood Pressure</td><td class="num">2,155</td><td class="num">31</td></tr>
+              <tr><td>☣ Special Risk (Noise, Chemical)</td><td class="num">620</td><td class="num">12</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📁 Kepatuhan Dokumen Medis</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="254.8 21.7" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="12.6 263.9" stroke-dashoffset="-254.8"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="6.0 270.4" stroke-dashoffset="-267.4"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="3.1 273.4" stroke-dashoffset="-273.4"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">2,155</div><div class="donut-center__lbl">Pekerja</div></div>
+          </div>
+          <ul class="donut-legend" style="font-size:10.5px">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> Complete <strong>1,986 (92.2%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Pending <strong>98 (4.5%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Expired <strong>47 (2.2%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> Data Issue <strong>24 (1.1%)</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="pk-grid-2">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🚨 Insiden &amp; Tindak Lanjut</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Kategori</th><th class="num">Jumlah</th><th>Tren</th></tr></thead>
+            <tbody>
+              <tr><td>🟢 Ringan</td><td class="num">14</td><td style="color:var(--green-500)">▼ -26%</td></tr>
+              <tr><td>🟡 Sedang</td><td class="num">5</td><td style="color:var(--green-500)">▼ -17%</td></tr>
+              <tr><td>🔴 Berat</td><td class="num">2</td><td style="color:var(--red-500)">▲ +100%</td></tr>
+              <tr><td>✅ Closed Bulan Ini</td><td class="num">18</td><td style="color:var(--green-500)">▲ +29%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🧰 Resource OHC</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Dokter Proyek <strong>Tersedia — 2 orang (Shift)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Paramedic <strong>Tersedia — 4 orang (2 shift)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Ambulans <strong>Siap — 2 unit (Standby)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Perlengkapan Klinik <strong>Cukup — Stok 85%</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Kesehatan pekerja dipantau untuk memastikan kesiapan kerja yang aman dan berkelanjutan.</span>
+        <span>HEALTHY PEOPLE · SAFER PROJECTS · STRONGER TOMORROW</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'occupational_health';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

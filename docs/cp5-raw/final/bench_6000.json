@@ -1,0 +1,771 @@
+{
+ "workers": 6000,
+ "iterations": 25,
+ "database_mb": 1295,
+ "index_mb": 455,
+ "results": [
+  {
+   "workload": "Daily attendance retrieval",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 144.8,
+   "p95_ms": 231.9,
+   "p99_ms": 269.7,
+   "max_ms": 269.7,
+   "items": 3600,
+   "response_kb": 5327.3,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 169.8,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.6,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 54.08,
+    "nodes": "Sort → Hash Join → Bitmap Heap Scan → Bitmap Index Scan(idx_timesheet_date) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 4800,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 75,
+    "shared_read_blocks": 4805,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT t.*, e.full_name, e.worker_type, e.project_code FROM timesheet_entries t JOIN employees e ON e.id = t.employee_id WHERE t.work_date = $1 AND t.legal_entity_id IN ($2,$3,$4) ORDER BY e.full_name ASC"
+   }
+  },
+  {
+   "workload": "Daily attendance summary",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 39.7,
+   "p95_ms": 51.6,
+   "p99_ms": 53.3,
+   "max_ms": 53.3,
+   "items": 9,
+   "response_kb": 0.2,
+   "sql_statements": 10,
+   "distinct_sql": 10,
+   "db_ms": 39.6,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.7,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 6.91,
+    "nodes": "Aggregate → Index Scan(idx_timesheet_overtime_status)",
+    "seq_scans": [],
+    "rows_returned": 1,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 5102,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT COUNT(*) AS n FROM timesheet_entries t WHERE t.overtime_status = 'pending' AND t.legal_entity_id IN ($1,$2,$3)"
+   }
+  },
+  {
+   "workload": "Schedule resolution (fixed weekly, effective-dated)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 10.8,
+   "p95_ms": 21.8,
+   "p99_ms": 23.3,
+   "max_ms": 23.3,
+   "items": 17,
+   "response_kb": 0.7,
+   "sql_statements": 23,
+   "distinct_sql": 21,
+   "db_ms": 13.7,
+   "most_repeated": {
+    "n": 2,
+    "ms": 1.2,
+    "text": "SELECT * FROM employee_payroll_assignments WHERE employee_id = $1 AND effective_date <= $2 AND (end_date IS NULL OR end_date >= $3) ORDER BY effective_date DESC"
+   },
+   "plan": {
+    "execution_ms": 0.03,
+    "nodes": "Sort → Seq Scan(work_schedule_breaks)",
+    "seq_scans": [
+     "work_schedule_breaks:1+5 filtered"
+    ],
+    "rows_returned": 1,
+    "rows_removed_by_filter": 5,
+    "shared_hit_blocks": 4,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT * FROM work_schedule_breaks WHERE work_schedule_id = $1 AND is_active = 1 ORDER BY sequence, id"
+   }
+  },
+  {
+   "workload": "Rotating roster resolution (21-day cycle)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 12,
+   "p95_ms": 17.4,
+   "p99_ms": 25.3,
+   "max_ms": 25.3,
+   "items": 17,
+   "response_kb": 0.7,
+   "sql_statements": 22,
+   "distinct_sql": 21,
+   "db_ms": 6.9,
+   "most_repeated": {
+    "n": 2,
+    "ms": 0.6,
+    "text": "SELECT * FROM employee_payroll_assignments WHERE employee_id = $1 AND effective_date <= $2 AND (end_date IS NULL OR end_date >= $3) ORDER BY effective_date DESC"
+   },
+   "plan": {
+    "execution_ms": 0.45,
+    "nodes": "Aggregate → Hash Join → Seq Scan(role_permissions) → Hash → Seq Scan(user_roles) → Seq Scan(permissions)",
+    "seq_scans": [
+     "role_permissions:429+0 filtered",
+     "user_roles:1+17 filtered",
+     "permissions:38+0 filtered"
+    ],
+    "rows_returned": 245,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 5,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT DISTINCT p.code AS module_code, rp.action FROM role_permissions rp JOIN permissions p ON p.id = rp.permission_id JOIN user_roles ur ON ur.role_id = rp.role_id WHERE ur.user_id = $1"
+   }
+  },
+  {
+   "workload": "Date-based roster resolution",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 9.1,
+   "p95_ms": 17.9,
+   "p99_ms": 18.7,
+   "max_ms": 18.7,
+   "items": 17,
+   "response_kb": 0.7,
+   "sql_statements": 21,
+   "distinct_sql": 20,
+   "db_ms": 8.7,
+   "most_repeated": {
+    "n": 2,
+    "ms": 1,
+    "text": "SELECT * FROM employee_payroll_assignments WHERE employee_id = $1 AND effective_date <= $2 AND (end_date IS NULL OR end_date >= $3) ORDER BY effective_date DESC"
+   },
+   "plan": {
+    "execution_ms": 0.27,
+    "nodes": "Aggregate → Hash Join → Seq Scan(role_permissions) → Hash → Seq Scan(user_roles) → Seq Scan(permissions)",
+    "seq_scans": [
+     "role_permissions:429+0 filtered",
+     "user_roles:1+17 filtered",
+     "permissions:38+0 filtered"
+    ],
+    "rows_returned": 245,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 5,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT DISTINCT p.code AS module_code, rp.action FROM role_permissions rp JOIN permissions p ON p.id = rp.permission_id JOIN user_roles ur ON ur.role_id = rp.role_id WHERE ur.user_id = $1"
+   }
+  },
+  {
+   "workload": "Overtime lookup (pending queue)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 153.5,
+   "p95_ms": 184.4,
+   "p99_ms": 215.9,
+   "max_ms": 215.9,
+   "items": 5940,
+   "response_kb": 8767.9,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 78.8,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 29.24,
+    "nodes": "Sort → Hash Join → Index Scan(idx_timesheet_overtime_status) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 5940,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 5176,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT t.*, e.full_name, e.position, (t.overtime_requested_by_user_id = $1) AS is_own_request FROM timesheet_entries t JOIN employees e ON e.id = t.employee_id WHERE t.overtime_status = 'pending' AND t.legal_entity_id IN"
+   }
+  },
+  {
+   "workload": "Exception Center (open)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 403,
+   "p95_ms": 472,
+   "p99_ms": 494.9,
+   "max_ms": 494.9,
+   "items": 27384,
+   "response_kb": 14282,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 196,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.3,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 127.36,
+    "nodes": "Gather Merge → Sort → Hash Join → Bitmap Heap Scan → Bitmap Index Scan(idx_exception_status) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 27384,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 738,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT x.*, e.full_name FROM attendance_exceptions x LEFT JOIN employees e ON e.id = x.employee_id WHERE x.legal_entity_id IN ($1,$2,$3) AND x.status = $4 ORDER BY x.severity DESC, x.work_date DESC, x.id DESC"
+   }
+  },
+  {
+   "workload": "Correction requests",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 550.6,
+   "p95_ms": 613.9,
+   "p99_ms": 618.8,
+   "max_ms": 618.8,
+   "items": 23850,
+   "response_kb": 29137.4,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 324.7,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.3,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 56.84,
+    "nodes": "Sort → Hash Join → Seq Scan(attendance_corrections) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "attendance_corrections:23850+0 filtered",
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 23850,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 1009,
+    "shared_read_blocks": 0,
+    "temp_blocks": 899,
+    "sort_spill": true,
+    "statement": "SELECT c.*, e.full_name FROM attendance_corrections c JOIN employees e ON e.id = c.employee_id WHERE c.legal_entity_id IN ($1,$2,$3) ORDER BY c.created_at DESC, c.id DESC"
+   }
+  },
+  {
+   "workload": "Correction approval inbox",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 61.5,
+   "p95_ms": 66.6,
+   "p99_ms": 109.9,
+   "max_ms": 109.9,
+   "items": 3180,
+   "response_kb": 3820.1,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 29.7,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.4,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 7.53,
+    "nodes": "Sort → Hash Join → Bitmap Heap Scan → Bitmap Index Scan(idx_correction_status) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 3180,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 196,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT c.*, e.full_name FROM attendance_corrections c JOIN employees e ON e.id = c.employee_id WHERE c.legal_entity_id IN ($1,$2,$3) AND c.status IN ('SUBMITTED','UNDER_REVIEW','VOID_REQUESTED','VOID_REVIEWED','PENDING_P"
+   }
+  },
+  {
+   "workload": "Record history (version chain)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 5.3,
+   "p95_ms": 8.9,
+   "p99_ms": 11.4,
+   "max_ms": 11.4,
+   "items": 4,
+   "response_kb": 2.3,
+   "sql_statements": 11,
+   "distinct_sql": 11,
+   "db_ms": 4,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.28,
+    "nodes": "Aggregate → Hash Join → Seq Scan(role_permissions) → Hash → Seq Scan(user_roles) → Seq Scan(permissions)",
+    "seq_scans": [
+     "role_permissions:429+0 filtered",
+     "user_roles:1+17 filtered",
+     "permissions:38+0 filtered"
+    ],
+    "rows_returned": 245,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 5,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT DISTINCT p.code AS module_code, rp.action FROM role_permissions rp JOIN permissions p ON p.id = rp.permission_id JOIN user_roles ur ON ur.role_id = rp.role_id WHERE ur.user_id = $1"
+   }
+  },
+  {
+   "workload": "Actor Activity History",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 25.7,
+   "p95_ms": 46.7,
+   "p99_ms": 47.7,
+   "max_ms": 47.7,
+   "items": 4,
+   "response_kb": 442.7,
+   "sql_statements": 8,
+   "distinct_sql": 8,
+   "db_ms": 40.9,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 13.64,
+    "nodes": "Limit → Index Scan(attendance_events_pkey)",
+    "seq_scans": [],
+    "rows_returned": 500,
+    "rows_removed_by_filter": 31944,
+    "shared_hit_blocks": 28575,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT ev.* FROM attendance_events ev WHERE ev.actor_user_id = $1 AND (ev.legal_entity_id IN ($2,$3,$4) OR ev.legal_entity_id IS NULL) ORDER BY ev.id DESC LIMIT 500"
+   }
+  },
+  {
+   "workload": "Audit Center",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 11.2,
+   "p95_ms": 28,
+   "p99_ms": 29.2,
+   "max_ms": 29.2,
+   "items": 200,
+   "response_kb": 451.8,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 3,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.18,
+    "nodes": "Limit → Index Scan(attendance_events_pkey)",
+    "seq_scans": [],
+    "rows_returned": 200,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 201,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT ev.* FROM attendance_events ev WHERE (ev.legal_entity_id IN ($1,$2,$3) OR ev.legal_entity_id IS NULL) ORDER BY ev.id DESC LIMIT $4"
+   }
+  },
+  {
+   "workload": "Audit Center filtered by employee",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 5,
+   "p95_ms": 7.4,
+   "p99_ms": 9.1,
+   "max_ms": 9.1,
+   "items": 200,
+   "response_kb": 111,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 2.5,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.12,
+    "nodes": "Limit → Index Scan(idx_attendance_events_employee)",
+    "seq_scans": [],
+    "rows_returned": 200,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 22,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT ev.* FROM attendance_events ev WHERE (ev.legal_entity_id IN ($1,$2,$3) OR ev.legal_entity_id IS NULL) AND ev.employee_id = $4 ORDER BY ev.id DESC LIMIT $5"
+   }
+  },
+  {
+   "workload": "Record audit trail",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 3.9,
+   "p95_ms": 7.2,
+   "p99_ms": 11.8,
+   "max_ms": 11.8,
+   "items": 2,
+   "response_kb": 1,
+   "sql_statements": 7,
+   "distinct_sql": 7,
+   "db_ms": 2,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.27,
+    "nodes": "Aggregate → Hash Join → Seq Scan(role_permissions) → Hash → Seq Scan(user_roles) → Seq Scan(permissions)",
+    "seq_scans": [
+     "role_permissions:429+0 filtered",
+     "user_roles:1+17 filtered",
+     "permissions:38+0 filtered"
+    ],
+    "rows_returned": 245,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 5,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT DISTINCT p.code AS module_code, rp.action FROM role_permissions rp JOIN permissions p ON p.id = rp.permission_id JOIN user_roles ur ON ur.role_id = rp.role_id WHERE ur.user_id = $1"
+   }
+  },
+  {
+   "workload": "Payroll periods",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 4.1,
+   "p95_ms": 8.6,
+   "p99_ms": 18.1,
+   "max_ms": 18.1,
+   "items": 48,
+   "response_kb": 20,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 11,
+   "most_repeated": {
+    "n": 1,
+    "ms": 8.6,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.02,
+    "nodes": "Seq Scan(users)",
+    "seq_scans": [
+     "users:1+17 filtered"
+    ],
+    "rows_returned": 1,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 1,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   }
+  },
+  {
+   "workload": "Payroll period detail (closing reads)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 3.8,
+   "p95_ms": 4.5,
+   "p99_ms": 4.6,
+   "max_ms": 4.6,
+   "items": 18,
+   "response_kb": 0.6,
+   "sql_statements": 7,
+   "distinct_sql": 7,
+   "db_ms": 1.9,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.28,
+    "nodes": "Aggregate → Hash Join → Seq Scan(role_permissions) → Hash → Seq Scan(user_roles) → Seq Scan(permissions)",
+    "seq_scans": [
+     "role_permissions:429+0 filtered",
+     "user_roles:1+17 filtered",
+     "permissions:38+0 filtered"
+    ],
+    "rows_returned": 245,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 5,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT DISTINCT p.code AS module_code, rp.action FROM role_permissions rp JOIN permissions p ON p.id = rp.permission_id JOIN user_roles ur ON ur.role_id = rp.role_id WHERE ur.user_id = $1"
+   }
+  },
+  {
+   "workload": "Payment reconciliation of a period (closing reads)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 21.7,
+   "p95_ms": 31.7,
+   "p99_ms": 41.3,
+   "max_ms": 41.3,
+   "items": 8,
+   "response_kb": 0.2,
+   "sql_statements": 10,
+   "distinct_sql": 10,
+   "db_ms": 36.6,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.3,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 14.18,
+    "nodes": "Aggregate → Sort → Hash Join → Nested Loop → Seq Scan(payroll_runs) → Bitmap Heap Scan → Bitmap Index Scan(idx_run_line_run) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "payroll_runs:1+32 filtered",
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 3600,
+    "rows_removed_by_filter": 32,
+    "shared_hit_blocks": 1814,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT l.employee_id, MIN(e.full_name) AS full_name, (array_agg(l.legal_entity_id ORDER BY r.id))[1] AS legal_entity_id, SUM(l.net_sen) AS payable_sen, COUNT(*) AS run_count, string_agg(r.id::text, ',' ORDER BY r.id) AS "
+   }
+  },
+  {
+   "workload": "Payroll runs",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 3.8,
+   "p95_ms": 7,
+   "p99_ms": 12.3,
+   "max_ms": 12.3,
+   "items": 33,
+   "response_kb": 12.9,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 1.9,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.28,
+    "nodes": "Aggregate → Hash Join → Seq Scan(role_permissions) → Hash → Seq Scan(user_roles) → Seq Scan(permissions)",
+    "seq_scans": [
+     "role_permissions:429+0 filtered",
+     "user_roles:1+17 filtered",
+     "permissions:38+0 filtered"
+    ],
+    "rows_returned": 245,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 5,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT DISTINCT p.code AS module_code, rp.action FROM role_permissions rp JOIN permissions p ON p.id = rp.permission_id JOIN user_roles ur ON ur.role_id = rp.role_id WHERE ur.user_id = $1"
+   }
+  },
+  {
+   "workload": "Finalized run lines (one entity, one period)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 10.3,
+   "p95_ms": 14.8,
+   "p99_ms": 27.5,
+   "max_ms": 27.5,
+   "items": 200,
+   "response_kb": 97,
+   "sql_statements": 7,
+   "distinct_sql": 7,
+   "db_ms": 9,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 6.24,
+    "nodes": "Limit → Sort → Hash Join → Bitmap Heap Scan → Bitmap Index Scan(idx_run_line_run) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 200,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 1813,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT l.id, l.employee_id, e.full_name, l.calc_status, l.gross_sen, l.net_sen, l.bpjs_employee_sen, l.bpjs_employer_sen, l.tax_sen, l.overtime_sen, l.ter_category, l.payroll_rule_set_id, l.jkk_rate_version_id, l.result_"
+   }
+  },
+  {
+   "workload": "Payslips of a run",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 10.7,
+   "p95_ms": 17.8,
+   "p99_ms": 19.4,
+   "max_ms": 19.4,
+   "items": 200,
+   "response_kb": 82.5,
+   "sql_statements": 7,
+   "distinct_sql": 7,
+   "db_ms": 15.3,
+   "most_repeated": {
+    "n": 1,
+    "ms": 0.2,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 6.23,
+    "nodes": "Limit → Sort → Hash Join → Bitmap Heap Scan → Bitmap Index Scan(idx_payslip_run) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 200,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 2178,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT p.id, p.payslip_reference, p.employee_id, e.full_name, p.legal_entity_id, p.run_number, p.payslip_version, p.gross_sen, p.employee_deductions_sen, p.net_sen, p.employer_cost_sen, p.content_hash, p.finalized_at, p."
+   }
+  },
+  {
+   "workload": "Payslips of one employee (12 months)",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 3.6,
+   "p95_ms": 6.2,
+   "p99_ms": 6.2,
+   "max_ms": 6.2,
+   "items": 11,
+   "response_kb": 2.3,
+   "sql_statements": 6,
+   "distinct_sql": 6,
+   "db_ms": 3,
+   "most_repeated": {
+    "n": 1,
+    "ms": 1.4,
+    "text": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 0.02,
+    "nodes": "Seq Scan(users)",
+    "seq_scans": [
+     "users:1+17 filtered"
+    ],
+    "rows_returned": 1,
+    "rows_removed_by_filter": 17,
+    "shared_hit_blocks": 1,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT id, email, display_name, is_active FROM users WHERE id = $1"
+   }
+  },
+  {
+   "workload": "Payment batch detail",
+   "http": 200,
+   "iterations": 25,
+   "p50_ms": 31.3,
+   "p95_ms": 47.7,
+   "p99_ms": 52.1,
+   "max_ms": 52.1,
+   "items": 3600,
+   "response_kb": 1705.1,
+   "sql_statements": 9,
+   "distinct_sql": 8,
+   "db_ms": 19.9,
+   "most_repeated": {
+    "n": 2,
+    "ms": 0.6,
+    "text": "SELECT legal_entity_id FROM payroll_payment_batches WHERE id = $1"
+   },
+   "plan": {
+    "execution_ms": 15.18,
+    "nodes": "Sort → Hash Join → Bitmap Heap Scan → Bitmap Index Scan(idx_payment_item_batch) → Hash → Seq Scan(employees)",
+    "seq_scans": [
+     "employees:6000+0 filtered"
+    ],
+    "rows_returned": 3600,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 1298,
+    "shared_read_blocks": 0,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT i.*, e.full_name FROM payroll_payment_items i JOIN employees e ON e.id = i.employee_id WHERE i.batch_id = $1 ORDER BY e.full_name"
+   }
+  },
+  {
+   "workload": "Exception scan — one business day (WRITES)",
+   "http": 200,
+   "iterations": 2,
+   "p50_ms": 571.2,
+   "p95_ms": 601.6,
+   "p99_ms": 601.6,
+   "max_ms": 601.6,
+   "items": 3,
+   "response_kb": 23.3,
+   "sql_statements": 1953,
+   "distinct_sql": 9,
+   "db_ms": 537.8,
+   "most_repeated": {
+    "n": 972,
+    "ms": 224.9,
+    "text": "SELECT id FROM attendance_exceptions WHERE employee_id = $1 AND work_date = $2 AND exception_type = $3 AND status IN ('OPEN','ASSIGNED','REOPENED')"
+   },
+   "plan": {
+    "execution_ms": 27.35,
+    "nodes": "Sort → Bitmap Heap Scan → Bitmap Index Scan(idx_timesheet_date)",
+    "seq_scans": [],
+    "rows_returned": 6000,
+    "rows_removed_by_filter": 0,
+    "shared_hit_blocks": 1,
+    "shared_read_blocks": 6006,
+    "temp_blocks": 0,
+    "sort_spill": false,
+    "statement": "SELECT t.* FROM timesheet_entries t WHERE t.legal_entity_id IN ($1,$2,$3) AND t.work_date >= $4 AND t.work_date <= $5 ORDER BY t.work_date, t.id"
+   }
+  }
+ ]
+}

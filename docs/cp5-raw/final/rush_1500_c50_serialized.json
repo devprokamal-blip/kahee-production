@@ -1,0 +1,42 @@
+{
+ "events_sent": 1500,
+ "concurrency": 50,
+ "business_date": "2025-09-08",
+ "seconds": 15.832,
+ "events_per_second": 95,
+ "accepted": 1500,
+ "http_status": {
+  "201": 1500
+ },
+ "error_rate_pct": 0,
+ "error_samples": {},
+ "p50_ms": 495.2,
+ "p95_ms": 765.5,
+ "p99_ms": 1003.3,
+ "max_ms": 1208.5,
+ "attendance_rows_created": 1500,
+ "audit_events_created": 1500,
+ "db_rows_inserted": 2842,
+ "db_inserts_per_second": 170,
+ "transactions_committed": 46026,
+ "transactions_rolled_back": 0,
+ "deadlocks": 0,
+ "session_state_visible_to_monitor": true,
+ "peak_db_connections": 10,
+ "pool_max": 10,
+ "peak_active_queries": 1,
+ "peak_lock_waiters": 0,
+ "longest_transaction_ms": 10,
+ "peak_idle_in_transaction": 1,
+ "monitor_samples": 164,
+ "samples_with_lock_wait": 0,
+ "duplicate_replay": {
+  "sent": 150,
+  "http_status": {
+   "409": 150
+  },
+  "sample": "{\"error\":\"DUPLICATE\",\"message\":\"Sudah ada catatan absensi untuk karyawan & tanggal ini. Gunakan Edit.\"}",
+  "rows_with_duplicate_employee_day": 0
+ },
+ "integrity_ok": true
+}

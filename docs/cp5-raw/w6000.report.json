@@ -1,0 +1,1369 @@
+{
+ "tool_version": "dbm1-cp4-1",
+ "mode": "migrate",
+ "source": {
+  "file": "w6000.db",
+  "sha256_before": "287ffc2edd7cfb010bbc76f97b5ddf475936471d99ce526a4f4b650698da80b7",
+  "sha256_after": "287ffc2edd7cfb010bbc76f97b5ddf475936471d99ce526a4f4b650698da80b7",
+  "untouched": true
+ },
+ "started_at": "2026-09-21T08:16:32.982Z",
+ "destination": {
+  "database": {
+   "d": "kahe360_scale_6000",
+   "v": "PostgreSQL 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit"
+  }
+ },
+ "migration_order": [
+  "legal_entities",
+  "projects",
+  "attendance_correction_policies",
+  "work_calendars",
+  "payroll_groups",
+  "payroll_periods",
+  "payroll_runs",
+  "employees",
+  "timesheet_entries",
+  "attendance_corrections",
+  "attendance_correction_actions",
+  "work_schedules",
+  "attendance_work_patterns",
+  "attendance_date_overrides",
+  "attendance_entry_versions",
+  "attendance_events",
+  "attendance_exceptions",
+  "attendance_pattern_days",
+  "attendance_payroll_adjustments",
+  "attendance_roster_dates",
+  "attendance_schedule_assignments",
+  "audit_auth_events",
+  "clients",
+  "billing_runs",
+  "billing_lines",
+  "worker_service_addons",
+  "billing_quantities",
+  "billing_quantity_audit",
+  "billing_rate_cards",
+  "config_audit_log",
+  "employee_contract_history",
+  "employee_documents",
+  "work_patterns",
+  "employee_payroll_assignments",
+  "salary_components",
+  "employee_salary_components",
+  "entity_access_audit",
+  "holidays",
+  "jkk_risk_classes",
+  "meal_plan_items",
+  "payroll_rule_sets",
+  "overtime_multiplier_rules",
+  "payroll_adjustments",
+  "payroll_input_snapshots",
+  "payroll_exceptions",
+  "payroll_payment_batches",
+  "payroll_payment_items",
+  "payroll_payment_events",
+  "payroll_run_lines",
+  "payroll_payslips",
+  "payroll_run_events",
+  "payroll_run_line_components",
+  "permissions",
+  "ptkp_ter_rates",
+  "roles",
+  "role_permissions",
+  "service_fee_config",
+  "users",
+  "user_legal_entity_scope",
+  "user_project_scope",
+  "user_roles",
+  "work_schedule_breaks",
+  "worker_service_addon_audit"
+ ],
+ "preflight": {
+  "ok": true,
+  "stats": {
+   "tables": 63,
+   "rows": 4646280,
+   "values_checked": 157083031
+  },
+  "counts": {},
+  "findings": []
+ },
+ "load": {
+  "perTable": {
+   "legal_entities": 3,
+   "projects": 1,
+   "attendance_correction_policies": 0,
+   "work_calendars": 0,
+   "payroll_groups": 3,
+   "payroll_periods": 36,
+   "payroll_runs": 33,
+   "employees": 6000,
+   "timesheet_entries": 1590000,
+   "attendance_corrections": 23850,
+   "attendance_correction_actions": 62010,
+   "work_schedules": 6,
+   "attendance_work_patterns": 5,
+   "attendance_date_overrides": 5475,
+   "attendance_entry_versions": 34980,
+   "attendance_events": 2180310,
+   "attendance_exceptions": 63600,
+   "attendance_pattern_days": 41,
+   "attendance_payroll_adjustments": 0,
+   "attendance_roster_dates": 365,
+   "attendance_schedule_assignments": 6858,
+   "audit_auth_events": 0,
+   "clients": 0,
+   "billing_runs": 0,
+   "billing_lines": 0,
+   "worker_service_addons": 0,
+   "billing_quantities": 0,
+   "billing_quantity_audit": 0,
+   "billing_rate_cards": 0,
+   "config_audit_log": 0,
+   "employee_contract_history": 0,
+   "employee_documents": 0,
+   "work_patterns": 1,
+   "employee_payroll_assignments": 6600,
+   "salary_components": 0,
+   "employee_salary_components": 0,
+   "entity_access_audit": 0,
+   "holidays": 0,
+   "jkk_risk_classes": 0,
+   "meal_plan_items": 0,
+   "payroll_rule_sets": 0,
+   "overtime_multiplier_rules": 0,
+   "payroll_adjustments": 0,
+   "payroll_input_snapshots": 72000,
+   "payroll_exceptions": 0,
+   "payroll_payment_batches": 33,
+   "payroll_payment_items": 66000,
+   "payroll_payment_events": 0,
+   "payroll_run_lines": 66000,
+   "payroll_payslips": 66000,
+   "payroll_run_events": 0,
+   "payroll_run_line_components": 396000,
+   "permissions": 0,
+   "ptkp_ter_rates": 0,
+   "roles": 4,
+   "role_permissions": 0,
+   "service_fee_config": 0,
+   "users": 12,
+   "user_legal_entity_scope": 36,
+   "user_project_scope": 0,
+   "user_roles": 12,
+   "work_schedule_breaks": 6,
+   "worker_service_addon_audit": 0
+  },
+  "total": 4646280,
+  "sequences": {
+   "projects": {
+    "max_historical_id": 1,
+    "sqlite_sequence": 1,
+    "next_id": 2
+   },
+   "attendance_correction_policies": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "work_calendars": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_groups": {
+    "max_historical_id": 3,
+    "sqlite_sequence": 3,
+    "next_id": 4
+   },
+   "payroll_periods": {
+    "max_historical_id": 36,
+    "sqlite_sequence": 36,
+    "next_id": 37
+   },
+   "payroll_runs": {
+    "max_historical_id": 33,
+    "sqlite_sequence": 33,
+    "next_id": 34
+   },
+   "timesheet_entries": {
+    "max_historical_id": 1590000,
+    "sqlite_sequence": 1590000,
+    "next_id": 1590001
+   },
+   "attendance_corrections": {
+    "max_historical_id": 23850,
+    "sqlite_sequence": 23850,
+    "next_id": 23851
+   },
+   "attendance_correction_actions": {
+    "max_historical_id": 62010,
+    "sqlite_sequence": 62010,
+    "next_id": 62011
+   },
+   "work_schedules": {
+    "max_historical_id": 6,
+    "sqlite_sequence": 6,
+    "next_id": 7
+   },
+   "attendance_work_patterns": {
+    "max_historical_id": 5,
+    "sqlite_sequence": 5,
+    "next_id": 6
+   },
+   "attendance_date_overrides": {
+    "max_historical_id": 5475,
+    "sqlite_sequence": 5475,
+    "next_id": 5476
+   },
+   "attendance_entry_versions": {
+    "max_historical_id": 34980,
+    "sqlite_sequence": 34980,
+    "next_id": 34981
+   },
+   "attendance_events": {
+    "max_historical_id": 2180310,
+    "sqlite_sequence": 2180310,
+    "next_id": 2180311
+   },
+   "attendance_exceptions": {
+    "max_historical_id": 63600,
+    "sqlite_sequence": 63600,
+    "next_id": 63601
+   },
+   "attendance_pattern_days": {
+    "max_historical_id": 41,
+    "sqlite_sequence": 41,
+    "next_id": 42
+   },
+   "attendance_payroll_adjustments": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "attendance_roster_dates": {
+    "max_historical_id": 365,
+    "sqlite_sequence": 365,
+    "next_id": 366
+   },
+   "attendance_schedule_assignments": {
+    "max_historical_id": 6858,
+    "sqlite_sequence": 6858,
+    "next_id": 6859
+   },
+   "audit_auth_events": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "clients": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "billing_runs": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "billing_lines": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "worker_service_addons": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "billing_quantities": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "billing_quantity_audit": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "billing_rate_cards": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "config_audit_log": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "employee_contract_history": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "employee_documents": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "work_patterns": {
+    "max_historical_id": 1,
+    "sqlite_sequence": 1,
+    "next_id": 2
+   },
+   "employee_payroll_assignments": {
+    "max_historical_id": 6600,
+    "sqlite_sequence": 6600,
+    "next_id": 6601
+   },
+   "salary_components": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "employee_salary_components": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "entity_access_audit": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "holidays": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "jkk_risk_classes": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "meal_plan_items": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_rule_sets": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "overtime_multiplier_rules": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_adjustments": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_input_snapshots": {
+    "max_historical_id": 72000,
+    "sqlite_sequence": 72000,
+    "next_id": 72001
+   },
+   "payroll_exceptions": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_payment_batches": {
+    "max_historical_id": 33,
+    "sqlite_sequence": 33,
+    "next_id": 34
+   },
+   "payroll_payment_items": {
+    "max_historical_id": 66000,
+    "sqlite_sequence": 66000,
+    "next_id": 66001
+   },
+   "payroll_payment_events": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_run_lines": {
+    "max_historical_id": 66000,
+    "sqlite_sequence": 66000,
+    "next_id": 66001
+   },
+   "payroll_payslips": {
+    "max_historical_id": 66000,
+    "sqlite_sequence": 66000,
+    "next_id": 66001
+   },
+   "payroll_run_events": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "payroll_run_line_components": {
+    "max_historical_id": 396000,
+    "sqlite_sequence": 396000,
+    "next_id": 396001
+   },
+   "permissions": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "ptkp_ter_rates": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "roles": {
+    "max_historical_id": 4,
+    "sqlite_sequence": 4,
+    "next_id": 5
+   },
+   "service_fee_config": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   },
+   "users": {
+    "max_historical_id": 12,
+    "sqlite_sequence": 12,
+    "next_id": 13
+   },
+   "work_schedule_breaks": {
+    "max_historical_id": 6,
+    "sqlite_sequence": 6,
+    "next_id": 7
+   },
+   "worker_service_addon_audit": {
+    "max_historical_id": 0,
+    "sqlite_sequence": null,
+    "next_id": 1
+   }
+  }
+ },
+ "reconciliation": {
+  "ok": true,
+  "mismatched_tables": 0,
+  "tables": {
+   "legal_entities": {
+    "sqlite_rows": 3,
+    "postgresql_rows": 3,
+    "difference": 0,
+    "sqlite_sha256": "64504dc71e60607b9d35ee09520b9422c90a2e8b3c629454f214bd0396a0a607",
+    "postgresql_sha256": "64504dc71e60607b9d35ee09520b9422c90a2e8b3c629454f214bd0396a0a607",
+    "content_match": true,
+    "values": 30
+   },
+   "projects": {
+    "sqlite_rows": 1,
+    "postgresql_rows": 1,
+    "difference": 0,
+    "sqlite_sha256": "f048c5c1734ad05e37f9ea1b4be5dd48dabf9e0c1ef9e63c9a03bcdf88090e0a",
+    "postgresql_sha256": "f048c5c1734ad05e37f9ea1b4be5dd48dabf9e0c1ef9e63c9a03bcdf88090e0a",
+    "content_match": true,
+    "values": 5
+   },
+   "attendance_correction_policies": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "work_calendars": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_groups": {
+    "sqlite_rows": 3,
+    "postgresql_rows": 3,
+    "difference": 0,
+    "sqlite_sha256": "3ecce303dbff02ff0d201431b534c305623f6ae0be38955387ac8f16150112d6",
+    "postgresql_sha256": "3ecce303dbff02ff0d201431b534c305623f6ae0be38955387ac8f16150112d6",
+    "content_match": true,
+    "values": 54
+   },
+   "payroll_periods": {
+    "sqlite_rows": 36,
+    "postgresql_rows": 36,
+    "difference": 0,
+    "sqlite_sha256": "c3be364549b7130d4c6db41a707aa81e3004d6dfd0d0cd2df7e31ed8b6536fdf",
+    "postgresql_sha256": "c3be364549b7130d4c6db41a707aa81e3004d6dfd0d0cd2df7e31ed8b6536fdf",
+    "content_match": true,
+    "values": 576
+   },
+   "payroll_runs": {
+    "sqlite_rows": 33,
+    "postgresql_rows": 33,
+    "difference": 0,
+    "sqlite_sha256": "992eb7953cb114acd592005261079b023d6cae28128cd9a17b411034fe8a5b9d",
+    "postgresql_sha256": "992eb7953cb114acd592005261079b023d6cae28128cd9a17b411034fe8a5b9d",
+    "content_match": true,
+    "values": 594
+   },
+   "employees": {
+    "sqlite_rows": 6000,
+    "postgresql_rows": 6000,
+    "difference": 0,
+    "sqlite_sha256": "4bddebfe82727c4b07b12e6b447175d42e234723a4218aed0b86a82fd0fcc7c2",
+    "postgresql_sha256": "4bddebfe82727c4b07b12e6b447175d42e234723a4218aed0b86a82fd0fcc7c2",
+    "content_match": true,
+    "values": 228000
+   },
+   "timesheet_entries": {
+    "sqlite_rows": 1590000,
+    "postgresql_rows": 1590000,
+    "difference": 0,
+    "sqlite_sha256": "5266ef5dba2a906a4fd58d8c6fb29022a51c8e0a8472407f5f7802493411bc74",
+    "postgresql_sha256": "5266ef5dba2a906a4fd58d8c6fb29022a51c8e0a8472407f5f7802493411bc74",
+    "content_match": true,
+    "values": 90630000
+   },
+   "attendance_corrections": {
+    "sqlite_rows": 23850,
+    "postgresql_rows": 23850,
+    "difference": 0,
+    "sqlite_sha256": "7892d6d81d1e2efe326177cc2b9feb79934ad09b92d6d33be1e238316069c109",
+    "postgresql_sha256": "7892d6d81d1e2efe326177cc2b9feb79934ad09b92d6d33be1e238316069c109",
+    "content_match": true,
+    "values": 1073250
+   },
+   "attendance_correction_actions": {
+    "sqlite_rows": 62010,
+    "postgresql_rows": 62010,
+    "difference": 0,
+    "sqlite_sha256": "bb4f7769d21b0a90521ff51a2247087e75a77aeea85c63d696ffc82e6a6347c1",
+    "postgresql_sha256": "bb4f7769d21b0a90521ff51a2247087e75a77aeea85c63d696ffc82e6a6347c1",
+    "content_match": true,
+    "values": 806130
+   },
+   "work_schedules": {
+    "sqlite_rows": 6,
+    "postgresql_rows": 6,
+    "difference": 0,
+    "sqlite_sha256": "e79f86c9d46ae5bd5da5ef8341ed8098fd7bdfb1c38370cdcbe5be619b5f8a43",
+    "postgresql_sha256": "e79f86c9d46ae5bd5da5ef8341ed8098fd7bdfb1c38370cdcbe5be619b5f8a43",
+    "content_match": true,
+    "values": 138
+   },
+   "attendance_work_patterns": {
+    "sqlite_rows": 5,
+    "postgresql_rows": 5,
+    "difference": 0,
+    "sqlite_sha256": "5b12ea5996c13c1e61f50d7632ad6f44adc95898f9ee840ebd0d556e894e94e2",
+    "postgresql_sha256": "5b12ea5996c13c1e61f50d7632ad6f44adc95898f9ee840ebd0d556e894e94e2",
+    "content_match": true,
+    "values": 100
+   },
+   "attendance_date_overrides": {
+    "sqlite_rows": 5475,
+    "postgresql_rows": 5475,
+    "difference": 0,
+    "sqlite_sha256": "98a6dfb7b904cab4a2c9c2d92d887ce7e9e232a8983b8769f4fdac9518d6fb49",
+    "postgresql_sha256": "98a6dfb7b904cab4a2c9c2d92d887ce7e9e232a8983b8769f4fdac9518d6fb49",
+    "content_match": true,
+    "values": 65700
+   },
+   "attendance_entry_versions": {
+    "sqlite_rows": 34980,
+    "postgresql_rows": 34980,
+    "difference": 0,
+    "sqlite_sha256": "f98d6c50729f7ad6e591918559ed3745cc0662da94b73b0700a921a3bf49f6d1",
+    "postgresql_sha256": "f98d6c50729f7ad6e591918559ed3745cc0662da94b73b0700a921a3bf49f6d1",
+    "content_match": true,
+    "values": 594660
+   },
+   "attendance_events": {
+    "sqlite_rows": 2180310,
+    "postgresql_rows": 2180310,
+    "difference": 0,
+    "sqlite_sha256": "e9581569527b95129171c23723bf45d606e157a33839f3e448a8c0c2abd99313",
+    "postgresql_sha256": "e9581569527b95129171c23723bf45d606e157a33839f3e448a8c0c2abd99313",
+    "content_match": true,
+    "values": 50147130
+   },
+   "attendance_exceptions": {
+    "sqlite_rows": 63600,
+    "postgresql_rows": 63600,
+    "difference": 0,
+    "sqlite_sha256": "4ec0d02df9d34e171e65bb22ab7600235e50c9c6660de9b06375d95ca225ddbf",
+    "postgresql_sha256": "4ec0d02df9d34e171e65bb22ab7600235e50c9c6660de9b06375d95ca225ddbf",
+    "content_match": true,
+    "values": 1272000
+   },
+   "attendance_pattern_days": {
+    "sqlite_rows": 41,
+    "postgresql_rows": 41,
+    "difference": 0,
+    "sqlite_sha256": "b2cca1a8a3143814c40a488bab766973331e5325c9cd6fc346e0717410d31280",
+    "postgresql_sha256": "b2cca1a8a3143814c40a488bab766973331e5325c9cd6fc346e0717410d31280",
+    "content_match": true,
+    "values": 246
+   },
+   "attendance_payroll_adjustments": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "attendance_roster_dates": {
+    "sqlite_rows": 365,
+    "postgresql_rows": 365,
+    "difference": 0,
+    "sqlite_sha256": "a69fecf22153f1ee01dda1a045f8dde5b63cfaedad810561636b3f7fa05d0918",
+    "postgresql_sha256": "a69fecf22153f1ee01dda1a045f8dde5b63cfaedad810561636b3f7fa05d0918",
+    "content_match": true,
+    "values": 3650
+   },
+   "attendance_schedule_assignments": {
+    "sqlite_rows": 6858,
+    "postgresql_rows": 6858,
+    "difference": 0,
+    "sqlite_sha256": "24f70a122b0fb338d343e5120fd6d3f8a162847388e6a34967b1bfc606def7c3",
+    "postgresql_sha256": "24f70a122b0fb338d343e5120fd6d3f8a162847388e6a34967b1bfc606def7c3",
+    "content_match": true,
+    "values": 89154
+   },
+   "audit_auth_events": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "clients": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "billing_runs": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "billing_lines": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "worker_service_addons": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "billing_quantities": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "billing_quantity_audit": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "billing_rate_cards": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "config_audit_log": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "employee_contract_history": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "employee_documents": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "work_patterns": {
+    "sqlite_rows": 1,
+    "postgresql_rows": 1,
+    "difference": 0,
+    "sqlite_sha256": "81eb31908361d7427ccca3793e652585a5926fc0f3247edf5305a27184823b5a",
+    "postgresql_sha256": "81eb31908361d7427ccca3793e652585a5926fc0f3247edf5305a27184823b5a",
+    "content_match": true,
+    "values": 8
+   },
+   "employee_payroll_assignments": {
+    "sqlite_rows": 6600,
+    "postgresql_rows": 6600,
+    "difference": 0,
+    "sqlite_sha256": "e173aca01d1d74472ea5da12d5edb5e0fae5aa834db9d6d395b497942063eb37",
+    "postgresql_sha256": "e173aca01d1d74472ea5da12d5edb5e0fae5aa834db9d6d395b497942063eb37",
+    "content_match": true,
+    "values": 92400
+   },
+   "salary_components": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "employee_salary_components": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "entity_access_audit": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "holidays": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "jkk_risk_classes": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "meal_plan_items": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_rule_sets": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "overtime_multiplier_rules": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_adjustments": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_input_snapshots": {
+    "sqlite_rows": 72000,
+    "postgresql_rows": 72000,
+    "difference": 0,
+    "sqlite_sha256": "8c4227a9aeeffe6bbdb89e9bf2446b04b8fd56c7251f269073520a518de3e0b4",
+    "postgresql_sha256": "8c4227a9aeeffe6bbdb89e9bf2446b04b8fd56c7251f269073520a518de3e0b4",
+    "content_match": true,
+    "values": 2376000
+   },
+   "payroll_exceptions": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_payment_batches": {
+    "sqlite_rows": 33,
+    "postgresql_rows": 33,
+    "difference": 0,
+    "sqlite_sha256": "4eec58fea4dfb252c44c847e9f0f45da707247b3c15171dd161d36229f31912e",
+    "postgresql_sha256": "4eec58fea4dfb252c44c847e9f0f45da707247b3c15171dd161d36229f31912e",
+    "content_match": true,
+    "values": 858
+   },
+   "payroll_payment_items": {
+    "sqlite_rows": 66000,
+    "postgresql_rows": 66000,
+    "difference": 0,
+    "sqlite_sha256": "34b4a69f75f302f4cdbf1de7489fc5f720689c8bebd5ee60e77e750e0cfec073",
+    "postgresql_sha256": "34b4a69f75f302f4cdbf1de7489fc5f720689c8bebd5ee60e77e750e0cfec073",
+    "content_match": true,
+    "values": 1254000
+   },
+   "payroll_payment_events": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_run_lines": {
+    "sqlite_rows": 66000,
+    "postgresql_rows": 66000,
+    "difference": 0,
+    "sqlite_sha256": "c2eb86df1edaeab355dfc44b671bb3bea8a668aeade5b9c011ea5bfe62d77063",
+    "postgresql_sha256": "c2eb86df1edaeab355dfc44b671bb3bea8a668aeade5b9c011ea5bfe62d77063",
+    "content_match": true,
+    "values": 1584000
+   },
+   "payroll_payslips": {
+    "sqlite_rows": 66000,
+    "postgresql_rows": 66000,
+    "difference": 0,
+    "sqlite_sha256": "bdab520c21de138a8179568bb4f00bf4ad336e8e00e3fafb53522f238c2d750e",
+    "postgresql_sha256": "bdab520c21de138a8179568bb4f00bf4ad336e8e00e3fafb53522f238c2d750e",
+    "content_match": true,
+    "values": 1320000
+   },
+   "payroll_run_events": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "payroll_run_line_components": {
+    "sqlite_rows": 396000,
+    "postgresql_rows": 396000,
+    "difference": 0,
+    "sqlite_sha256": "72eb67d97d950277a17f9e709b9b23dd7d1270267ad8e4ffbe6f5f14f1c46ca5",
+    "postgresql_sha256": "72eb67d97d950277a17f9e709b9b23dd7d1270267ad8e4ffbe6f5f14f1c46ca5",
+    "content_match": true,
+    "values": 5544000
+   },
+   "permissions": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "ptkp_ter_rates": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "roles": {
+    "sqlite_rows": 4,
+    "postgresql_rows": 4,
+    "difference": 0,
+    "sqlite_sha256": "e5ccd113bdead09a1bd765d60a9747cb0b6187caf41fac916968dbeda3f069f6",
+    "postgresql_sha256": "e5ccd113bdead09a1bd765d60a9747cb0b6187caf41fac916968dbeda3f069f6",
+    "content_match": true,
+    "values": 12
+   },
+   "role_permissions": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "service_fee_config": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "users": {
+    "sqlite_rows": 12,
+    "postgresql_rows": 12,
+    "difference": 0,
+    "sqlite_sha256": "0270ad724fbc42ac1df6c6bd7cfc1386ec0fd68bf8597d33b83b854ff0d73475",
+    "postgresql_sha256": "0270ad724fbc42ac1df6c6bd7cfc1386ec0fd68bf8597d33b83b854ff0d73475",
+    "content_match": true,
+    "values": 72
+   },
+   "user_legal_entity_scope": {
+    "sqlite_rows": 36,
+    "postgresql_rows": 36,
+    "difference": 0,
+    "sqlite_sha256": "40f6fbf62e6e45d88d79ce8c20ef7ba496ccd13bc2d19de393aa3152a0f864ec",
+    "postgresql_sha256": "40f6fbf62e6e45d88d79ce8c20ef7ba496ccd13bc2d19de393aa3152a0f864ec",
+    "content_match": true,
+    "values": 180
+   },
+   "user_project_scope": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   },
+   "user_roles": {
+    "sqlite_rows": 12,
+    "postgresql_rows": 12,
+    "difference": 0,
+    "sqlite_sha256": "ace4d6ee53349c5f471a9c551a7ba4edce5edae1619dcdca8d083c7d5f02d2f9",
+    "postgresql_sha256": "ace4d6ee53349c5f471a9c551a7ba4edce5edae1619dcdca8d083c7d5f02d2f9",
+    "content_match": true,
+    "values": 24
+   },
+   "work_schedule_breaks": {
+    "sqlite_rows": 6,
+    "postgresql_rows": 6,
+    "difference": 0,
+    "sqlite_sha256": "37601efaa612de0d07c96eae267b2d61a6d02701b99f87f408a2d52c36bf4a3e",
+    "postgresql_sha256": "37601efaa612de0d07c96eae267b2d61a6d02701b99f87f408a2d52c36bf4a3e",
+    "content_match": true,
+    "values": 60
+   },
+   "worker_service_addon_audit": {
+    "sqlite_rows": 0,
+    "postgresql_rows": 0,
+    "difference": 0,
+    "sqlite_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "postgresql_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_match": true,
+    "values": 0
+   }
+  },
+  "content_checksum": "15b23db91500e348a4ede53c5abe958881fdc7a329160d587a1ee155b5e3d012"
+ },
+ "invariants": {
+  "ok": true,
+  "checks": {
+   "attendance_per_status": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "absent",
+      "n": 31800
+     },
+     {
+      "k": "late",
+      "n": 63600
+     },
+     {
+      "k": "leave",
+      "n": 23850
+     },
+     {
+      "k": "no_show",
+      "n": 7950
+     },
+     {
+      "k": "present",
+      "n": 1431000
+     },
+     {
+      "k": "sick",
+      "n": 31800
+     }
+    ]
+   },
+   "duplicate_logical_attendance": {
+    "match": true,
+    "sqlite": [
+     {
+      "n": 0
+     }
+    ]
+   },
+   "overtime_per_status": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "approved",
+      "n": 251640,
+      "approved_minutes": 29868810
+     },
+     {
+      "k": "none",
+      "n": 1303800,
+      "approved_minutes": 0
+     },
+     {
+      "k": "pending",
+      "n": 5940,
+      "approved_minutes": 0
+     },
+     {
+      "k": "rejected",
+      "n": 28620,
+      "approved_minutes": 0
+     }
+    ]
+   },
+   "corrections_per_status": {
+    "match": true,
+    "sqlite": [
+     {
+      "t": "CORRECTION",
+      "k": "APPLIED",
+      "n": 15900
+     },
+     {
+      "t": "CORRECTION",
+      "k": "REJECTED",
+      "n": 3180
+     },
+     {
+      "t": "CORRECTION",
+      "k": "SUBMITTED",
+      "n": 3180
+     },
+     {
+      "t": "VOID",
+      "k": "VOIDED",
+      "n": 1590
+     }
+    ]
+   },
+   "version_chains": {
+    "match": true,
+    "sqlite": [
+     {
+      "entries": 17490,
+      "versions": 34980,
+      "longest": 2,
+      "void_versions": 1590
+     }
+    ]
+   },
+   "approval_history": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "APPLY",
+      "n": 17490
+     },
+     {
+      "k": "APPROVE",
+      "n": 17490
+     },
+     {
+      "k": "REJECT",
+      "n": 3180
+     },
+     {
+      "k": "SUBMIT",
+      "n": 23850
+     }
+    ]
+   },
+   "audit_events": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "CORRECTION_APPLIED",
+      "n": 15900,
+      "first_id": 2156461,
+      "last_id": 2180310
+     },
+     {
+      "k": "CORRECTION_REJECTED",
+      "n": 3180,
+      "first_id": 2158051,
+      "last_id": 2175540
+     },
+     {
+      "k": "CORRECTION_SUBMITTED",
+      "n": 3180,
+      "first_id": 2159641,
+      "last_id": 2177130
+     },
+     {
+      "k": "CORRECTION_VOIDED",
+      "n": 1590,
+      "first_id": 2167591,
+      "last_id": 2169180
+     },
+     {
+      "k": "CREATED",
+      "n": 1590000,
+      "first_id": 1,
+      "last_id": 1590000
+     },
+     {
+      "k": "OVERTIME_DECIDED",
+      "n": 280260,
+      "first_id": 1876201,
+      "last_id": 2156460
+     },
+     {
+      "k": "OVERTIME_REQUESTED",
+      "n": 286200,
+      "first_id": 1590001,
+      "last_id": 1876200
+     }
+    ]
+   },
+   "audit_role_snapshots": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "Supervisor",
+      "n": 289380
+     },
+     {
+      "k": "Workforce Manager",
+      "n": 1890930
+     }
+    ]
+   },
+   "exceptions": {
+    "match": true,
+    "sqlite": [
+     {
+      "t": "ABNORMAL_DURATION",
+      "k": "OPEN",
+      "n": 6360
+     },
+     {
+      "t": "ABNORMAL_DURATION",
+      "k": "RESOLVED",
+      "n": 9540
+     },
+     {
+      "t": "LATE_ARRIVAL",
+      "k": "OPEN",
+      "n": 6360
+     },
+     {
+      "t": "LATE_ARRIVAL",
+      "k": "RESOLVED",
+      "n": 9540
+     },
+     {
+      "t": "MISSING_CLOCK_OUT",
+      "k": "OPEN",
+      "n": 6360
+     },
+     {
+      "t": "MISSING_CLOCK_OUT",
+      "k": "RESOLVED",
+      "n": 9540
+     },
+     {
+      "t": "OT_WITHOUT_APPROVAL",
+      "k": "OPEN",
+      "n": 6360
+     },
+     {
+      "t": "OT_WITHOUT_APPROVAL",
+      "k": "RESOLVED",
+      "n": 9540
+     }
+    ]
+   },
+   "payroll_adjustment_queue": {
+    "match": true,
+    "sqlite": []
+   },
+   "schedules_effective_dating": {
+    "match": true,
+    "sqlite": [
+     {
+      "versions": 6,
+      "codes": 3,
+      "open_versions": 3
+     }
+    ]
+   },
+   "legal_entity_links": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "KAHE360",
+      "n": 982800
+     },
+     {
+      "k": "MITRA-A",
+      "n": 450600
+     },
+     {
+      "k": "MITRA-B",
+      "n": 156600
+     }
+    ]
+   },
+   "payroll_runs": {
+    "match": true,
+    "sqlite": [
+     {
+      "t": "ORIGINAL",
+      "k": "FINALIZED",
+      "n": 33
+     }
+    ]
+   },
+   "finalized_money": {
+    "match": true,
+    "sqlite": [
+     {
+      "lines": 66000,
+      "gross_sen": 32928390000000,
+      "net_sen": 29964834900000
+     }
+    ]
+   },
+   "snapshots": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "DRAFT",
+      "n": 6000
+     },
+     {
+      "k": "FROZEN",
+      "n": 66000
+     }
+    ]
+   },
+   "payslips": {
+    "match": true,
+    "sqlite": [
+     {
+      "n": 66000,
+      "net_sen": 29964834900000
+     }
+    ]
+   },
+   "payments": {
+    "match": true,
+    "sqlite": [
+     {
+      "k": "PAID",
+      "n": 66000,
+      "amount_sen": 29964834900000
+     }
+    ]
+   },
+   "rbac": {
+    "match": true,
+    "sqlite": [
+     {
+      "users": 12,
+      "roles": 4,
+      "permissions": 0,
+      "grants": 0,
+      "user_roles": 12,
+      "entity_scopes": 36
+     }
+    ]
+   }
+  }
+ },
+ "integrity": {
+  "orphans": 0,
+  "invalid_constraints": 0,
+  "disabled_triggers": 0,
+  "soft_orphans": 0,
+  "ok": true
+ },
+ "totals": {
+  "source_tables": 63,
+  "migrated_tables": 63,
+  "source_rows": 4646280,
+  "destination_rows": 4646280,
+  "values_compared": 157083031
+ },
+ "result": "MIGRATED",
+ "performance": {
+  "preflight_ms": 54440,
+  "load_ms": 214250,
+  "reconcile_ms": 160111,
+  "peak_rss_mb": 559,
+  "reconcile_chunk_rows": 20000
+ },
+ "finished_at": "2026-09-21T08:24:01.154Z"
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Peralatan &amp; Resource — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">PERALATAN &amp; RESOURCE</h1>
+          <p class="page-header__tagline">Kesiapan unit, utilisasi, perawatan, dan alokasi resource pendukung proyek.</p>
+          <p class="page-header__desc">Memastikan seluruh peralatan dan resource dalam kondisi optimal untuk mendukung kelancaran operasional proyek.</p>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">🚧</div>
+          <div><p class="pk-kpi__label">Total Unit Aktif</p><p class="pk-kpi__value">1,248 <span class="pk-kpi__delta pk-kpi__delta--up">▲ +6.2%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">✅</div>
+          <div><p class="pk-kpi__label">Ready Unit</p><p class="pk-kpi__value">1,120</p><p class="pk-kpi__sub">89.7% dari total unit</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📊</div>
+          <div><p class="pk-kpi__label">Utilisasi Unit</p><p class="pk-kpi__value">78.4% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +5.6%</span></p><p class="pk-kpi__sub">dari minggu lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">🔧</div>
+          <div><p class="pk-kpi__label">Unit Maintenance</p><p class="pk-kpi__value">128 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +12%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi" style="border-left:3px solid var(--gold-500)">
+          <div class="pk-kpi__icon" style="background:rgba(242,178,60,0.16)">⛽</div>
+          <div><p class="pk-kpi__label">Fuel Status</p><p class="pk-kpi__value" style="font-size:18px">312,450 L <span class="pk-kpi__delta pk-kpi__delta--up">▲ +3.8%</span></p><div class="pbar-wrap" style="margin-top:4px"><div class="pbar" style="width:78%;background:var(--gold-500)"></div></div></div>
+        </div>
+      </section>
+
+      <!-- ROW 1 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🚧 Fleet &amp; Equipment Overview</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Kategori</th><th class="num">Total</th><th class="num">Aktif</th><th>Utilisasi</th></tr></thead>
+            <tbody>
+              <tr><td>🏗 Excavator</td><td class="num">320</td><td class="num">288</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:82%"></div></div>82%</td></tr>
+              <tr><td>🏗 Crane</td><td class="num">96</td><td class="num">86</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:76%"></div></div>76%</td></tr>
+              <tr><td>🚜 Bulldozer</td><td class="num">148</td><td class="num">132</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar pbar--amber" style="width:71%"></div></div>71%</td></tr>
+              <tr><td>🚛 Dump Truck</td><td class="num">420</td><td class="num">368</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:84%"></div></div>84%</td></tr>
+              <tr><td>🚌 Bus / Transport</td><td class="num">84</td><td class="num">72</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar pbar--amber" style="width:68%"></div></div>68%</td></tr>
+              <tr><td>⚡ Generator</td><td class="num">96</td><td class="num">88</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar pbar--amber" style="width:73%"></div></div>73%</td></tr>
+              <tr><td>⚙ Support Equipment</td><td class="num">184</td><td class="num">146</td><td><div class="pbar-wrap" style="width:60px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:61%;background:var(--red-500)"></div></div>61%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>✅ Equipment Readiness</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="242.3 34.2" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="27.7 248.8" stroke-dashoffset="-242.3"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="3.9 272.6" stroke-dashoffset="-270.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="2.6 273.9" stroke-dashoffset="-273.9"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">89.7%</div><div class="donut-center__lbl">Unit Siap<br/>Operasi</div></div>
+          </div>
+          <ul class="donut-legend">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> Siap Operasi <strong>1,120 (89.7%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Dalam Perawatan <strong>128 (10.3%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Rusak Berat <strong>18 (1.4%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> Menunggu Suku Cadang <strong>12 (1.0%)</strong></li>
+          </ul>
+          <p style="font-size:10px;color:var(--green-500);margin:8px 0 0">✔ Mayoritas unit dalam kondisi siap operasi. Pastikan perawatan rutin tetap sesuai jadwal.</p>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🔧 Perawatan &amp; Maintenance</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
+            <span class="status-badge status-badge--blue">Semua (128)</span>
+            <span class="status-badge status-badge--amber">Due Soon (34)</span>
+            <span class="status-badge status-badge--red">Overdue (12)</span>
+          </div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Unit / ID</th><th>Jenis Perawatan</th><th>Jadwal</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>EXC-1023</td><td>Servis 500 Jam</td><td>12 Sep</td><td><span class="status-badge status-badge--amber">Due Soon</span></td></tr>
+              <tr><td>DT-4587</td><td>Ganti Oli</td><td>13 Sep</td><td><span class="status-badge status-badge--amber">Due Soon</span></td></tr>
+              <tr><td>BD-2210</td><td>Inspeksi Hidrolik</td><td>14 Sep</td><td><span class="status-badge status-badge--amber">Due Soon</span></td></tr>
+              <tr><td>CR-3301</td><td>Sertifikasi Tahunan</td><td>10 Sep</td><td><span class="status-badge status-badge--red">Overdue</span></td></tr>
+              <tr><td>GEN-0088</td><td>Ganti Filter</td><td>11 Sep</td><td><span class="status-badge status-badge--red">Overdue</span></td></tr>
+              <tr><td>DT-4621</td><td>Perbaikan Rem</td><td>08 Sep</td><td><span class="status-badge status-badge--red">Overdue</span></td></tr>
+              <tr><td>EXC-0876</td><td>Perbaikan Track</td><td>07 Sep</td><td><span class="status-badge status-badge--red">Overdue</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <!-- ROW 2 -->
+      <section class="pk-grid-4">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📍 Deployment per Area</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Area / Proyek</th><th class="num">Total</th><th class="num">On Site</th><th class="num">Mobilisasi</th><th class="num">Tersedia</th></tr></thead>
+            <tbody>
+              <tr><td>Zona 1 — Utara</td><td class="num">286</td><td class="num">242</td><td class="num">18</td><td class="num">26</td></tr>
+              <tr><td>Zona 2 — Timur</td><td class="num">312</td><td class="num">268</td><td class="num">22</td><td class="num">22</td></tr>
+              <tr><td>Zona 3 — Selatan</td><td class="num">248</td><td class="num">201</td><td class="num">30</td><td class="num">17</td></tr>
+              <tr><td>Zona 4 — Barat</td><td class="num">220</td><td class="num">176</td><td class="num">28</td><td class="num">16</td></tr>
+              <tr><td>Proyek Infrastruktur</td><td class="num">182</td><td class="num">146</td><td class="num">20</td><td class="num">16</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🧑‍🔧 Operator &amp; Assignment</h3><button class="pk-panel__link">Detail ›</button></div>
+          <p style="font-size:11px;color:var(--grey-500);margin:0 0 8px">Total Operator <strong style="color:var(--white);font-size:16px">1,086</strong> <span style="color:var(--green-500)">▲ +4.8%</span></p>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Sedang Bertugas <strong style="color:var(--green-500)">892 (82.1%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Menunggu Penugasan <strong>94 (8.7%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Pelatihan <strong>56 (5.2%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Tidak Tersedia <strong style="color:var(--red-500)">44 (4.0%)</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📊 Resource Gap</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="mini-legend">
+            <li><span class="sq" style="background:var(--blue-500)"></span> Permintaan</li>
+            <li><span class="sq" style="background:var(--green-500)"></span> Ketersediaan</li>
+          </div>
+          <div class="bar-chart" style="height:80px">
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:55px"><span class="bar__val">850</span></div><div class="bar" style="height:50px;background:var(--green-500)"><span class="bar__val">780</span></div></div><div class="bar-group__label">Alat Berat</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:27px"><span class="bar__val">420</span></div><div class="bar" style="height:26px;background:var(--green-500)"><span class="bar__val">398</span></div></div><div class="bar-group__label">Transportasi</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:21px"><span class="bar__val">320</span></div><div class="bar" style="height:18px;background:var(--green-500)"><span class="bar__val">286</span></div></div><div class="bar-group__label">Support</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:12px"><span class="bar__val">180</span></div><div class="bar" style="height:11px;background:var(--green-500)"><span class="bar__val">162</span></div></div><div class="bar-group__label">Power</div></div>
+          </div>
+          <p style="font-size:10px;color:var(--red-500);margin:10px 0 0">⚠ Gap 70 unit pada kategori Alat Berat — pertimbangkan rental atau redistribusi.</p>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📈 Utilisasi 7 Hari Terakhir</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="mini-legend">
+            <li><span class="sq" style="background:var(--blue-500)"></span> Utilisasi Total</li>
+            <li><span class="sq" style="background:var(--gold-500)"></span> Target</li>
+          </div>
+          <div class="bar-chart" style="height:80px">
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:58px"><span class="bar__val">72%</span></div></div><div class="bar-group__label">12 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:61px"><span class="bar__val">76%</span></div></div><div class="bar-group__label">13 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:62px"><span class="bar__val">78%</span></div></div><div class="bar-group__label">14 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:64px"><span class="bar__val">80%</span></div></div><div class="bar-group__label">15 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:62px"><span class="bar__val">77%</span></div></div><div class="bar-group__label">16 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:66px"><span class="bar__val">82%</span></div></div><div class="bar-group__label">17 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:62px"><span class="bar__val">78%</span></div></div><div class="bar-group__label">18 Sep</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 3 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🏢 Vendor / Supplier Status</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Kategori</th><th class="num">Total</th><th class="num">Aktif</th><th class="num">Evaluasi</th><th class="num">Bermasalah</th></tr></thead>
+            <tbody>
+              <tr><td>Suku Cadang</td><td class="num">48</td><td class="num">42</td><td class="num">4</td><td class="num" style="color:var(--red-500)">2</td></tr>
+              <tr><td>BBM &amp; Pelumas</td><td class="num">12</td><td class="num">11</td><td class="num">1</td><td class="num">0</td></tr>
+              <tr><td>Servis &amp; Perawatan</td><td class="num">28</td><td class="num">25</td><td class="num">2</td><td class="num" style="color:var(--red-500)">1</td></tr>
+              <tr><td>Rental Equipment</td><td class="num">16</td><td class="num">13</td><td class="num">2</td><td class="num" style="color:var(--red-500)">1</td></tr>
+              <tr><td>Logistik Pendukung</td><td class="num">24</td><td class="num">21</td><td class="num">2</td><td class="num" style="color:var(--red-500)">1</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📆 Permintaan Resource Mendatang</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="pk-grid-3" style="gap:10px">
+            <div class="forecast-card">
+              <div class="forecast-card__val">186</div><div class="forecast-card__delta">▲ +12%</div>
+              <div class="forecast-card__lbl">7 Hari ke Depan</div>
+              <div class="forecast-card__detail"><ul>
+                <li><span>Alat Berat</span><span>86</span></li><li><span>Transportasi</span><span>52</span></li>
+                <li><span>Support</span><span>32</span></li><li><span>Power</span><span>16</span></li>
+              </ul></div>
+            </div>
+            <div class="forecast-card">
+              <div class="forecast-card__val">420</div><div class="forecast-card__delta">▲ +18%</div>
+              <div class="forecast-card__lbl">30 Hari ke Depan</div>
+              <div class="forecast-card__detail"><ul>
+                <li><span>Alat Berat</span><span>200</span></li><li><span>Transportasi</span><span>110</span></li>
+                <li><span>Support</span><span>74</span></li><li><span>Power</span><span>36</span></li>
+              </ul></div>
+            </div>
+            <div class="forecast-card">
+              <div class="forecast-card__val">686</div><div class="forecast-card__delta">▲ +22%</div>
+              <div class="forecast-card__lbl">60 Hari ke Depan</div>
+              <div class="forecast-card__detail"><ul>
+                <li><span>Alat Berat</span><span>320</span></li><li><span>Transportasi</span><span>184</span></li>
+                <li><span>Support</span><span>128</span></li><li><span>Power</span><span>54</span></li>
+              </ul></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📝 Catatan &amp; Tindakan</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+            <li style="display:flex;gap:8px;font-size:11.5px;color:var(--grey-300)"><span class="dot-sm" style="background:var(--amber-500);margin-top:4px;flex-shrink:0"></span><span>Penambahan 70 unit excavator untuk Proyek Zona 3 <small style="color:var(--grey-500);display:block">12 Sep</small></span></li>
+            <li style="display:flex;gap:8px;font-size:11.5px;color:var(--grey-300)"><span class="dot-sm" style="background:var(--amber-500);margin-top:4px;flex-shrink:0"></span><span>Evaluasi performa vendor suku cadang A <small style="color:var(--grey-500);display:block">11 Sep</small></span></li>
+            <li style="display:flex;gap:8px;font-size:11.5px;color:var(--grey-300)"><span class="dot-sm" style="background:var(--blue-500);margin-top:4px;flex-shrink:0"></span><span>Penyelesaian sertifikasi crane tahap 2 <small style="color:var(--grey-500);display:block">10 Sep</small></span></li>
+            <li style="display:flex;gap:8px;font-size:11.5px;color:var(--grey-300)"><span class="dot-sm" style="background:var(--blue-500);margin-top:4px;flex-shrink:0"></span><span>Rencana mobilisasi tambahan ke Zona 4 <small style="color:var(--grey-500);display:block">10 Sep</small></span></li>
+            <li style="display:flex;gap:8px;font-size:11.5px;color:var(--grey-300)"><span class="dot-sm" style="background:var(--green-500);margin-top:4px;flex-shrink:0"></span><span>Stok BBM dalam kondisi aman <small style="color:var(--grey-500);display:block">09 Sep</small></span></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Memastikan seluruh peralatan dan resource dalam kondisi optimal.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'equipment_resource';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

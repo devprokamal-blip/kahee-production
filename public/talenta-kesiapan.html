@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Talenta &amp; Kesiapan — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">TALENTA &amp; KESIAPAN</h1>
+          <p class="page-header__tagline">Menemukan. Memverifikasi. Menyiapkan. Memobilisasi.</p>
+          <p class="page-header__desc">Ditemukan ≠ Terverifikasi ≠ Tersedia ≠ Siap. Kelola seluruh funnel kesiapan talenta dari rekrutmen hingga deployment.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>TALENT</span><span>READINESS</span><span>MOBILIZATION</span>
+        </div>
+      </section>
+
+      <!-- KPI BAR: 4 -->
+      <section class="tk-kpi-bar">
+        <div class="ip-kpi" style="border-left:3px solid var(--blue-500)">
+          <div class="ip-kpi__icon" style="background:rgba(42,99,199,0.22)">🧑‍🔧</div>
+          <div>
+            <p class="pk-kpi__label">Total Talent Pool</p>
+            <p class="ip-kpi__val">426</p>
+            <p class="ip-kpi__sub">kandidat aktif terdaftar</p>
+          </div>
+        </div>
+        <div class="ip-kpi" style="border-left:3px solid var(--green-500)">
+          <div class="ip-kpi__icon" style="background:rgba(51,196,129,0.18)">✅</div>
+          <div>
+            <p class="pk-kpi__label">Kandidat Siap</p>
+            <p class="ip-kpi__val">243 <span class="ip-kpi__delta" style="color:var(--green-500)">57%</span></p>
+            <p class="ip-kpi__sub">dari total talent pool</p>
+          </div>
+        </div>
+        <div class="ip-kpi" style="border-left:3px solid var(--amber-500)">
+          <div class="ip-kpi__icon" style="background:rgba(242,169,60,0.18)">⏱</div>
+          <div>
+            <p class="pk-kpi__label">Lead Time Rekrutmen</p>
+            <p class="ip-kpi__val">14 hari</p>
+            <p class="ip-kpi__sub">rata-rata waktu proses</p>
+          </div>
+        </div>
+        <div class="ip-kpi" style="border-left:3px solid var(--cyan-400)">
+          <div class="ip-kpi__icon" style="background:rgba(79,195,247,0.16)">📊</div>
+          <div>
+            <p class="pk-kpi__label">Tingkat Kesiapan</p>
+            <p class="ip-kpi__val">87.4%</p>
+            <p class="ip-kpi__sub">kandidat memenuhi persyaratan</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- READINESS FUNNEL: locked concept -->
+      <section class="pk-panel">
+        <div class="pk-panel__hdr">
+          <h3>🔽 Talent Pool — Readiness Funnel</h3>
+          <button class="pk-panel__link">Lihat Detail ›</button>
+        </div>
+        <p style="font-size:10.5px;color:var(--grey-500);margin:0 0 10px;font-weight:700">
+          FOUND → SCREENED → VERIFIED → CONFIRMED → COMPLIANT → READY → MOBILIZED → DEPLOYED
+        </p>
+        <div class="tk-funnel">
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Ditemukan (Sourced)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:100%"></div></div><span class="tk-funnel__val">426</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Disaring (Screened)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:82%"></div></div><span class="tk-funnel__val">348</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Diverifikasi (Verified)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:68%"></div></div><span class="tk-funnel__val">291</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Dikonfirmasi (Confirmed)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:66%"></div></div><span class="tk-funnel__val">278</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Patuh (Compliant)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:62%"></div></div><span class="tk-funnel__val">264</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Siap (Ready)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar pbar--cyan" style="width:57%"></div></div><span class="tk-funnel__val" style="color:var(--cyan-400)">243</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Dimobilisasi (Mobilized)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar pbar--cyan" style="width:51%"></div></div><span class="tk-funnel__val" style="color:var(--cyan-400)">218</span></div>
+          <div class="tk-funnel__row"><span class="tk-funnel__label">Ditempatkan (Deployed)</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:48%;background:var(--green-500)"></div></div><span class="tk-funnel__val" style="color:var(--green-500)">204</span></div>
+        </div>
+      </section>
+
+      <!-- ROW: Recruitment Request | Candidate Pipeline | Talent by Position -->
+      <section class="pk-grid-3">
+        <!-- Recruitment Request -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📋 Recruitment Request</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">Pipe Welder 6G — 30 org</p>
+                <p class="action-pk__meta">Kebutuhan: 01 Okt 2026 | Gap: 12 org</p>
+              </div>
+              <span class="action-pk__chip chip--red">Kritis</span>
+            </li>
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">Civil Supervisor — 6 org</p>
+                <p class="action-pk__meta">Kebutuhan: 13 Sep 2026 | Gap: 2 org</p>
+              </div>
+              <span class="action-pk__chip chip--red">Kritis</span>
+            </li>
+            <li class="action-pk action-pk--amber">
+              <div class="action-pk__flag action-pk__flag--amber">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">Rigger Certified — 20 org</p>
+                <p class="action-pk__meta">Kebutuhan: 20 Okt 2026 | Tersedia: 20</p>
+              </div>
+              <span class="action-pk__chip chip--teal">Terpenuhi</span>
+            </li>
+            <li class="action-pk action-pk--blue">
+              <div class="action-pk__flag action-pk__flag--blue">i</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">Scaffolder — 45 org</p>
+                <p class="action-pk__meta">Kebutuhan: 15 Nov 2026 | Progress: 68%</p>
+              </div>
+              <span class="action-pk__chip chip--amber">Proses</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Candidate Pipeline -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>👥 Candidate Pipeline</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="table-scroll">
+          <table class="candidate-table">
+            <thead><tr><th>Posisi</th><th>Sumber</th><th>Screening</th><th>Verified</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Pipe Welder</td><td>48</td><td>36</td><td>18</td><td><span class="status-badge status-badge--amber">Proses</span></td></tr>
+              <tr><td>Rigger</td><td>24</td><td>22</td><td>20</td><td><span class="status-badge status-badge--green">Siap</span></td></tr>
+              <tr><td>Civil Sup.</td><td>9</td><td>7</td><td>4</td><td><span class="status-badge status-badge--red">Gap</span></td></tr>
+              <tr><td>Scaffolder</td><td>52</td><td>40</td><td>31</td><td><span class="status-badge status-badge--amber">Proses</span></td></tr>
+              <tr><td>Electrician</td><td>38</td><td>30</td><td>28</td><td><span class="status-badge status-badge--green">Siap</span></td></tr>
+              <tr><td>Fitter</td><td>65</td><td>50</td><td>44</td><td><span class="status-badge status-badge--green">Siap</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <!-- Talent by Position -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📊 Talent by Position</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="gap-list">
+            <li class="gap-row" style="gap:6px">
+              <span style="flex:1;font-size:12px">Welder</span>
+              <div class="pbar-wrap" style="width:100px"><div class="pbar pbar--amber" style="width:60%"></div></div>
+              <strong>18 / 30</strong>
+            </li>
+            <li class="gap-row" style="gap:6px">
+              <span style="flex:1;font-size:12px">Rigger</span>
+              <div class="pbar-wrap" style="width:100px"><div class="pbar" style="width:100%"></div></div>
+              <strong>20 / 20</strong>
+            </li>
+            <li class="gap-row" style="gap:6px">
+              <span style="flex:1;font-size:12px">Civil Supervisor</span>
+              <div class="pbar-wrap" style="width:100px"><div class="pbar" style="width:67%;background:var(--red-500)"></div></div>
+              <strong style="color:var(--red-500)">4 / 6</strong>
+            </li>
+            <li class="gap-row" style="gap:6px">
+              <span style="flex:1;font-size:12px">Scaffolder</span>
+              <div class="pbar-wrap" style="width:100px"><div class="pbar pbar--amber" style="width:68%"></div></div>
+              <strong>31 / 45</strong>
+            </li>
+            <li class="gap-row" style="gap:6px">
+              <span style="flex:1;font-size:12px">Electrician</span>
+              <div class="pbar-wrap" style="width:100px"><div class="pbar" style="width:78%"></div></div>
+              <strong>28 / 36</strong>
+            </li>
+            <li class="gap-row" style="gap:6px">
+              <span style="flex:1;font-size:12px">Fitter</span>
+              <div class="pbar-wrap" style="width:100px"><div class="pbar" style="width:92%"></div></div>
+              <strong>44 / 48</strong>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ROW: Document / BPJS / MCU / HSE / Mobilization Readiness -->
+      <section>
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📄 Readiness Check — Dokumen, BPJS, MCU, HSE, Mobilisasi</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <div class="readiness-grid">
+            <div class="readiness-card readiness-card--green">
+              <div class="readiness-card__icon">📄</div>
+              <div class="readiness-card__pct">92%</div>
+              <div class="readiness-card__lbl">Document Readiness</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar" style="width:92%"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">18 dokumen kurang</p>
+            </div>
+            <div class="readiness-card readiness-card--amber">
+              <div class="readiness-card__icon">🛡</div>
+              <div class="readiness-card__pct" style="color:var(--amber-500)">86%</div>
+              <div class="readiness-card__lbl">BPJS Readiness</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar pbar--amber" style="width:86%"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">34 BPJS pending</p>
+            </div>
+            <div class="readiness-card readiness-card--amber">
+              <div class="readiness-card__icon">🏥</div>
+              <div class="readiness-card__pct" style="color:var(--amber-500)">78%</div>
+              <div class="readiness-card__lbl">MCU / Fit to Work</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar pbar--amber" style="width:78%"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">53 MCU belum selesai</p>
+            </div>
+            <div class="readiness-card readiness-card--green">
+              <div class="readiness-card__icon">🦺</div>
+              <div class="readiness-card__pct">94%</div>
+              <div class="readiness-card__lbl">HSE Readiness</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar" style="width:94%"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">15 sertifikat HSE kurang</p>
+            </div>
+            <div class="readiness-card readiness-card--green">
+              <div class="readiness-card__icon">🚛</div>
+              <div class="readiness-card__pct">96%</div>
+              <div class="readiness-card__lbl">Mobilization Readiness</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar" style="width:96%"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">8 jadwal belum final</p>
+            </div>
+            <div class="readiness-card readiness-card--red">
+              <div class="readiness-card__icon">🔁</div>
+              <div class="readiness-card__pct" style="color:var(--red-500)">68%</div>
+              <div class="readiness-card__lbl">Replacement Pool</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar" style="width:68%;background:var(--red-500)"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">34 pengganti siap, 12 mendesak</p>
+            </div>
+            <div class="readiness-card readiness-card--amber">
+              <div class="readiness-card__icon">🌱</div>
+              <div class="readiness-card__pct" style="color:var(--amber-500)">42</div>
+              <div class="readiness-card__lbl">Fresh Lead Bench</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar pbar--amber" style="width:55%"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">kandidat baru belum diproses</p>
+            </div>
+            <div class="readiness-card readiness-card--red">
+              <div class="readiness-card__icon">⏳</div>
+              <div class="readiness-card__pct" style="color:var(--red-500)">28</div>
+              <div class="readiness-card__lbl">Aging Candidates</div>
+              <div class="pbar-wrap" style="margin-top:6px"><div class="pbar" style="width:65%;background:var(--red-500)"></div></div>
+              <p style="font-size:10px;color:var(--grey-500);margin:4px 0 0">&gt; 30 hari tanpa update</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW: Offer & Confirmation | Critical Hiring Needs -->
+      <section class="pk-grid-2">
+        <!-- Offer & Confirmation -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>📩 Offer &amp; Confirmation</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Penawaran Dikirim <strong>38</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Dikonfirmasi <strong>29</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Menunggu Respons <strong>7</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Ditolak <strong>2</strong></li>
+          </ul>
+          <div style="margin-top:10px;padding:8px 10px;background:rgba(51,196,129,0.08);border-radius:8px;border:1px solid rgba(51,196,129,0.2)">
+            <p style="margin:0;font-size:11.5px;color:var(--green-500);font-weight:700">Acceptance Rate: 76.3%</p>
+            <p style="margin:2px 0 0;font-size:10.5px;color:var(--grey-500)">Target: 80% | Gap: 3.7%</p>
+          </div>
+        </div>
+
+        <!-- Critical Hiring Needs -->
+        <div class="pk-panel">
+          <div class="pk-panel__hdr">
+            <h3>🚨 Critical Hiring Needs</h3>
+            <button class="pk-panel__link">Lihat Detail ›</button>
+          </div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">12 Pipe Welder 6G belum siap</p>
+                <p class="action-pk__meta">MCU pending | Deployment: 01 Okt 2026</p>
+              </div>
+              <span class="action-pk__chip chip--red">14 hari</span>
+            </li>
+            <li class="action-pk action-pk--red">
+              <div class="action-pk__flag action-pk__flag--red">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">2 Civil Supervisor tidak tergantikan</p>
+                <p class="action-pk__meta">Tidak ada kandidat replacement | PIC: Rekrutmen</p>
+              </div>
+              <span class="action-pk__chip chip--red">Kritis</span>
+            </li>
+            <li class="action-pk action-pk--amber">
+              <div class="action-pk__flag action-pk__flag--amber">!</div>
+              <div class="action-pk__body">
+                <p class="action-pk__title">14 Scaffolder BPJS belum aktif</p>
+                <p class="action-pk__meta">Deployment tertunda sampai BPJS selesai</p>
+              </div>
+              <span class="action-pk__chip chip--amber">3 hari</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Ditemukan ≠ Terverifikasi ≠ Tersedia ≠ Siap</span>
+        <span>RIGHT TALENT · RIGHT TIME · RIGHT PLACE · A STRONGER TOMORROW</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'talent_readiness';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Payroll Configuration — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">PAYROLL CONFIGURATION</h1>
+          <p class="page-header__tagline">Satu Aturan. Semua Payroll. Tidak Ada yang Hardcode.</p>
+          <p class="page-header__desc">Fondasi konfigurasi payroll — Legal Entity, JKK, BPJS/PPh21, Lembur, Kalender, Pola Kerja, dan Assignment Karyawan. Semua versioned by tanggal berlaku dan tercatat di audit trail.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>COMPLIANCE</span><span>VERSIONED</span><span>AUDIT TRAIL</span>
+        </div>
+      </section>
+
+      <section class="pk-panel">
+        <div class="pcfg-tabs" id="pcfgTabs">
+          <button class="pcfg-tab is-active" data-tab="legal-entities">Legal Entity</button>
+          <button class="pcfg-tab" data-tab="jkk">JKK Risk Class</button>
+          <button class="pcfg-tab" data-tab="rule-set">BPJS / PPh21 / Lembur</button>
+          <button class="pcfg-tab" data-tab="holidays">Kalender Libur</button>
+          <button class="pcfg-tab" data-tab="work-patterns">Pola Kerja</button>
+          <button class="pcfg-tab" data-tab="assignments">Employee Assignment</button>
+          <button class="pcfg-tab" data-tab="salary">Salary Components</button>
+        </div>
+
+        <!-- TAB 1: LEGAL ENTITY -->
+        <div class="pcfg-panel is-active" data-panel="legal-entities">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Setiap entitas (KAHE internal atau perusahaan mitra) punya kelas risiko JKK sendiri.</span>
+            <button class="btn btn--gold" id="btnAddLegalEntity">+ Tambah Entitas</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>ID</th><th>Nama</th><th>Tipe</th><th>NPWP</th><th>Kelas Risiko JKK</th><th>Berlaku Sejak</th><th>Status</th></tr></thead>
+              <tbody id="legalEntityRows"><tr><td colspan="7" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 2: JKK RISK CLASS -->
+        <div class="pcfg-panel" data-panel="jkk">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Rate JKK per kelas risiko (Kepmenaker). Reprice membuat versi baru, riwayat lama tetap tersimpan.</span>
+            <button class="btn btn--gold" id="btnRepriceJkk">+ Reprice Kelas</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Kelas Risiko</th><th>Rate</th><th>Berlaku Sejak</th><th>Catatan</th></tr></thead>
+              <tbody id="jkkRows"><tr><td colspan="4" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+
+          <div style="margin-top:18px">
+            <p class="hint" style="margin-bottom:6px">Riwayat versi per kelas risiko (current vs previous):</p>
+            <select id="fJkkHistoryClass" class="hrd-select" style="margin-bottom:10px"></select>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Rate</th><th>Berlaku Sejak</th><th>Berakhir</th><th>Status</th><th>Catatan</th></tr></thead>
+                <tbody id="jkkHistoryRows"><tr><td colspan="5" style="text-align:center;color:var(--grey-500);padding:16px">Pilih kelas risiko.</td></tr></tbody>
+              </table>
+            </div>
+            <p class="hint" style="margin:12px 0 6px">Audit trail (siapa mengubah, kapan):</p>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Aksi</th><th>Diubah Oleh</th><th>Waktu</th><th>Nilai Baru</th></tr></thead>
+                <tbody id="jkkAuditRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: RULE SET -->
+        <div class="pcfg-panel" data-panel="rule-set">
+          <div id="ruleSetSummary" class="hint">Memuat…</div>
+          <div style="margin-top:14px">
+            <button class="btn btn--cyan" id="btnNewRuleSet">+ Buat Rule Set Baru (revisi rate)</button>
+          </div>
+          <div style="margin-top:18px">
+            <p class="hint" style="margin-bottom:6px">Tabel TER PPh21 aktif (ringkasan jumlah lapisan per kategori):</p>
+            <div id="terSummary"></div>
+          </div>
+          <div style="margin-top:18px">
+            <p class="hint" style="margin-bottom:6px">Multiplier lembur aktif (PP 35/2021 Pasal 31):</p>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Jenis Hari</th><th>Jam ke-</th><th>Multiplier</th></tr></thead>
+                <tbody id="overtimeRuleRows"></tbody>
+              </table>
+            </div>
+          </div>
+          <div style="margin-top:18px">
+            <p class="hint" style="margin-bottom:6px">Semua rule set (draft / aktif / superseded):</p>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Nama</th><th>Status</th><th>Berlaku Sejak</th><th>Berakhir</th><th></th></tr></thead>
+                <tbody id="ruleSetListRows"><tr><td colspan="5" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: HOLIDAYS -->
+        <div class="pcfg-panel" data-panel="holidays">
+          <div class="hrd-filter-bar">
+            <select id="fHolidayYear" class="hrd-select"><option value="2026">2026</option></select>
+            <span class="hint" style="flex:1">Kalender hari libur resmi (SKB 3 Menteri).</span>
+            <button class="btn btn--gold" id="btnAddHoliday">+ Tambah Hari Libur</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Tanggal</th><th>Nama</th><th>Cakupan</th><th></th></tr></thead>
+              <tbody id="holidayRows"><tr><td colspan="4" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 5: WORK PATTERNS -->
+        <div class="pcfg-panel" data-panel="work-patterns">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Pola kerja menentukan aturan multiplier lembur hari libur (5 hari vs 6 hari).</span>
+            <button class="btn btn--gold" id="btnAddWorkPattern">+ Tambah Pola</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Nama</th><th>Hari/Minggu</th><th>Hari Istirahat</th><th>Berlaku Sejak</th></tr></thead>
+              <tbody id="workPatternRows"><tr><td colspan="4" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 6: EMPLOYEE ASSIGNMENT -->
+        <div class="pcfg-panel" data-panel="assignments">
+          <div class="hrd-filter-bar">
+            <input type="text" id="fAssignSearch" class="hrd-input" placeholder="Cari nama karyawan...">
+            <button class="btn btn--gold" id="btnAddAssignment">+ Assign Karyawan</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Karyawan</th><th>Legal Entity</th><th>Pola Kerja</th><th>PTKP</th><th>Kategori TER</th><th>Gaji Pokok</th></tr></thead>
+              <tbody id="assignmentRows"><tr><td colspan="6" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 7: SALARY COMPONENTS (Phase 1A / B1) -->
+        <div class="pcfg-panel" data-panel="salary">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Katalog komponen gaji. Setiap flag (pajak, dasar BPJS, dasar lembur, prorata) adalah konfigurasi per komponen &mdash; bukan aturan yang dikunci di kode.</span>
+            <button class="btn btn--gold" id="btnAddComponent">+ Tambah Komponen</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Urut</th><th>Kode</th><th>Nama</th><th>Jenis</th><th>Sifat</th><th>Pihak</th><th>Pajak</th><th>Dasar BPJS</th><th>Dasar Lembur</th><th>Prorata</th><th>Scope</th><th>Berlaku</th><th></th></tr></thead>
+              <tbody id="componentRows"><tr><td colspan="13" style="text-align:center;color:var(--grey-500);padding:16px">Memuat&hellip;</td></tr></tbody>
+            </table>
+          </div>
+
+          <div style="margin-top:18px">
+            <p class="hint" style="margin-bottom:6px">Riwayat versi komponen:</p>
+            <select id="fComponentHistory" class="hrd-select" style="margin-bottom:10px"><option value="">Pilih kode komponen</option></select>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Nama</th><th>Berlaku Sejak</th><th>Berakhir</th><th>Status</th><th>Pajak</th><th>Dasar BPJS</th><th>Dibuat Oleh</th></tr></thead>
+                <tbody id="componentVersionRows"><tr><td colspan="7" style="text-align:center;color:var(--grey-500);padding:16px">Pilih komponen.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="margin-top:22px;border-top:1px solid var(--line);padding-top:18px">
+            <div class="hrd-filter-bar">
+              <span class="hint" style="flex:1"><strong style="color:var(--white)">Struktur Gaji Karyawan</strong> &mdash; satu karyawan bisa punya banyak komponen, masing-masing dengan tanggal berlaku sendiri.</span>
+              <input type="date" id="fStructureDate" class="hrd-input" style="flex:0 0 160px">
+              <button class="btn btn--gold" id="btnAssignComponent">+ Assign Komponen</button>
+            </div>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Karyawan</th><th>Jml Komponen</th><th>Bruto</th><th>Dasar Pajak</th><th>Dasar BPJS</th><th>Dasar Lembur</th><th></th></tr></thead>
+                <tbody id="structureRows"><tr><td colspan="7" style="text-align:center;color:var(--grey-500);padding:16px">Memuat&hellip;</td></tr></tbody>
+              </table>
+            </div>
+
+            <div id="structureDetailWrap" style="margin-top:16px;display:none">
+              <p class="hint" style="margin-bottom:6px">Rincian komponen: <strong id="structureDetailName" style="color:var(--white)"></strong></p>
+              <div class="table-scroll">
+                <table class="hrd-table">
+                  <thead><tr><th>Kode</th><th>Nama</th><th>Jenis</th><th>Nilai</th><th>Berlaku Sejak</th><th>Berakhir</th><th></th></tr></thead>
+                  <tbody id="structureDetailRows"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Satu Aturan, Semua Payroll, Selalu Tercatat.</span>
+        <span>LEGAL · VERSIONED · AUDITABLE</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- GENERIC SMALL-FORM MODAL (reused for every "+ Tambah" action) -->
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" style="width:520px">
+    <div class="modal__hdr">
+      <h2 id="modalTitle">Tambah</h2>
+      <button type="button" class="modal__close" id="modalClose">&times;</button>
+    </div>
+    <form id="genericForm">
+      <div id="genericFormBody" style="padding:18px 20px;display:flex;flex-direction:column;gap:12px"></div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="btnCancel">Batal</button>
+        <button type="submit" class="btn btn--gold">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'payroll_config';</script>
+<script src="/page-shell.js"></script>
+<script src="/payroll-config.js"></script>
+</body>
+</html>

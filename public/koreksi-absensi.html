@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Koreksi &amp; Audit Absensi — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list"><li>Konfigurasi jadwal &amp; roster</li></ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">KOREKSI &amp; AUDIT ABSENSI</h1>
+          <p class="page-header__tagline">Tidak Ada yang Ditimpa Diam-diam. Semua Tercatat.</p>
+          <p class="page-header__desc">Permintaan koreksi &amp; void, persetujuan berjenjang dengan pemisahan tugas, deteksi exception, dampak payroll, dan audit append-only. Payroll yang sudah final tidak pernah diubah — koreksi menghasilkan selisih waktu yang harus disetujui Payroll Officer.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>SoD</span><span>APPEND-ONLY</span><span>AUDITABLE</span>
+        </div>
+      </section>
+
+      <section class="pk-panel">
+        <div class="pcfg-tabs" id="corrTabs">
+          <button class="pcfg-tab is-active" data-tab="inbox">Kotak Persetujuan</button>
+          <button class="pcfg-tab" data-tab="requests">Semua Permintaan</button>
+          <button class="pcfg-tab" data-tab="exceptions">Exception Center</button>
+          <button class="pcfg-tab" data-tab="impact">Dampak Payroll</button>
+          <button class="pcfg-tab" data-tab="audit">Audit &amp; Aktivitas</button>
+          <button class="pcfg-tab" data-tab="policy">Kebijakan Koreksi</button>
+        </div>
+
+        <div class="pcfg-panel is-active" data-panel="inbox">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Hanya permintaan yang boleh Anda putuskan — permintaan Anda sendiri tidak pernah muncul di sini (pemisahan tugas).</span>
+            <button class="btn btn--gold" id="btnNewRequest">+ Ajukan Koreksi / Void</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>No.</th><th>Jenis</th><th>Karyawan</th><th>Tanggal Kerja</th><th>Alasan</th><th>Terlambat</th><th>Dampak Payroll</th><th>Status</th><th>Usia</th><th></th></tr></thead>
+              <tbody id="inboxRows"><tr><td colspan="10" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pcfg-panel" data-panel="requests">
+          <div class="hrd-filter-bar">
+            <select id="reqStatus" class="hrd-select" style="flex:0 0 220px">
+              <option value="">Semua status</option>
+              <option>DRAFT</option><option>SUBMITTED</option><option>UNDER_REVIEW</option><option>APPROVED</option>
+              <option>APPLIED</option><option>REJECTED</option><option>CANCELLED</option>
+              <option>PENDING_PAYROLL_REVIEW</option><option>QUEUED_FOR_PAYROLL</option><option>PAYROLL_REJECTED</option>
+              <option>VOID_REQUESTED</option><option>VOID_APPROVED</option><option>VOIDED</option><option>VOID_REJECTED</option>
+            </select>
+            <span class="hint" style="flex:1">Riwayat permintaan koreksi/void dalam cakupan entitas Anda.</span>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>No.</th><th>Jenis</th><th>Karyawan</th><th>Tanggal Kerja</th><th>Alasan</th><th>Pengaju</th><th>Pemutus</th><th>Dampak</th><th>Status</th><th></th></tr></thead>
+              <tbody id="requestRows"><tr><td colspan="10" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+          <div id="requestDetail" style="margin-top:16px;display:none"></div>
+        </div>
+
+        <div class="pcfg-panel" data-panel="exceptions">
+          <div class="hrd-filter-bar">
+            <input type="date" id="excFrom" class="hrd-input" style="flex:0 0 165px" />
+            <input type="date" id="excTo" class="hrd-input" style="flex:0 0 165px" />
+            <button class="btn btn--cyan" id="btnScan">Deteksi Exception</button>
+            <span class="hint" style="flex:1">Deteksi tidak pernah mengubah absensi — hanya membuat exception untuk ditindaklanjuti manusia.</span>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Karyawan</th><th>Tanggal</th><th>Jenis Exception</th><th>Severity</th><th>Status</th><th>Usia</th><th>Ditugaskan</th><th></th></tr></thead>
+              <tbody id="exceptionRows"><tr><td colspan="8" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pcfg-panel" data-panel="impact">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Koreksi yang sudah disetujui Attendance dan menunggu/telah melewati review Payroll Officer. Attendance hanya menghitung selisih WAKTU — nilai rupiah tetap urusan Payroll.</span>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>No.</th><th>Karyawan</th><th>Tanggal Kerja</th><th>Klasifikasi</th><th>Δ Menit Kerja</th><th>Δ Menit Lembur</th><th>Status</th><th></th></tr></thead>
+              <tbody id="impactRows"><tr><td colspan="8" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+          <p class="hint" style="margin-top:14px">Antrian Penyesuaian Payroll</p>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Koreksi</th><th>Karyawan</th><th>Tanggal</th><th>Periode</th><th>Δ Kerja</th><th>Δ Lembur</th><th>Review Payroll</th><th>Antrian</th></tr></thead>
+              <tbody id="queueRows"><tr><td colspan="8" style="text-align:center;color:var(--grey-500);padding:16px">—</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pcfg-panel" data-panel="audit">
+          <div class="hrd-filter-bar">
+            <input type="date" id="auditFrom" class="hrd-input" style="flex:0 0 165px" />
+            <input type="date" id="auditTo" class="hrd-input" style="flex:0 0 165px" />
+            <select id="auditActor" class="hrd-select" style="flex:0 0 220px"><option value="">Semua aktor</option></select>
+            <input type="text" id="auditEvent" class="hrd-input" placeholder="Jenis aksi" style="flex:0 0 200px" />
+            <button class="btn btn--cyan" id="btnAudit">Tampilkan</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Waktu</th><th>Aktor</th><th>Peran (saat itu)</th><th>Aksi</th><th>Karyawan</th><th>Tanggal Kerja</th><th>Izin</th><th>Hasil</th><th></th></tr></thead>
+              <tbody id="auditRows"><tr><td colspan="9" style="text-align:center;color:var(--grey-500);padding:16px">Belum ditampilkan.</td></tr></tbody>
+            </table>
+          </div>
+          <div id="auditDetail" style="margin-top:16px;display:none"></div>
+        </div>
+
+        <div class="pcfg-panel" data-panel="policy">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Jendela koreksi, izin koreksi terlambat, kewajiban bukti, dan ambang exception — semuanya konfigurasi, effective-dated. Tidak ada angka hari yang dihardcode.</span>
+            <button class="btn btn--gold" id="btnNewPolicy">+ Kebijakan / Versi Baru</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Kode</th><th>Entitas</th><th>Jendela</th><th>Koreksi Terlambat</th><th>Butuh Approval</th><th>Bukti</th><th>Ambang Durasi</th><th>Grace OT</th><th>Berlaku</th><th></th></tr></thead>
+              <tbody id="policyRows"><tr><td colspan="10" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Koreksi Terkendali. Riwayat Utuh. Payroll Final Tetap Aman.</span>
+        <span>SoD · APPEND-ONLY · AUDITABLE</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" style="width:680px">
+    <div class="modal__hdr">
+      <h2 id="modalTitle">Ajukan Koreksi</h2>
+      <button type="button" class="modal__close" id="modalClose">&times;</button>
+    </div>
+    <form id="genericForm">
+      <div id="genericFormBody" style="padding:18px 20px;display:flex;flex-direction:column;gap:12px;max-height:62vh;overflow:auto"></div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="btnCancel">Batal</button>
+        <button type="submit" class="btn btn--gold">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'attendance_correction';</script>
+<script src="/page-shell.js"></script>
+<script src="/koreksi-absensi.js"></script>
+</body>
+</html>

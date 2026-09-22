@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Operasi Tenaga Kerja — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">OPERASI TENAGA KERJA</h1>
+          <p class="page-header__tagline">Mengendalikan manpower harian dari kehadiran sampai penugasan lapangan.</p>
+          <p class="page-header__desc">Pantau absensi, lembur, penempatan, kesiapan pekerja, dan isu operasional per workfront dalam satu kendali.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>PEOPLE</span><span>OPERATIONS</span><span>PRODUCTIVITY</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">A SAFER</span>
+          <span class="page-header__badge-accent">STRONGER</span>
+          <span class="page-header__badge-accent">TOMORROW</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">👥</div>
+          <div><p class="pk-kpi__label">Total Pekerja Aktif</p><p class="pk-kpi__value">2,348 <span class="pk-kpi__delta pk-kpi__delta--up">▲ +2.5%</span></p><p class="pk-kpi__sub">dari minggu lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📅</div>
+          <div><p class="pk-kpi__label">Hadir Hari Ini</p><p class="pk-kpi__value">2,112 <span style="font-size:13px;color:var(--grey-300);font-weight:600">89.9%</span></p><p class="pk-kpi__sub">dari total pekerja aktif</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">⛑</div>
+          <div><p class="pk-kpi__label">Siap Deploy</p><p class="pk-kpi__value">1,986 <span class="pk-kpi__delta pk-kpi__delta--up">▲ +6.2%</span></p><p class="pk-kpi__sub">dari kemarin</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">🕐</div>
+          <div><p class="pk-kpi__label">Lembur Berjalan</p><p class="pk-kpi__value">186 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +18%</span></p><p class="pk-kpi__sub">dari kemarin</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">⚠️</div>
+          <div><p class="pk-kpi__label">Gap Operasional</p><p class="pk-kpi__value">34 <span class="pk-kpi__delta" style="color:var(--green-500)">▼ -32%</span></p><p class="pk-kpi__sub">dari kemarin</p></div>
+        </div>
+      </section>
+
+      <!-- ROW 1 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📋 Workforce Flow Hari Ini</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="tk-funnel">
+            <div class="tk-funnel__row"><span class="tk-funnel__label">Planned</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:100%"></div></div><span class="tk-funnel__val">2,400</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label">Ready</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:94%"></div></div><span class="tk-funnel__val">2,250</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label">Present</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:88%"></div></div><span class="tk-funnel__val">2,112</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label">Deployed</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:83%;background:var(--amber-500)"></div></div><span class="tk-funnel__val">1,986</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label">On Task</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:77%;background:var(--blue-500)"></div></div><span class="tk-funnel__val">1,842</span></div>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>⏰ Attendance &amp; Timekeeping</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 110 110" width="110" height="110">
+                <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+                <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="248.7 27.8" stroke-dashoffset="0.0"/>
+                <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="14.6 261.9" stroke-dashoffset="-248.7"/>
+                <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="8.0 268.5" stroke-dashoffset="-263.3"/>
+                <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="3.8 272.7" stroke-dashoffset="-271.3"/>
+                <circle cx="55" cy="55" r="44" fill="none" stroke="var(--cyan-400)" stroke-width="14" stroke-dasharray="1.4 275.0" stroke-dashoffset="-275.0"/>
+              </svg>
+              <div class="donut-center"><div class="donut-center__val">2,112</div><div class="donut-center__lbl">Hadir<br/>(89.9%)</div></div>
+            </div>
+            <ul class="donut-legend">
+              <li><span class="dot-sm" style="background:var(--green-500)"></span> Hadir <strong>2,112 (89.9%)</strong></li>
+              <li><span class="dot-sm" style="background:var(--amber-500)"></span> Terlambat <strong>124 (5.3%)</strong></li>
+              <li><span class="dot-sm" style="background:var(--red-500)"></span> Absen <strong>68 (2.9%)</strong></li>
+              <li><span class="dot-sm" style="background:var(--blue-500)"></span> Missing Punch <strong>32 (1.4%)</strong></li>
+              <li><span class="dot-sm" style="background:var(--cyan-400)"></span> Izin / Sakit <strong>12 (0.5%)</strong></li>
+            </ul>
+          </div>
+          <p style="font-size:11px;color:var(--grey-500);font-weight:700;margin:8px 0 4px">Exception Hari Ini</p>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Pekerja</th><th>Isu</th><th>Waktu</th></tr></thead>
+            <tbody>
+              <tr><td>Budi Santoso (KH01234)</td><td>Terlambat 45 menit - Gate A</td><td><span class="status-badge status-badge--red">07:45</span></td></tr>
+              <tr><td>Riko Maulana (KH05678)</td><td>Missing punch - Shift Pagi</td><td><span class="status-badge status-badge--red">08:12</span></td></tr>
+              <tr><td>Andi Pratama (KH07891)</td><td>Tidak ada di lokasi - Main Civil</td><td><span class="status-badge status-badge--amber">08:30</span></td></tr>
+              <tr><td>Siti Rahma (KH09321)</td><td>Izin mendadak - Sakit</td><td><span class="status-badge status-badge--amber">09:15</span></td></tr>
+              <tr><td>Deni Kurniawan (KH07765)</td><td>Pulang lebih awal - Keperluan keluarga</td><td><span class="status-badge status-badge--blue">14:20</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🧭 Penugasan &amp; Workfront</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Workfront</th><th class="num">Planned</th><th class="num">Deployed</th><th>Progress</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>🏗 Main Civil</td><td class="num">620</td><td class="num">580</td><td><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:94%"></div></div></td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>⛏ Piling</td><td class="num">420</td><td class="num">398</td><td><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:95%"></div></div></td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>⚙ Mechanical</td><td class="num">360</td><td class="num">322</td><td><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:89%"></div></div></td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>🔧 Piping</td><td class="num">400</td><td class="num">365</td><td><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:91%"></div></div></td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>⚡ Electrical</td><td class="num">320</td><td class="num">286</td><td><div class="pbar-wrap" style="width:70px"><div class="pbar pbar--amber" style="width:89%"></div></div></td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr><td>🎛 Instrumentation</td><td class="num">280</td><td class="num">248</td><td><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:89%"></div></div></td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <!-- ROW 2 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🕐 Overtime Control</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="wuhuan-grid">
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">🕐</div><div class="wuhuan-stat__val">142</div><div class="wuhuan-stat__lbl">OT Diajukan</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +28%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">✅</div><div class="wuhuan-stat__val" style="color:var(--green-500)">98</div><div class="wuhuan-stat__lbl">OT Disetujui</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +12%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">⏳</div><div class="wuhuan-stat__val" style="color:var(--amber-500)">28</div><div class="wuhuan-stat__lbl">OT Pending</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +75%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">❌</div><div class="wuhuan-stat__val" style="color:var(--red-500)">16</div><div class="wuhuan-stat__lbl">OT Ditolak</div><div class="wuhuan-stat__delta" style="color:var(--green-500)">▼ -20%</div></div>
+          </div>
+          <p style="font-size:11px;color:var(--grey-500);font-weight:700;margin:10px 0 4px">Total Jam Lembur (Hari Ini): <strong style="color:var(--white)">1,248 jam</strong> <span style="color:var(--green-500)">▲ +18%</span></p>
+          <div class="bar-chart" style="height:70px">
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:38px"><span class="bar__val">980</span></div></div><div class="bar-group__label">8 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:45px"><span class="bar__val">1,120</span></div></div><div class="bar-group__label">9 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:52px"><span class="bar__val">1,304</span></div></div><div class="bar-group__label">10 Sep</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--blue" style="height:50px"><span class="bar__val">1,248</span></div></div><div class="bar-group__label">11 Sep</div></div>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🧑‍🔧 Worker 360 / Pekerja Prioritas</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Nama</th><th>ID Badge</th><th>Posisi</th><th>Hadir</th><th>Fit to Work</th><th>Penugasan</th></tr></thead>
+            <tbody>
+              <tr><td>Agus Setiawan</td><td>KH00123</td><td>Welder</td><td>✅</td><td>✅ Fit</td><td><span class="status-badge status-badge--blue">On Task</span></td></tr>
+              <tr><td>Rina Oktaviani</td><td>KH00456</td><td>Rigger</td><td>✅</td><td>✅ Fit</td><td><span class="status-badge status-badge--amber">Deployed</span></td></tr>
+              <tr><td>Dedi Kurniawan</td><td>KH00789</td><td>Electrician</td><td>✅</td><td>✅ Fit</td><td><span class="status-badge status-badge--blue">On Task</span></td></tr>
+              <tr><td>Maya Sari</td><td>KH00987</td><td>Operator</td><td>✅</td><td>✅ Fit</td><td><span class="status-badge status-badge--amber">Deployed</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🚌 Shift, Mobilisasi &amp; Replacement</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="wuhuan-grid">
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">☀️</div><div class="wuhuan-stat__val">1,420</div><div class="wuhuan-stat__lbl">Day Shift</div><div class="wuhuan-stat__delta">60.5%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">🌙</div><div class="wuhuan-stat__val">928</div><div class="wuhuan-stat__lbl">Night Shift</div><div class="wuhuan-stat__delta">39.5%</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">🚌</div><div class="wuhuan-stat__val">24</div><div class="wuhuan-stat__lbl">Bus Tiba di Site</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">92% dari 26 armada</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">👥</div><div class="wuhuan-stat__val" style="color:var(--amber-500)">86</div><div class="wuhuan-stat__lbl">Menunggu Mobilisasi</div><div class="wuhuan-stat__delta">pekerja</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">🔁</div><div class="wuhuan-stat__val">34</div><div class="wuhuan-stat__lbl">Replacement Request</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +22% open</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">🔀</div><div class="wuhuan-stat__val">48</div><div class="wuhuan-stat__lbl">Site Transfer Hari Ini</div><div class="wuhuan-stat__delta wuhuan-stat__delta--up">▲ +12% pekerja</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 3 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🧰 Service Support Status</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="readiness-grid">
+            <div class="readiness-card readiness-card--green"><div class="readiness-card__icon">🛏</div><div class="readiness-card__pct">96%</div><div class="readiness-card__lbl">Akomodasi</div><p style="margin:4px 0 0;font-size:10.5px;color:var(--green-500)">● Normal</p></div>
+            <div class="readiness-card readiness-card--green"><div class="readiness-card__icon">🚌</div><div class="readiness-card__pct">92%</div><div class="readiness-card__lbl">Transportasi</div><p style="margin:4px 0 0;font-size:10.5px;color:var(--green-500)">● Normal</p></div>
+            <div class="readiness-card readiness-card--green"><div class="readiness-card__icon">🍽</div><div class="readiness-card__pct">95%</div><div class="readiness-card__lbl">Konsumsi / Meals</div><p style="margin:4px 0 0;font-size:10.5px;color:var(--green-500)">● Normal</p></div>
+            <div class="readiness-card readiness-card--green"><div class="readiness-card__icon">⚕</div><div class="readiness-card__pct">98%</div><div class="readiness-card__lbl">Kesehatan Kerja</div><p style="margin:4px 0 0;font-size:10.5px;color:var(--green-500)">● Normal</p></div>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📋 Supervisor Action Required</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <ul class="action-list-pk">
+            <li class="action-pk action-pk--red"><div class="action-pk__flag action-pk__flag--red">!</div><div class="action-pk__body"><p class="action-pk__title">Verifikasi absensi pekerja tidak ada di lokasi</p><p class="action-pk__meta">12 kasus terbuka</p></div><span class="action-pk__chip chip--red">12</span></li>
+            <li class="action-pk action-pk--red"><div class="action-pk__flag action-pk__flag--red">!</div><div class="action-pk__body"><p class="action-pk__title">Follow up workers missing punch</p><p class="action-pk__meta">8 pekerja belum konfirmasi</p></div><span class="action-pk__chip chip--red">8</span></li>
+            <li class="action-pk action-pk--amber"><div class="action-pk__flag action-pk__flag--amber">!</div><div class="action-pk__body"><p class="action-pk__title">Konfirmasi kesiapan pekerja untuk besok</p><p class="action-pk__meta">6 workfront menunggu konfirmasi</p></div><span class="action-pk__chip chip--amber">6</span></li>
+            <li class="action-pk action-pk--amber"><div class="action-pk__flag action-pk__flag--amber">!</div><div class="action-pk__body"><p class="action-pk__title">Tinjau pengajuan lembur di atas 12 jam</p><p class="action-pk__meta">4 pengajuan perlu review</p></div><span class="action-pk__chip chip--amber">4</span></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📅 7 Hari ke Depan</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <p style="font-size:10.5px;color:var(--grey-500);margin:0 0 6px">Proyeksi kesiapan tenaga kerja per hari</p>
+          <div class="bar-chart" style="height:90px">
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar bar--amber" style="height:47px"><span class="bar__val">82%</span></div></div><div class="bar-group__label">12 Sep<br>Hari Ini</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:49px"><span class="bar__val">86%</span></div></div><div class="bar-group__label">13 Sep<br>Sab</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:50px"><span class="bar__val">88%</span></div></div><div class="bar-group__label">14 Sep<br>Min</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:52px"><span class="bar__val">90%</span></div></div><div class="bar-group__label">15 Sep<br>Sen</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:52px"><span class="bar__val">91%</span></div></div><div class="bar-group__label">16 Sep<br>Sel</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:51px"><span class="bar__val">89%</span></div></div><div class="bar-group__label">17 Sep<br>Rab</div></div>
+            <div class="bar-group"><div class="bar-group__bars"><div class="bar" style="height:50px"><span class="bar__val">87%</span></div></div><div class="bar-group__label">18 Sep<br>Kam</div></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Operasi tenaga kerja mengendalikan manpower harian dari kehadiran sampai penugasan lapangan.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'workforce_operations';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

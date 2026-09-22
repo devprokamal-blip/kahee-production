@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Layanan Pekerja — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">LAYANAN PEKERJA</h1>
+          <p class="page-header__tagline">Mengendalikan akomodasi, transportasi, makan, laundry, dan permintaan layanan pekerja setiap hari.</p>
+          <p class="page-header__desc">Semua service pekerja dipantau dalam satu tampilan untuk memastikan kenyamanan, produktivitas, dan kontinuitas operasi lapangan.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>PEOPLE SUPPORTING</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">A STRONGER</span>
+          <span class="page-header__badge-accent">TOMORROW</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">🎫</div>
+          <div><p class="pk-kpi__label">Tiket Layanan Aktif</p><p class="pk-kpi__value">124 <span class="pk-kpi__delta pk-kpi__delta--up">▲</span></p><p class="pk-kpi__sub">18 prioritas tinggi</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">🛡</div>
+          <div><p class="pk-kpi__label">SLA Service</p><p class="pk-kpi__value">95.6% <span class="pk-kpi__delta pk-kpi__delta--up">▲</span></p><p class="pk-kpi__sub">dalam target</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">🛏</div>
+          <div><p class="pk-kpi__label">Hunian Mess</p><p class="pk-kpi__value">87% <span class="pk-kpi__delta pk-kpi__delta--up">▲</span></p><p class="pk-kpi__sub">1,742 / 2,000 bed terisi</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">🚌</div>
+          <div><p class="pk-kpi__label">Bus On-Time</p><p class="pk-kpi__value">96% <span class="pk-kpi__delta pk-kpi__delta--up">▲</span></p><p class="pk-kpi__sub">84 trip hari ini</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">🍴</div>
+          <div><p class="pk-kpi__label">Meal Service</p><p class="pk-kpi__value">99.1% <span class="pk-kpi__delta pk-kpi__delta--up">▲</span></p><p class="pk-kpi__sub">4,126 porsi tersalur</p></div>
+        </div>
+      </section>
+
+      <!-- ROW 1 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🧰 Kontrol Layanan Pekerja</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Layanan</th><th>Status</th><th class="num">Kinerja</th><th>Trend</th></tr></thead>
+            <tbody>
+              <tr><td>🛏 Accommodation</td><td><span class="status-badge status-badge--green">Normal</span></td><td class="num">87%</td><td style="color:var(--green-500)">▲ +2.4%</td></tr>
+              <tr><td>🚌 Mobility / Transport</td><td><span class="status-badge status-badge--green">Normal</span></td><td class="num">96%</td><td style="color:var(--green-500)">▲ +1.8%</td></tr>
+              <tr><td>🍴 Meals / Catering</td><td><span class="status-badge status-badge--green">Normal</span></td><td class="num">99%</td><td style="color:var(--green-500)">▲ +0.6%</td></tr>
+              <tr><td>👕 Laundry / Housekeeping</td><td><span class="status-badge status-badge--amber">Perhatian</span></td><td class="num">92%</td><td style="color:var(--red-500)">▼ -1.2%</td></tr>
+              <tr><td>🎧 Worker Helpdesk</td><td><span class="status-badge status-badge--green">Normal</span></td><td class="num">88%</td><td style="color:var(--green-500)">▲ +3.1%</td></tr>
+              <tr><td>🏠 Camp Facility</td><td><span class="status-badge status-badge--green">Normal</span></td><td class="num">90%</td><td style="color:var(--green-500)">▲ +1.5%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>⚡ Action Required</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Masalah / Tiket</th><th>PIC</th><th>SLA</th></tr></thead>
+            <tbody>
+              <tr><td>🔴 31 tiket akomodasi belum ditutup</td><td>Andi Pratama<br><small style="color:var(--grey-500)">Accommodation</small></td><td><span class="status-badge status-badge--red">2 jam lagi</span></td></tr>
+              <tr><td>🔴 2 bus shuttle cadangan belum standby</td><td>Riko Maulana<br><small style="color:var(--grey-500)">Transport</small></td><td><span class="status-badge status-badge--red">3 jam lagi</span></td></tr>
+              <tr><td>🟡 1.5 ton laundry overload dari Camp B</td><td>Siti Rahma<br><small style="color:var(--grey-500)">Laundry</small></td><td><span class="status-badge status-badge--amber">4 jam lagi</span></td></tr>
+              <tr><td>🟡 4 keluhan menu siang menunggu tindak lanjut</td><td>Budi Santoso<br><small style="color:var(--grey-500)">Catering</small></td><td><span class="status-badge status-badge--amber">6 jam lagi</span></td></tr>
+              <tr><td>🟡 8 perpindahan kamar belum selesai</td><td>Dewi Lestari<br><small style="color:var(--grey-500)">Accommodation</small></td><td><span class="status-badge status-badge--amber">8 jam lagi</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📋 Permintaan Pekerja</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="wuhuan-grid">
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">📂</div><div class="wuhuan-stat__val">124</div><div class="wuhuan-stat__lbl">Open Request</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">⚙</div><div class="wuhuan-stat__val">86</div><div class="wuhuan-stat__lbl">In Progress</div></div>
+            <div class="wuhuan-stat"><div class="wuhuan-stat__icon">✅</div><div class="wuhuan-stat__val" style="color:var(--green-500)">212</div><div class="wuhuan-stat__lbl">Closed Today</div></div>
+          </div>
+          <p style="font-size:11px;color:var(--red-500);font-weight:700;margin:8px 0">⚠ Escalated: 16</p>
+          <p style="font-size:11px;color:var(--grey-500);font-weight:700;margin:8px 0 6px">Top 5 Jenis Permintaan</p>
+          <ul class="gap-list">
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">🏠 Perpindahan Kamar</span><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:100%"></div></div><strong>48</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">🚌 Transportasi Shuttle</span><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:75%"></div></div><strong>36</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">👕 Permintaan Laundry</span><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:58%"></div></div><strong>28</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">🍴 Keluhan Makanan</span><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:50%"></div></div><strong>24</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">🔧 Perbaikan Fasilitas</span><div class="pbar-wrap" style="width:80px"><div class="pbar" style="width:38%"></div></div><strong>18</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ROW 2: 5 columns -->
+      <section class="pk-grid-5">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🛏 Status Akomodasi</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="231.1 45.4" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="34.2 242.2" stroke-dashoffset="-231.1"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="6.4 270.1" stroke-dashoffset="-265.3"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="4.8 271.7" stroke-dashoffset="-271.7"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">1,742</div><div class="donut-center__lbl">terisi<br/>(87%)</div></div>
+          </div>
+          <ul class="donut-legend">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> Terisi <strong>1,742 (87%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> Tersedia <strong>258 (13%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Maintenance <strong>48 (2.4%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Alokasi Baru <strong>36 (1.8%)</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🚌 Mobilitas Hari Ini</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Total Trip <strong>84</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> On-Time <strong style="color:var(--green-500)">96%</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Bus Aktif <strong>42</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--grey-500)"></span> Kendaraan Standby <strong>6</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Trip Terlambat <strong style="color:var(--red-500)">4</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🍴 Meals &amp; Catering</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Sarapan <strong>1,328 (100%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Makan Siang <strong>1,412 (98%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Makan Malam <strong>1,386 (97%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Menu Khusus <strong>186 (100%)</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Makan Terlambat <strong style="color:var(--red-500)">12</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>👕 Laundry &amp; Housekeeping</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Pakaian Masuk <strong>1,208</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Dalam Proses <strong>436</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Selesai <strong style="color:var(--green-500)">1,126</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Pending <strong>82</strong></li>
+          </ul>
+          <p style="font-size:10.5px;color:var(--grey-500);margin:8px 0 3px">Pembersihan Kamar</p>
+          <div class="pbar-wrap"><div class="pbar" style="width:92%"></div></div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📊 SLA Layanan</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div style="display:flex;justify-content:space-around;text-align:center">
+            <div>
+              <svg viewBox="0 0 70 70" width="60" height="60"><circle cx="35" cy="35" r="28" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="9"/><circle cx="35" cy="35" r="28" fill="none" stroke="var(--blue-500)" stroke-width="9" stroke-dasharray="161.9 14.1" transform="rotate(-90 35 35)"/></svg>
+              <p style="font-size:12px;font-weight:800;color:var(--white);margin:4px 0 0">92%</p>
+              <p style="font-size:9.5px;color:var(--grey-500)">Respon Time</p>
+            </div>
+            <div>
+              <svg viewBox="0 0 70 70" width="60" height="60"><circle cx="35" cy="35" r="28" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="9"/><circle cx="35" cy="35" r="28" fill="none" stroke="var(--green-500)" stroke-width="9" stroke-dasharray="168.9 7.0" transform="rotate(-90 35 35)"/></svg>
+              <p style="font-size:12px;font-weight:800;color:var(--white);margin:4px 0 0">96%</p>
+              <p style="font-size:9.5px;color:var(--grey-500)">Penyelesaian</p>
+            </div>
+            <div>
+              <svg viewBox="0 0 70 70" width="60" height="60"><circle cx="35" cy="35" r="28" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="9"/><circle cx="35" cy="35" r="28" fill="none" stroke="var(--gold-500)" stroke-width="9" stroke-dasharray="161.9 14.1" transform="rotate(-90 35 35)"/></svg>
+              <p style="font-size:12px;font-weight:800;color:var(--white);margin:4px 0 0">4.6</p>
+              <p style="font-size:9.5px;color:var(--grey-500)">Kepuasan Pekerja</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="module-tabs">
+        <span class="module-tab"><span class="module-tab__icon">🛏</span> Accommodation</span>
+        <span class="module-tab"><span class="module-tab__icon">🚌</span> Mobility</span>
+        <span class="module-tab"><span class="module-tab__icon">🍴</span> Meals</span>
+        <span class="module-tab"><span class="module-tab__icon">👕</span> Laundry</span>
+        <span class="module-tab"><span class="module-tab__icon">🎧</span> Helpdesk</span>
+        <span class="module-tab"><span class="module-tab__icon">🎫</span> Ticketing</span>
+        <span class="module-tab"><span class="module-tab__icon">📊</span> SLA Control</span>
+      </div>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Semua service pekerja dipantau untuk memastikan kenyamanan dan kontinuitas operasi.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'worker_services';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

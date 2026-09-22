@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KAHE 360° — Internal Operations Portal</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+  <!-- Mobile drawer overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <div class="app-shell">
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+      </div>
+      <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary">
+        <!-- populated by app.js based on permissions -->
+      </nav>
+      <div class="sidebar__footer">
+        <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+        <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <!-- ================= TOP HEADER ================= -->
+      <header class="topbar">
+        <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+
+        <div class="topbar__title">
+          <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+          <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+        </div>
+
+        <div class="topbar__controls">
+          <select class="topbar__project" id="projectSelect" aria-label="Project selector">
+            <option>PPB Balongan</option>
+          </select>
+          <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+          <span class="topbar__datetime" id="topbarDatetime">—</span>
+          <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+          <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">
+            🔔<span class="badge" id="notifCount">7</span>
+          </button>
+          <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar" id="avatarInitials">--</span>
+            <span class="topbar__profile-text">
+              <strong id="profileName">Loading…</strong>
+              <small id="profileRole">&nbsp;</small>
+            </span>
+          </button>
+          <div class="topbar__lang">
+            <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+            <span class="lang-sep">|</span>
+            <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+          </div>
+        </div>
+
+        <!-- Dropdowns -->
+        <div class="dropdown" id="notifDropdown" hidden>
+          <p class="dropdown__title" data-i18n="notif_title">Notifikasi</p>
+          <ul class="dropdown__list">
+            <li>14 Pipe Welder belum Fit to Work</li>
+            <li>31 Payroll Exceptions menunggu approval</li>
+            <li>12 Sertifikat akan expired ≤ 7 hari</li>
+          </ul>
+        </div>
+        <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+          <button class="dropdown__item" id="logoutBtn" data-i18n="profile_logout">Logout</button>
+        </div>
+      </header>
+
+      <!-- ================= MAIN CONTENT ================= -->
+      <main class="content">
+
+        <!-- HERO (locked image asset, never redrawn) -->
+        <section class="hero-wrap">
+          <img src="/assets/home-hero-wide.png" alt="KAHE 360 Internal Operations Portal" class="hero-img" />
+        </section>
+
+        <!-- KPI ROW (real HTML) -->
+        <section class="kpi-row" aria-label="Key metrics">
+          <article class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--blue">👥</div>
+            <div>
+              <p class="kpi-card__label" data-i18n="kpi.workforce">Workforce</p>
+              <p class="kpi-card__value">2,348 <span class="kpi-card__delta kpi-card__delta--up">+2.5%</span></p>
+            </div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--cyan">🪖</div>
+            <div>
+              <p class="kpi-card__label" data-i18n="kpi.readyTomorrow">Ready Tomorrow</p>
+              <p class="kpi-card__value">96% <span class="kpi-card__sub">2,038 / 2,120</span></p>
+            </div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--amber">⚙</div>
+            <div>
+              <p class="kpi-card__label" data-i18n="kpi.criticalActions">Critical Actions</p>
+              <p class="kpi-card__value">7 <span class="kpi-card__sub" data-i18n="kpi.criticalActionsSub">Requiring Attention</span></p>
+            </div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--blue">📊</div>
+            <div>
+              <p class="kpi-card__label" data-i18n="kpi.projectPhase">Project Phase</p>
+              <p class="kpi-card__value kpi-card__value--sm">Main Civil</p>
+              <div class="progress-bar"><span style="width:62%"></span></div>
+            </div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--green">✔</div>
+            <div>
+              <p class="kpi-card__label" data-i18n="kpi.dataHealth">Data Health</p>
+              <p class="kpi-card__value">99.4% <span class="kpi-card__sub" data-i18n="kpi.systemOnline">System Online</span></p>
+            </div>
+          </article>
+        </section>
+
+        <!-- PANEL GRID ROW 1 -->
+        <section class="panel-grid panel-grid--4">
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.workforceToday">Workforce Today</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <ul class="stat-list">
+              <li><span data-i18n="label.planned">Planned</span><strong>2,180</strong></li>
+              <li><span data-i18n="label.ready">Ready</span><strong>2,120</strong></li>
+              <li><span data-i18n="label.present">Present</span><strong>2,112</strong></li>
+              <li><span data-i18n="label.deployed">Deployed</span><strong>2,064</strong></li>
+              <li><span data-i18n="label.onTask">On Task</span><strong>2,038</strong></li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.currentGap">Current Operational Gap</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <p class="gap-total">142 <span data-i18n="label.workers">workers</span></p>
+            <ul class="dot-list">
+              <li><i class="dot dot--red"></i><span data-i18n="label.absence">Absence</span><strong>27</strong></li>
+              <li><i class="dot dot--red"></i><span data-i18n="label.compliance">Compliance</span><strong>22</strong></li>
+              <li><i class="dot dot--amber"></i><span data-i18n="label.waitingMobilization">Waiting Mobilization</span><strong>31</strong></li>
+              <li><i class="dot dot--amber"></i><span data-i18n="label.assignment">Assignment</span><strong>19</strong></li>
+              <li><i class="dot dot--blue"></i><span data-i18n="label.transport">Transport</span><strong>8</strong></li>
+              <li><i class="dot dot--blue"></i><span data-i18n="label.replacement">Replacement</span><strong>18</strong></li>
+              <li><i class="dot dot--blue"></i><span data-i18n="label.other">Other</span><strong>17</strong></li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.actionRequired">Action Required</h3><button class="panel__link" data-i18n="action.viewAll">Lihat Semua ›</button></header>
+            <ul class="action-list">
+              <li><i class="flag flag--red">!</i><div><p>14 Pipe Welder belum Fit to Work</p><small>Needed Tomorrow 07:00 · PIC: Health Team</small></div><span class="chip">8h 14m</span></li>
+              <li><i class="flag flag--red">!</i><div><p>6 Civil Supervisor belum tersedia</p><small>Required 13 Sep 2026 · PIC: Recruitment</small></div><span class="chip">1d 6h</span></li>
+              <li><i class="flag flag--amber">!</i><div><p>23 pekerja tiba dalam 48 jam</p><small>Mess belum confirmed · PIC: Accommodation</small></div><span class="chip">1d 12h</span></li>
+              <li><i class="flag flag--amber">!</i><div><p>31 Payroll Exceptions</p><small>OT belum approved · PIC: Payroll</small></div><span class="chip">2d</span></li>
+              <li><i class="flag flag--amber">!</i><div><p>12 Sertifikat akan expired</p><small>≤ 7 hari · PIC: Compliance</small></div><span class="chip">3d</span></li>
+              <li><i class="flag flag--blue">!</i><div><p>2 Wuhuan Request belum assigned</p><small>Transport tambahan · PIC: Customer Control</small></div><span class="chip">4d</span></li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.manpowerControl">Manpower Control</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <ul class="mc-list">
+              <li><i class="mc-icon mc-icon--blue">🕓</i><div><strong data-i18n="label.attendance">Attendance</strong><small>Present 2,112 | Absent 27<br />Late 18 | Leave 11 | Missing 6</small></div></li>
+              <li><i class="mc-icon mc-icon--blue">🧭</i><div><strong data-i18n="label.overtime">Overtime</strong><small>Approved 4,218 h | Pending 186 h<br />Rejected 22 h</small></div></li>
+              <li><i class="mc-icon mc-icon--gold">💳</i><div><strong data-i18n="label.payroll">Payroll</strong><small>Ready 96.8% | Exception 31</small></div></li>
+              <li><i class="mc-icon mc-icon--green">🛡</i><div><strong data-i18n="label.bpjs">BPJS</strong><small>Compliant 98.9% | Pending 22<br />Problem 8</small></div></li>
+              <li><i class="mc-icon mc-icon--blue">⭐</i><div><strong data-i18n="label.workerKpi">Worker KPI</strong><small>Average 94.2 | Below Target 16</small></div></li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- PANEL GRID ROW 2 -->
+        <section class="panel-grid panel-grid--5">
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.readinessFunnel">Readiness Funnel</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <ul class="funnel-list">
+              <li><span data-i18n="funnel.sourced">Sourced</span><div class="funnel-bar"><i style="width:100%"></i></div><strong>426</strong></li>
+              <li><span data-i18n="funnel.screened">Screened</span><div class="funnel-bar"><i style="width:82%"></i></div><strong>348</strong></li>
+              <li><span data-i18n="funnel.verified">Verified</span><div class="funnel-bar"><i style="width:68%"></i></div><strong>291</strong></li>
+              <li><span data-i18n="funnel.compliant">Compliant</span><div class="funnel-bar"><i style="width:62%"></i></div><strong>264</strong></li>
+              <li><span data-i18n="funnel.ready">Ready</span><div class="funnel-bar"><i style="width:57%"></i></div><strong>243</strong></li>
+              <li><span data-i18n="funnel.mobilized">Mobilized</span><div class="funnel-bar"><i style="width:51%"></i></div><strong>218</strong></li>
+              <li><span data-i18n="funnel.deployed">Deployed</span><div class="funnel-bar"><i style="width:48%"></i></div><strong>204</strong></li>
+            </ul>
+          </article>
+
+          <article class="panel panel--center">
+            <header class="panel__header"><h3 data-i18n="panel.readyByStatus">Ready-By Status</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <div class="ring-row">
+              <div class="ring" style="--pct:98"><span>98%</span></div>
+              <div class="ring" style="--pct:96"><span>96%</span></div>
+              <div class="ring" style="--pct:93"><span>93%</span></div>
+              <div class="ring" style="--pct:91"><span>91%</span></div>
+            </div>
+            <div class="ring-labels">
+              <span data-i18n="label.today">Today</span><span data-i18n="label.next3">Next 3 Days</span><span data-i18n="label.next7">Next 7 Days</span><span data-i18n="label.next14">Next 14 Days</span>
+            </div>
+          </article>
+
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.serviceHealth">Service Health</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <ul class="svc-list">
+              <li><i class="svc-icon">🚌</i><span data-i18n="label.accommodation">Accommodation</span><div class="svc-bar"><i style="width:94%"></i></div><strong>94%</strong></li>
+              <li><i class="svc-icon">🚐</i><span data-i18n="label.mobilityTransport">Mobility / Transport</span><div class="svc-bar"><i style="width:96%"></i></div><strong>96%</strong></li>
+              <li><i class="svc-icon">🍽</i><span data-i18n="label.meals">Meals</span><div class="svc-bar"><i style="width:99%"></i></div><strong>99%</strong></li>
+              <li><i class="svc-icon">🧺</i><span data-i18n="label.laundry">Laundry</span><div class="svc-bar"><i style="width:97%"></i></div><strong>97%</strong></li>
+              <li><i class="svc-icon">⚕</i><span data-i18n="label.occupationalHealth">Occupational Health</span><div class="svc-bar"><i style="width:95%"></i></div><strong>95%</strong></li>
+              <li><i class="svc-icon">🛠</i><span data-i18n="label.equipment">Equipment</span><div class="svc-bar svc-bar--amber"><i style="width:91%"></i></div><strong>91%</strong></li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.wuhuanCommitments">Wuhuan Commitments</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <table class="mini-table">
+              <thead><tr><th data-i18n="table.item">Item</th><th data-i18n="table.qty">Qty</th><th data-i18n="table.ready">Ready</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>Pipe Welder</td><td>30</td><td>27</td><td><i class="dot dot--amber"></i></td></tr>
+                <tr><td>Rigger</td><td>20</td><td>20</td><td><i class="dot dot--green"></i></td></tr>
+                <tr><td>Civil Supervisor</td><td>6</td><td>4</td><td><i class="dot dot--red"></i></td></tr>
+                <tr><td>Bus</td><td>2</td><td>1</td><td><i class="dot dot--amber"></i></td></tr>
+                <tr><td>Mess Beds</td><td>80</td><td>80</td><td><i class="dot dot--green"></i></td></tr>
+                <tr><td>MCU</td><td>64</td><td>59</td><td><i class="dot dot--amber"></i></td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="panel">
+            <header class="panel__header"><h3 data-i18n="panel.upcomingDemand">Upcoming Resource Demand</h3><button class="panel__link" data-i18n="action.detail">Detail ›</button></header>
+            <div class="demand-cols">
+              <div><h4 data-i18n="demand.30">30 Days</h4><ul><li>Civil <strong>+42</strong></li><li>Piling <strong>+31</strong></li><li>HSE <strong>+8</strong></li></ul></div>
+              <div><h4 data-i18n="demand.60">60 Days</h4><ul><li>Structure <strong>+67</strong></li><li>Mechanical <strong>+48</strong></li><li>Rigger <strong>+26</strong></li></ul></div>
+              <div><h4 data-i18n="demand.90">90 Days</h4><ul><li>Piping <strong>+94</strong></li><li>Welder 6G <strong>+34</strong></li><li>Electrical <strong>+37</strong></li><li>Instrumentation <strong>+21</strong></li></ul></div>
+            </div>
+          </article>
+        </section>
+
+        <footer class="content-footer">
+          <span data-i18n="footer.brand">KAHE 360° WORKFORCE SOLUTIONS</span>
+          <span data-i18n="footer.strap">Orang yang Tepat. Resource yang Tepat. Siap pada Waktu yang Tepat.</span>
+          <span data-i18n="footer.tagline">PEOPLE. PROJECTS. PROGRESS. A STRONGER TOMORROW.</span>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/translations/id.js"></script>
+  <script src="/translations/en.js"></script>
+  <script src="/i18n.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

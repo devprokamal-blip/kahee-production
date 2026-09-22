@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jadwal &amp; Pola Kerja — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list"><li>Konfigurasi jadwal &amp; roster</li></ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">JADWAL &amp; POLA KERJA</h1>
+          <p class="page-header__tagline">Shift, Hari Kerja, Roster — Semua Dikonfigurasi, Tidak Ada yang Hardcode.</p>
+          <p class="page-header__desc">Master shift (jam masuk/pulang, istirahat, batas lembur), pola kerja mingguan &amp; kustom, roster berputar, roster tanggal, dan override tanggal. Semua versioned by tanggal berlaku; riwayat absensi tidak berubah saat konfigurasi berubah.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>CONFIGURABLE</span><span>VERSIONED</span><span id="tzBadge">WIB</span>
+        </div>
+      </section>
+
+      <section class="pk-panel">
+        <div class="pcfg-tabs" id="schedTabs">
+          <button class="pcfg-tab is-active" data-tab="schedules">Shift / Jadwal</button>
+          <button class="pcfg-tab" data-tab="patterns">Pola Kerja</button>
+          <button class="pcfg-tab" data-tab="roster">Roster Tanggal</button>
+          <button class="pcfg-tab" data-tab="overrides">Override Tanggal</button>
+          <button class="pcfg-tab" data-tab="assignments">Penugasan Karyawan</button>
+          <button class="pcfg-tab" data-tab="resolve">Cek Resolusi</button>
+        </div>
+
+        <!-- TAB 1: SHIFT / SCHEDULE MASTER -->
+        <div class="pcfg-panel is-active" data-panel="schedules">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Setiap shift punya jam masuk, jam pulang, menit kerja standar, istirahat (0, 1, atau banyak), dan aturan kelayakan lembur. Versi baru dibuat per tanggal berlaku — versi lama tetap dipakai absensi lama.</span>
+            <button class="btn btn--gold" id="btnAddSchedule">+ Tambah Shift</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Kode</th><th>Nama</th><th>Entitas</th><th>Masuk</th><th>Pulang</th><th>Menit Standar</th><th>Lewat Tengah Malam</th><th>Istirahat</th><th>Lembur Mulai</th><th>Berlaku</th><th>Status</th><th></th></tr></thead>
+              <tbody id="scheduleRows"><tr><td colspan="12" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 2: WORK PATTERNS -->
+        <div class="pcfg-panel" data-panel="patterns">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">FIXED_WEEKLY / CUSTOM_WEEKLY: atur tiap hari (Senin–Minggu) secara independen — WORK atau OFF, dengan shift-nya sendiri. ROTATING_CYCLE: panjang siklus + tanggal mulai siklus + status tiap hari siklus. DATE_BASED_ROSTER: daftar tanggal eksplisit.</span>
+            <button class="btn btn--gold" id="btnAddPattern">+ Tambah Pola</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Kode</th><th>Nama</th><th>Tipe</th><th>Entitas</th><th>Siklus</th><th>Mulai Siklus</th><th>Hari Kerja</th><th>Berlaku</th><th>Status</th><th></th></tr></thead>
+              <tbody id="patternRows"><tr><td colspan="10" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+          <div id="patternDetailWrap" style="margin-top:16px;display:none">
+            <p class="hint" style="margin-bottom:6px">Rincian hari: <strong id="patternDetailName" style="color:var(--white)"></strong></p>
+            <div class="table-scroll">
+              <table class="hrd-table">
+                <thead><tr><th>Hari</th><th>Status</th><th>Shift</th><th>Catatan</th></tr></thead>
+                <tbody id="patternDetailRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: DATE ROSTER -->
+        <div class="pcfg-panel" data-panel="roster">
+          <div class="hrd-filter-bar">
+            <select id="rosterPattern" class="hrd-select" style="flex:0 0 320px"></select>
+            <span class="hint" style="flex:1">Roster tanggal eksplisit untuk pola DATE_BASED_ROSTER (atau pengecualian pada pola lain).</span>
+            <button class="btn btn--gold" id="btnAddRoster">+ Tambah Tanggal Roster</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Tanggal</th><th>Status</th><th>Shift</th><th>Catatan</th></tr></thead>
+              <tbody id="rosterRows"><tr><td colspan="4" style="text-align:center;color:var(--grey-500);padding:16px">Pilih pola kerja.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 4: DATE OVERRIDES -->
+        <div class="pcfg-panel" data-panel="overrides">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Pengecualian tanggal: hari OFF menjadi WORK, atau sebaliknya. Pola dasar tidak diubah, dan jenis hari libur nasional tetap sesuai kalender kanonik.</span>
+            <button class="btn btn--gold" id="btnAddOverride">+ Tambah Override</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Tanggal</th><th>Karyawan / Pola</th><th>Override</th><th>Shift</th><th>Alasan</th><th>Oleh</th><th>Status</th><th></th></tr></thead>
+              <tbody id="overrideRows"><tr><td colspan="8" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 5: EMPLOYEE ASSIGNMENT -->
+        <div class="pcfg-panel" data-panel="assignments">
+          <div class="hrd-filter-bar">
+            <span class="hint" style="flex:1">Penugasan pola/shift per karyawan, effective-dated. Penugasan baru menutup yang lama sehari sebelumnya — riwayat bulan sebelumnya tetap memakai pola lamanya.</span>
+            <button class="btn btn--gold" id="btnAddAssignment">+ Tugaskan Pola</button>
+          </div>
+          <div class="table-scroll">
+            <table class="hrd-table">
+              <thead><tr><th>Karyawan</th><th>Pola</th><th>Tipe</th><th>Shift Default</th><th>Proyek</th><th>Workfront</th><th>Berlaku Sejak</th><th>Berakhir</th></tr></thead>
+              <tbody id="assignmentRows"><tr><td colspan="8" style="text-align:center;color:var(--grey-500);padding:16px">Memuat…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 6: RESOLUTION CHECK -->
+        <div class="pcfg-panel" data-panel="resolve">
+          <div class="hrd-filter-bar">
+            <select id="resolveEmployee" class="hrd-select" style="flex:0 0 280px"></select>
+            <input type="date" id="resolveDate" class="hrd-input" style="flex:0 0 170px" />
+            <button class="btn btn--cyan" id="btnResolve">Cek Jadwal</button>
+            <span class="hint" style="flex:1">Menampilkan hasil resolusi: override → roster → siklus → pola mingguan → fallback, plus jenis hari dari kalender kanonik.</span>
+          </div>
+          <div id="resolveResult" class="hint">Belum ada pemeriksaan.</div>
+        </div>
+      </section>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Jadwal Dikonfigurasi. Waktu Divalidasi. Payroll Menghitung Uang.</span>
+        <span>CONFIGURABLE · VERSIONED · AUDITABLE</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" style="width:640px">
+    <div class="modal__hdr">
+      <h2 id="modalTitle">Tambah</h2>
+      <button type="button" class="modal__close" id="modalClose">&times;</button>
+    </div>
+    <form id="genericForm">
+      <div id="genericFormBody" style="padding:18px 20px;display:flex;flex-direction:column;gap:12px;max-height:60vh;overflow:auto"></div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="btnCancel">Batal</button>
+        <button type="submit" class="btn btn--gold">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'attendance_config';</script>
+<script src="/page-shell.js"></script>
+<script src="/jadwal-kerja.js"></script>
+</body>
+</html>

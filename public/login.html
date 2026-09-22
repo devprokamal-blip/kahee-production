@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KAHE 360° — Internal Operations Login</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/login.css" />
+</head>
+<body class="login-body">
+  <div class="login-scene">
+    <div class="login-scene__overlay"></div>
+
+    <header class="login-topbar">
+      <div class="login-topbar__brand">
+        <img src="/assets/kahe360-logo.png" alt="KAHE 360° Workforce Solutions" class="login-topbar__logo" />
+        <div class="login-topbar__divider"></div>
+        <ul class="login-topbar__tags">
+          <li data-i18n="tag_tenaga">TENAGA KERJA</li>
+          <li data-i18n="tag_resource">RESOURCE</li>
+          <li data-i18n="tag_kesehatan">KESEHATAN KERJA</li>
+          <li data-i18n="tag_kontinuitas">KONTINUITAS</li>
+        </ul>
+      </div>
+      <nav class="login-topbar__lang" aria-label="Language switch">
+        <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+        <span class="lang-sep">|</span>
+        <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+      </nav>
+    </header>
+
+    <main class="login-main">
+      <section class="login-hero">
+        <p class="login-hero__tagline" data-i18n="hero_tagline_top">People. Projects.</p>
+        <p class="login-hero__tagline login-hero__tagline--accent" data-i18n="hero_tagline_bottom">A Stronger Tomorrow.</p>
+
+        <h1 class="login-hero__title">
+          KAHE 360°<br />
+          <span data-i18n="hero_title_sub">INTERNAL OPERATIONS</span>
+        </h1>
+
+        <p class="login-hero__lead" data-i18n="hero_lead">
+          Menggerakkan Tenaga Kerja.<br />
+          Menjaga Operasi.<br />
+          Mengamankan Kontinuitas Proyek.
+        </p>
+
+        <p class="login-hero__footnote" data-i18n="hero_footnote">
+          A CONNECTED WORKFORCE. A STRONGER TOMORROW.
+        </p>
+
+        <ul class="login-hero__badges">
+          <li>
+            <span class="badge-icon" aria-hidden="true">🛡</span>
+            <span>
+              <strong data-i18n="badge_secure_title">SECURE ACCESS</strong>
+              <small data-i18n="badge_secure_sub">Your Data. Our Priority.</small>
+            </span>
+          </li>
+          <li>
+            <span class="badge-icon" aria-hidden="true">👥</span>
+            <span>
+              <strong data-i18n="badge_role_title">ROLE BASED ACCESS</strong>
+              <small data-i18n="badge_role_sub">Right People. Right Access.</small>
+            </span>
+          </li>
+          <li>
+            <span class="badge-icon" aria-hidden="true">🏗</span>
+            <span>
+              <strong data-i18n="badge_project_title">PROJECT FOCUSED</strong>
+              <small data-i18n="badge_project_sub">One Platform. Multiple Projects.</small>
+            </span>
+          </li>
+          <li>
+            <span class="badge-icon" aria-hidden="true">📈</span>
+            <span>
+              <strong data-i18n="badge_excellence_title">OPERATIONAL EXCELLENCE</strong>
+              <small data-i18n="badge_excellence_sub">Data Driven. People Powered.</small>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="login-panel" aria-label="Sign in">
+        <h2 class="login-panel__title" data-i18n="panel_welcome">Welcome Back</h2>
+        <p class="login-panel__subtitle" data-i18n="panel_subtitle">
+          Sign in to KAHE 360° Internal Operations Portal
+        </p>
+
+        <form id="loginForm" class="login-form" novalidate>
+          <label class="login-field">
+            <span class="login-field__icon" aria-hidden="true">👤</span>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              autocomplete="username"
+              data-i18n-placeholder="field_email"
+              placeholder="Email / User ID"
+              required
+            />
+          </label>
+
+          <label class="login-field">
+            <span class="login-field__icon" aria-hidden="true">🔒</span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              data-i18n-placeholder="field_password"
+              placeholder="Password"
+              required
+            />
+            <button type="button" class="login-field__toggle" id="togglePassword" aria-label="Show password">👁</button>
+          </label>
+
+          <div class="login-form__row">
+            <label class="login-remember">
+              <input type="checkbox" id="rememberDevice" />
+              <span data-i18n="remember_device">Remember this device</span>
+            </label>
+            <a href="#" class="login-forgot" id="forgotPassword" data-i18n="forgot_password">Forgot password?</a>
+          </div>
+
+          <p class="login-error" id="loginError" role="alert" hidden></p>
+
+          <button type="submit" class="login-submit" id="submitBtn">
+            <span data-i18n="sign_in">SIGN IN</span>
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <div class="login-or"><span data-i18n="or_label">or</span></div>
+
+          <button type="button" class="login-google" id="googleBtn">
+            <span class="login-google__g" aria-hidden="true">G</span>
+            <span data-i18n="google_signin">Masuk dengan Google</span>
+          </button>
+
+          <p class="login-legal">
+            <span aria-hidden="true">🔒</span>
+            <span data-i18n="legal_text">
+              Authorized Personnel Only. All activities are monitored and recorded. Unauthorized access is prohibited.
+            </span>
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="login-footer">
+      <div class="login-footer__brand">
+        <img src="/assets/kahe360-logo.png" alt="" class="login-footer__logo" />
+        <span data-i18n="footer_strap">Orang yang Tepat. Resource yang Tepat. Siap pada Waktu yang Tepat.</span>
+      </div>
+      <div class="login-footer__meta">
+        <span>PPB BALONGAN<br />INDRAMAYU, JAWA BARAT</span>
+        <span class="login-footer__copyright">© 2026 KAHE 360°<br />All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/translations/id.js"></script>
+  <script src="/translations/en.js"></script>
+  <script src="/i18n.js"></script>
+  <script src="/login.js"></script>
+</body>
+</html>

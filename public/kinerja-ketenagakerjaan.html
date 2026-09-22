@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kinerja &amp; Ketenagakerjaan — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">KINERJA &amp; KETENAGAKERJAAN</h1>
+          <p class="page-header__tagline">Mengelola performa pekerja, evaluasi supervisor, kedisiplinan, dan rekam ketenagakerjaan dalam satu kendali.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>PROYEK BERJALAN</span><span>MANUSIA MEMBANGUN</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">ORANG TEPAT</span>
+          <span class="page-header__badge-accent">PROYEK TEPAT</span>
+          <span class="page-header__badge-accent">MASA DEPAN LEBIH KUAT</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">👥</div>
+          <div><p class="pk-kpi__label">Rata-rata KPI Pekerja</p><p class="pk-kpi__value">86.4% <span class="pk-kpi__delta pk-kpi__delta--up">▲ +3.2%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">📉</div>
+          <div><p class="pk-kpi__label">Pekerja Di Bawah Target</p><p class="pk-kpi__value">142 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +12%</span></p><p class="pk-kpi__sub">dari bulan lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📅</div>
+          <div><p class="pk-kpi__label">Review Supervisor Jatuh Tempo</p><p class="pk-kpi__value">28 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +27%</span></p><p class="pk-kpi__sub">perlu diselesaikan</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">⚠️</div>
+          <div><p class="pk-kpi__label">Disiplin Perlu Tindak Lanjut</p><p class="pk-kpi__value">16 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +33%</span></p><p class="pk-kpi__sub">kasus terbuka</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📄</div>
+          <div><p class="pk-kpi__label">Kontrak Berakhir 30 Hari</p><p class="pk-kpi__value">34 <span class="pk-kpi__delta pk-kpi__delta--warn">▲ +70%</span></p><p class="pk-kpi__sub">perlu perhatian</p></div>
+        </div>
+      </section>
+
+      <!-- ROW 1 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📊 Performa Pekerja</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div style="display:flex;gap:8px;margin-bottom:10px">
+            <span class="status-badge status-badge--blue" style="padding:6px 12px">Berdasarkan Disiplin</span>
+            <span style="font-size:11.5px;color:var(--grey-500);align-self:center">Berdasarkan Kontraktor</span>
+          </div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Disiplin</th><th class="num">Jumlah Pekerja</th><th class="num">Rata-rata KPI</th><th>Tren</th></tr></thead>
+            <tbody>
+              <tr><td>🏛 Sipil</td><td class="num">620</td><td class="num"><div class="pbar-wrap" style="width:70px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:88.6%"></div></div>88.6%</td><td style="color:var(--green-500)">▲ +2.4%</td></tr>
+              <tr><td>🔩 Mekanikal</td><td class="num">420</td><td class="num"><div class="pbar-wrap" style="width:70px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:85.2%"></div></div>85.2%</td><td style="color:var(--green-500)">▲ +1.1%</td></tr>
+              <tr><td>🔧 Piping</td><td class="num">360</td><td class="num"><div class="pbar-wrap" style="width:70px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar pbar--amber" style="width:82.1%"></div></div>82.1%</td><td style="color:var(--red-500)">▼ -1.3%</td></tr>
+              <tr><td>⚡ Elektrikal</td><td class="num">320</td><td class="num"><div class="pbar-wrap" style="width:70px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:87.9%"></div></div>87.9%</td><td style="color:var(--green-500)">▲ +3.6%</td></tr>
+              <tr><td>🎛 Instrument</td><td class="num">280</td><td class="num"><div class="pbar-wrap" style="width:70px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar pbar--amber" style="width:84.5%"></div></div>84.5%</td><td style="color:var(--green-500)">▲ +0.8%</td></tr>
+              <tr style="font-weight:800"><td>Total</td><td class="num">2,000</td><td class="num"><div class="pbar-wrap" style="width:70px;display:inline-block;vertical-align:middle;margin-right:6px"><div class="pbar" style="width:86.4%"></div></div>86.4%</td><td style="color:var(--green-500)">▲ +3.2%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>⚡ Action Required</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Deskripsi</th><th>PIC</th><th>SLA</th></tr></thead>
+            <tbody>
+              <tr><td>🔴 14 pekerja KPI di bawah target 2 minggu berturut-turut</td><td>Andi Pratama<br><small style="color:var(--grey-500)">HR Business Partner</small></td><td><span class="status-badge status-badge--red">2 hari lagi</span></td></tr>
+              <tr><td>🔴 8 evaluasi supervisor belum diisi</td><td>Siti Rahayu<br><small style="color:var(--grey-500)">People Development</small></td><td><span class="status-badge status-badge--red">3 hari lagi</span></td></tr>
+              <tr><td>🟡 5 kontrak pekerja habis dalam 14 hari</td><td>Budi Santoso<br><small style="color:var(--grey-500)">Employment Services</small></td><td><span class="status-badge status-badge--amber">5 hari lagi</span></td></tr>
+              <tr><td>🟡 3 kasus disiplin menunggu keputusan</td><td>Dewi Lestari<br><small style="color:var(--grey-500)">HR Compliance</small></td><td><span class="status-badge status-badge--amber">7 hari lagi</span></td></tr>
+              <tr><td>🔵 11 data employment belum lengkap</td><td>Rico Hidayat<br><small style="color:var(--grey-500)">Data Management</small></td><td><span class="status-badge status-badge--blue">10 hari lagi</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🎯 Kontrol Kinerja</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Kategori</th><th class="num">Rata-rata</th><th class="num">Target</th><th class="num">Perlu Aksi</th></tr></thead>
+            <tbody>
+              <tr><td>📊 Worker KPI</td><td class="num">86.4%</td><td class="num">90%</td><td class="num" style="color:var(--red-500)">142</td></tr>
+              <tr><td>👥 Evaluasi Supervisor</td><td class="num">72% Selesai</td><td class="num">28% Pending</td><td class="num" style="color:var(--amber-500)">28</td></tr>
+              <tr><td>⚠️ Disiplin</td><td class="num">12 Peringatan</td><td class="num">—</td><td class="num" style="color:var(--red-500)">16</td></tr>
+              <tr><td>📋 Rekam Ketenagakerjaan</td><td class="num">95% Lengkap</td><td class="num">5% Kurang</td><td class="num" style="color:var(--amber-500)">98</td></tr>
+              <tr><td>🕐 Riwayat Pekerja</td><td class="num">78% Direview</td><td class="num">22% Belum</td><td class="num" style="color:var(--amber-500)">446</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <!-- ROW 2: 5 columns -->
+      <section class="pk-grid-5">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🍩 Distribusi KPI</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="52.5 223.9" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="132.7 143.8" stroke-dashoffset="-52.5"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="58.1 218.4" stroke-dashoffset="-185.2"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="33.2 243.3" stroke-dashoffset="-243.3"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">2,000</div><div class="donut-center__lbl">pekerja</div></div>
+          </div>
+          <ul class="donut-legend">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> High (&ge;95%) <strong>380 · 19%</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> Good (85-94%) <strong>960 · 48%</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Watch (70-84%) <strong>420 · 21%</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Below Target (&lt;70%) <strong>240 · 12%</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>📋 Status Ketenagakerjaan</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="gap-list">
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">📄 PKWT Aktif</span><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:74%"></div></div><strong>1,486 · 74%</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">⏳ Masa Probation</span><div class="pbar-wrap" style="width:70px"><div class="pbar pbar--amber" style="width:14%"></div></div><strong>284 · 14%</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">📆 Akan Berakhir &le;30 Hari</span><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:2%;background:var(--blue-500)"></div></div><strong>34 · 2%</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11.5px">❌ Terminasi / Demob (Planned)</span><div class="pbar-wrap" style="width:70px"><div class="pbar" style="width:10%;background:var(--red-500)"></div></div><strong>196 · 10%</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>✅ Evaluasi Supervisor</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="199.1 77.4" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="77.4 199.1" stroke-dashoffset="-199.1"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">72%</div><div class="donut-center__lbl">Selesai</div></div>
+          </div>
+          <p style="text-align:center;font-size:11px;color:var(--grey-500);margin:0 0 8px">Total Evaluasi <strong style="color:var(--white)">250</strong></p>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Selesai <strong style="color:var(--green-500)">180</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Pending <strong>70</strong></li>
+          </ul>
+          <p style="font-size:10.5px;color:var(--green-500);margin:8px 0 0">▲ +18% progress minggu ini</p>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>⚠️ Disiplin &amp; Tindak Lanjut</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="exc-list">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Berat <strong style="color:var(--red-500)">4</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Sedang <strong>7</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Ringan <strong>5</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--blue-500)"></span> Dalam Proses <strong>6</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Selesai Bulan Ini <strong style="color:var(--green-500)">18</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🏆 Top Performer</h3><button class="pk-panel__link">Below Target</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <tbody>
+              <tr><td>🥇</td><td>Ahmad Rizky</td><td>Piping</td><td class="num" style="color:var(--green-500)">98.2%</td></tr>
+              <tr><td>🥈</td><td>Siti Nurhaliza</td><td>Mekanikal</td><td class="num" style="color:var(--green-500)">97.8%</td></tr>
+              <tr><td>🥉</td><td>Budi Hartono</td><td>Sipil</td><td class="num" style="color:var(--green-500)">96.5%</td></tr>
+              <tr><td></td><td>Dewi Anggraini</td><td>Elektrikal</td><td class="num" style="color:var(--green-500)">96.1%</td></tr>
+              <tr><td></td><td>Rian Setiawan</td><td>Instrument</td><td class="num" style="color:var(--green-500)">95.4%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <div class="module-tabs">
+        <span class="module-tab"><span class="module-tab__icon">📊</span> Worker KPI</span>
+        <span class="module-tab"><span class="module-tab__icon">📄</span> Performance Review</span>
+        <span class="module-tab"><span class="module-tab__icon">👥</span> Supervisor Evaluation</span>
+        <span class="module-tab"><span class="module-tab__icon">⚠️</span> Discipline</span>
+        <span class="module-tab"><span class="module-tab__icon">📋</span> Employment Record</span>
+        <span class="module-tab"><span class="module-tab__icon">🕐</span> Worker History</span>
+      </div>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Data tenaga kerja untuk proyek yang lebih kuat.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'performance_employment';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>

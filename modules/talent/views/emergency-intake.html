@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>EMERGENCY REGISTRATION INTAKE V0 — KAHE Talent</title>
+  <link rel="stylesheet" href="/tw-assets/tw-shell.css">
+  <style>
+    .ei-head { display: flex; align-items: center; gap: 20px; padding: 12px 24px; background: #fff; border-bottom: 1px solid var(--tw-line); }
+    .ei-head img { height: 48px; width: auto; display: block; }
+    .ei-head nav { margin-left: auto; display: flex; gap: 16px; }
+    .ei-banner { margin: 0 0 16px; padding: 10px 14px; border-radius: 8px; background: var(--tw-amber-soft); color: var(--tw-amber); font-weight: 600; max-width: 1400px; }
+    .ei-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .ei-tools input { min-width: 260px; min-height: 38px; padding: 6px 10px; border: 1px solid var(--tw-line); border-radius: 8px; font: inherit; }
+    .ei-btn { min-height: 38px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--tw-line); background: #fff; color: var(--tw-ink); font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+    .ei-btn-primary { background: var(--tw-blue); border-color: var(--tw-blue); color: #fff; }
+    .ei-pager { display: flex; gap: 10px; align-items: center; margin-top: 12px; color: var(--tw-muted); }
+    .ei-main { padding: 20px 24px 40px; }
+    .ei-main .tw-table td, .ei-main .tw-table th { white-space: nowrap; }
+    .ei-dup { color: var(--tw-amber); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header class="ei-head">
+    <img src="/tw-assets/kahe-group-indonesia-logo.png" alt="KAHE Group Indonesia — People | Assets | Solutions" width="2172" height="724">
+    <strong class="tw-product-name" style="font-size:1.1rem">EMERGENCY REGISTRATION INTAKE V0</strong>
+    <nav><a href="/tw/app/">Talent &amp; Worker</a><a href="/register/profile" target="_blank" rel="noopener">Formulir publik</a></nav>
+  </header>
+  <main class="ei-main" id="main">
+    <p class="ei-banner">EMERGENCY REGISTRATION INTAKE V0 — daftar sementara pendaftaran publik. Ini bukan modul Talent Intake (P05): tidak ada review, perubahan status, atau pemetaan di halaman ini. Semua data berstatus NEW dan menunggu migrasi ke modul lengkap.</p>
+    <div class="ei-tools">
+      <input type="search" id="eiQ" placeholder="Cari nomor registrasi, nama, email, atau WhatsApp" aria-label="Cari">
+      <button class="ei-btn" id="eiSearch" type="button">Cari</button>
+      <a class="ei-btn ei-btn-primary" id="eiExport" href="/api/tw/emergency-intake/export.csv" hidden>Ekspor CSV</a>
+      <span id="eiTotal" class="tw-note" style="margin:0"></span>
+    </div>
+    <div class="tw-panel tw-table-wrap">
+      <table class="tw-table" aria-describedby="eiTotal">
+        <thead><tr><th>Nomor Registrasi</th><th>Nama</th><th>WhatsApp</th><th>Email</th><th>Kota</th><th>Posisi Terakhir</th><th>Tanggal Daftar</th><th>Status</th><th>Indikasi Duplikat</th></tr></thead>
+        <tbody id="eiRows"></tbody>
+      </table>
+    </div>
+    <div class="ei-pager"><button class="ei-btn" id="eiPrev" type="button">‹ Sebelumnya</button><span id="eiPage"></span><button class="ei-btn" id="eiNext" type="button">Berikutnya ›</button></div>
+    <p class="tw-error" id="eiError" role="alert" hidden></p>
+  </main>
+  <script src="/tw-assets/emergency-intake.js"></script>
+</body>
+</html>

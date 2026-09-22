@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Penggajian &amp; BPJS — KAHE 360°</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="app-body">
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="/assets/kahe360-logo.png" alt="KAHE 360°" class="sidebar__logo" />
+    </div>
+    <nav class="sidebar__nav" id="sidebarNav" aria-label="Primary"></nav>
+    <div class="sidebar__footer">
+      <p class="sidebar__tag">People<br />Projects<br />Progress</p>
+      <p class="sidebar__tag sidebar__tag--accent">A Stronger Tomorrow</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="topbar__menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="topbar__title">
+        <span class="topbar__title-main" data-i18n="topbar_title_main">INTERNAL OPERATIONS PORTAL</span>
+        <span class="topbar__title-sub" data-i18n="topbar_title_sub">People. Operations. Continuity.</span>
+      </div>
+      <div class="topbar__controls">
+        <select class="topbar__project" id="projectSelect" aria-label="Project selector"><option>PPB Balongan</option></select>
+        <span class="topbar__live"><i class="dot dot--green"></i> <span data-i18n="topbar_live">Live Operations</span></span>
+        <span class="topbar__datetime" id="topbarDatetime">—</span>
+        <span class="topbar__shift">🌙 <span data-i18n="topbar_night_shift">Night Shift</span></span>
+        <button class="topbar__bell" id="notifBtn" aria-haspopup="true" aria-expanded="false">🔔<span class="badge" id="notifCount">7</span></button>
+        <button class="topbar__profile" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="avatarInitials">--</span>
+          <span class="topbar__profile-text"><strong id="profileName">Loading…</strong><small id="profileRole">&nbsp;</small></span>
+        </button>
+        <div class="topbar__lang">
+          <button type="button" class="lang-btn is-active" data-lang-btn="id">ID</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+      <div class="dropdown" id="notifDropdown" hidden>
+        <p class="dropdown__title">Notifikasi</p>
+        <ul class="dropdown__list">
+          <li>14 Pipe Welder belum Fit to Work</li>
+          <li>31 Payroll Exceptions menunggu approval</li>
+          <li>12 Sertifikat akan expired ≤ 7 hari</li>
+        </ul>
+      </div>
+      <div class="dropdown dropdown--right" id="profileDropdown" hidden>
+        <button class="dropdown__item" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">PENGGAJIAN &amp; BPJS</h1>
+          <p class="page-header__tagline">Mengendalikan kesiapan payroll, lembur, BPJS, dan kepatuhan administrasi pekerja dalam satu kendali.</p>
+          <p class="page-header__desc">Validasi data kehadiran, overtime, komponen gaji, iuran BPJS, dan pengecualian payroll untuk memastikan pembayaran tepat waktu dan tepat data.</p>
+        </div>
+        <div class="page-header__badge">
+          <span>PROYEK BERJALAN</span><span>MANUSIA MEMBANGUN</span>
+          <span class="page-header__badge-accent" style="margin-top:6px">MASA DEPAN</span>
+          <span class="page-header__badge-accent">LEBIH KUAT</span>
+        </div>
+      </section>
+
+      <section class="pk-kpi-bar">
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">👥</div>
+          <div><p class="pk-kpi__label">Payroll Ready</p><p class="pk-kpi__value">96.8%</p><p class="pk-kpi__sub">2,038 / 2,105 siap dibayar</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">🕐</div>
+          <div><p class="pk-kpi__label">Overtime Approved</p><p class="pk-kpi__value">4,218 jam <span class="pk-kpi__delta pk-kpi__delta--up">▲ +6.2%</span></p><p class="pk-kpi__sub">vs minggu lalu</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--green">
+          <div class="pk-kpi__icon pk-kpi__icon--green">🛡</div>
+          <div><p class="pk-kpi__label">BPJS Compliance</p><p class="pk-kpi__value">98.9%</p><p class="pk-kpi__sub">1,982 compliant | 22 pending</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--red">
+          <div class="pk-kpi__icon pk-kpi__icon--red">⚠️</div>
+          <div><p class="pk-kpi__label">Payroll Exception</p><p class="pk-kpi__value">31</p><p class="pk-kpi__sub">perlu tindak lanjut</p></div>
+        </div>
+        <div class="pk-kpi pk-kpi--blue">
+          <div class="pk-kpi__icon pk-kpi__icon--blue">📅</div>
+          <div><p class="pk-kpi__label">Slip Gaji Release</p><p class="pk-kpi__value" style="font-size:17px">15 Sep 2026</p><p class="pk-kpi__sub">jadwal pembayaran</p></div>
+        </div>
+      </section>
+
+      <!-- ROW 1 -->
+      <section class="pk-grid-3">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🏗 Status Payroll per Kontraktor</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Kontraktor</th><th class="num">Headcount</th><th class="num">Payroll Ready</th><th class="num">Exception</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Main Civil</td><td class="num">620</td><td class="num">98.7%</td><td class="num">6</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>Mechanical</td><td class="num">420</td><td class="num">96.4%</td><td class="num">8</td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr><td>Piping</td><td class="num">360</td><td class="num">95.8%</td><td class="num">7</td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr><td>Electrical</td><td class="num">320</td><td class="num">97.5%</td><td class="num">5</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+              <tr><td>Instrument</td><td class="num">280</td><td class="num">93.6%</td><td class="num">9</td><td><span class="status-badge status-badge--red">Risiko</span></td></tr>
+              <tr><td>Others</td><td class="num">105</td><td class="num">92.4%</td><td class="num">6</td><td><span class="status-badge status-badge--amber">Perhatian</span></td></tr>
+              <tr style="font-weight:800"><td>Total</td><td class="num">2,105</td><td class="num">96.8%</td><td class="num">31</td><td><span class="status-badge status-badge--green">Normal</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>⚡ Action Required</h3><button class="pk-panel__link">Lihat Semua ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Masalah / Isu</th><th>PIC</th><th>SLA</th></tr></thead>
+            <tbody>
+              <tr><td>🔴 12 data rekening belum valid</td><td>Rina Oktaviani<br><small style="color:var(--grey-500)">HR Operations</small></td><td><span class="status-badge status-badge--red">4 jam lagi</span></td></tr>
+              <tr><td>🔴 8 lembur menunggu approval</td><td>Budi Santoso<br><small style="color:var(--grey-500)">Project Control</small></td><td><span class="status-badge status-badge--red">8 jam lagi</span></td></tr>
+              <tr><td>🟡 6 pekerja BPJS Kesehatan belum aktif</td><td>Siti Rahma<br><small style="color:var(--grey-500)">GA &amp; Compliance</small></td><td><span class="status-badge status-badge--amber">1 hari lagi</span></td></tr>
+              <tr><td>🟡 5 perubahan upah belum dikonfirmasi</td><td>Andi Pratama<br><small style="color:var(--grey-500)">HR Business Partner</small></td><td><span class="status-badge status-badge--amber">2 hari lagi</span></td></tr>
+              <tr><td>🔵 3 NPWP belum lengkap</td><td>Deni Kurniawan<br><small style="color:var(--grey-500)">Payroll Team</small></td><td><span class="status-badge status-badge--blue">3 hari lagi</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🛡 Kontrol Payroll &amp; BPJS</h3><button class="pk-panel__link">Lihat Detail ›</button></div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Proses</th><th class="num">Realisasi</th><th class="num">Target</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>📅 Attendance to Payroll</td><td class="num">2,038</td><td class="num">2,105</td><td><span class="status-badge status-badge--green">96.8%</span></td></tr>
+              <tr><td>🕐 Overtime</td><td class="num">4,218 jam</td><td class="num">—</td><td><span class="status-badge status-badge--green">100%</span></td></tr>
+              <tr><td>💳 Payroll</td><td class="num">2,038</td><td class="num">2,105</td><td><span class="status-badge status-badge--green">96.8%</span></td></tr>
+              <tr><td>🦺 BPJS TK</td><td class="num">1,989</td><td class="num">2,105</td><td><span class="status-badge status-badge--amber">94.5%</span></td></tr>
+              <tr><td>🏥 BPJS Kesehatan</td><td class="num">1,982</td><td class="num">2,105</td><td><span class="status-badge status-badge--amber">94.1%</span></td></tr>
+              <tr><td>📄 PPh 21</td><td class="num">2,038</td><td class="num">2,105</td><td><span class="status-badge status-badge--green">96.8%</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </section>
+
+      <!-- ROW 2: 5 columns -->
+      <section class="pk-grid-5">
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🕐 Ringkasan Lembur</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="exc-list" style="margin-bottom:8px">
+            <li class="exc-row"><span class="dot-sm" style="background:var(--green-500)"></span> Approved <strong style="color:var(--green-500)">3,780 jam</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--amber-500)"></span> Pending <strong>328 jam</strong></li>
+            <li class="exc-row"><span class="dot-sm" style="background:var(--red-500)"></span> Rejected <strong style="color:var(--red-500)">110 jam</strong></li>
+          </ul>
+          <p style="font-size:10.5px;color:var(--grey-500);font-weight:700;margin:8px 0 4px">Disiplin Lembur Tertinggi</p>
+          <ul style="list-style:none;padding:0;margin:0;font-size:11px;color:var(--grey-300)">
+            <li style="display:flex;justify-content:space-between;padding:2px 0">🥇 Mechanical <strong style="color:var(--white)">98.2%</strong></li>
+            <li style="display:flex;justify-content:space-between;padding:2px 0">🥈 Civil <strong style="color:var(--white)">96.5%</strong></li>
+            <li style="display:flex;justify-content:space-between;padding:2px 0">🥉 Electrical <strong style="color:var(--white)">94.1%</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🔽 Funnel Validasi Payroll</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="tk-funnel">
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Absensi Masuk</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:100%"></div></div><span class="tk-funnel__val">2,105</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Rekonsiliasi</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:97.9%"></div></div><span class="tk-funnel__val">2,060</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Overtime Check</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:96.8%"></div></div><span class="tk-funnel__val">2,038</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Approval</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:96.8%;background:var(--amber-500)"></div></div><span class="tk-funnel__val">2,038</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Payroll Process</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:96.8%;background:var(--blue-500)"></div></div><span class="tk-funnel__val">2,038</span></div>
+            <div class="tk-funnel__row"><span class="tk-funnel__label" style="font-size:10.5px">Slip Gaji</span><div class="tk-funnel__bar-wrap"><div class="tk-funnel__bar" style="width:96.8%;background:var(--green-500)"></div></div><span class="tk-funnel__val">2,038</span></div>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🛡 Status BPJS</h3><button class="pk-panel__link">Detail ›</button></div>
+          <div class="donut-wrap" style="margin:0 auto 10px">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+              <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--green-500)" stroke-width="14" stroke-dasharray="134.4 142.1" stroke-dashoffset="0.0"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--blue-500)" stroke-width="14" stroke-dasharray="134.2 142.3" stroke-dashoffset="-134.4"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--amber-500)" stroke-width="14" stroke-dasharray="4.9 271.6" stroke-dashoffset="-268.6"/>
+              <circle cx="55" cy="55" r="44" fill="none" stroke="var(--red-500)" stroke-width="14" stroke-dasharray="3.0 273.5" stroke-dashoffset="-273.5"/>
+            </svg>
+            <div class="donut-center"><div class="donut-center__val">2,105</div><div class="donut-center__lbl">Total<br/>Pekerja</div></div>
+          </div>
+          <ul class="donut-legend">
+            <li><span class="dot-sm" style="background:var(--green-500)"></span> BPJS TK Active <strong>1,985 (94.5%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--blue-500)"></span> BPJS Kesehatan <strong>1,982 (94.1%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--amber-500)"></span> Pending Activation <strong>72 (3.4%)</strong></li>
+            <li><span class="dot-sm" style="background:var(--red-500)"></span> Data Issue <strong>44 (2.1%)</strong></li>
+          </ul>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>💰 Komponen Penggajian</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul class="gap-list">
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Gaji Pokok</span><div class="pbar-wrap" style="width:60px"><div class="pbar" style="width:62.1%"></div></div><strong style="font-size:11px">Rp28.4M</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Tunjangan</span><div class="pbar-wrap" style="width:60px"><div class="pbar" style="width:17.7%"></div></div><strong style="font-size:11px">Rp8.1M</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Overtime</span><div class="pbar-wrap" style="width:60px"><div class="pbar pbar--amber" style="width:7.8%"></div></div><strong style="font-size:11px">Rp3.6M</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Potongan</span><div class="pbar-wrap" style="width:60px"><div class="pbar" style="width:5.2%;background:var(--red-500)"></div></div><strong style="font-size:11px">Rp2.4M</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">BPJS</span><div class="pbar-wrap" style="width:60px"><div class="pbar" style="width:4.6%;background:var(--blue-500)"></div></div><strong style="font-size:11px">Rp2.1M</strong></li>
+            <li class="gap-row" style="gap:6px"><span style="flex:1;font-size:11px">Pajak (PPh 21)</span><div class="pbar-wrap" style="width:60px"><div class="pbar" style="width:2.6%;background:var(--grey-500)"></div></div><strong style="font-size:11px">Rp1.2M</strong></li>
+          </ul>
+          <div style="margin-top:8px;padding:6px 8px;background:rgba(242,178,60,0.1);border-radius:6px;border:1px solid rgba(242,178,60,0.25);display:flex;justify-content:space-between">
+            <strong style="font-size:11.5px;color:var(--gold-500)">Total Payroll</strong><strong style="font-size:11.5px;color:var(--white)">Rp45.8M</strong>
+          </div>
+        </div>
+
+        <div class="pk-panel">
+          <div class="pk-panel__hdr"><h3>🎯 Top Exception / Risiko</h3><button class="pk-panel__link">Detail ›</button></div>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+            <li style="display:flex;align-items:center;gap:8px"><span class="status-badge status-badge--red" style="min-width:18px;text-align:center">1</span><span style="flex:1;font-size:11.5px;color:var(--grey-300)">Data rekening tidak valid</span><strong style="color:var(--white)">12</strong></li>
+            <li style="display:flex;align-items:center;gap:8px"><span class="status-badge status-badge--amber" style="min-width:18px;text-align:center">2</span><span style="flex:1;font-size:11.5px;color:var(--grey-300)">Lembur menunggu approval</span><strong style="color:var(--white)">8</strong></li>
+            <li style="display:flex;align-items:center;gap:8px"><span class="status-badge status-badge--amber" style="min-width:18px;text-align:center">3</span><span style="flex:1;font-size:11.5px;color:var(--grey-300)">BPJS Kesehatan belum aktif</span><strong style="color:var(--white)">6</strong></li>
+            <li style="display:flex;align-items:center;gap:8px"><span class="status-badge status-badge--blue" style="min-width:18px;text-align:center">4</span><span style="flex:1;font-size:11.5px;color:var(--grey-300)">Perubahan upah belum dikonfirmasi</span><strong style="color:var(--white)">5</strong></li>
+            <li style="display:flex;align-items:center;gap:8px"><span class="status-badge status-badge--blue" style="min-width:18px;text-align:center">5</span><span style="flex:1;font-size:11.5px;color:var(--grey-300)">NPWP belum lengkap</span><strong style="color:var(--white)">3</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="module-tabs">
+        <span class="module-tab"><span class="module-tab__icon">📅</span> Attendance</span>
+        <span class="module-tab"><span class="module-tab__icon">🕐</span> Overtime</span>
+        <span class="module-tab"><span class="module-tab__icon">💳</span> Payroll Process</span>
+        <span class="module-tab"><span class="module-tab__icon">🛡</span> BPJS</span>
+        <span class="module-tab"><span class="module-tab__icon">📄</span> Tax</span>
+        <span class="module-tab"><span class="module-tab__icon">🧾</span> Payslip</span>
+        <span class="module-tab"><span class="module-tab__icon">⚠️</span> Exception Control</span>
+      </div>
+
+      <footer class="content-footer">
+        <span>KAHE 360° WORKFORCE SOLUTIONS</span>
+        <span>Payroll diproses berbasis exception untuk memastikan pembayaran tepat waktu dan tepat data.</span>
+        <span>SATU TIM · SATU DATA · OPERASIONAL LEBIH KUAT</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/translations/id.js"></script>
+<script src="/translations/en.js"></script>
+<script src="/i18n.js"></script>
+<script>window.KAHE_ACTIVE_MODULE = 'payroll_bpjs';</script>
+<script src="/page-shell.js"></script>
+</body>
+</html>
