@@ -120,7 +120,7 @@ if "!SERVER_OK!"=="0" (
 )
 
 echo Server is running and responding.
-start "" "http://127.0.0.1:3000/login.html"
+start "" "http://127.0.0.1:3000/register"
 
 echo.
 echo KAHE 360 is running in a minimized window ^(KAHE360-SERVER^).

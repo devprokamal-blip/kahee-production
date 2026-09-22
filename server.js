@@ -154,8 +154,7 @@ app.use('/register', require('./modules/talent/routes/publicRegisterPages'));   
 // --- Page routes (registered BEFORE the static middleware below, so the
 //     auth guard on /index.html can never be bypassed by static file serving) ---
 app.get('/', (req, res) => {
-  if (req.session && req.session.userId) return res.redirect('/index.html');
-  return res.redirect('/login.html');
+  return res.redirect('/register');
 });
 
 app.get('/login.html', (req, res) => {

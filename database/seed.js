@@ -3,6 +3,9 @@
 // Idempotent seed: roles, permissions, role_permissions, demo project, demo users + scope.
 // Run with: npm run seed
 
+const path = require('path');
+try { require('dotenv').config({ path: path.join(__dirname, '..', '.env') }); } catch (_) { /* optional */ }
+
 const bcrypt = require('bcryptjs');
 const { getDb, initDb } = require('./init-db');
 
